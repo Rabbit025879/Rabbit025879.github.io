@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
       :root{
-        --bg:#0f1724; --card:#0b1220; --muted:#94a3b8; --accent:#ca61fa;
+        --bg:#0f1724; --card:#0b1220; --muted:#94a3b8; --accent:#ca61fa; --link:#7dd3fc;
         --glass: rgba(255,255,255,0.04);
       }
       *{box-sizing:border-box}
@@ -18,14 +18,17 @@
       .container{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:320px 1fr;gap:24px}
       .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:14px;padding:20px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 6px 18px rgba(2,6,23,0.6)}
       .profile{display:flex;flex-direction:column;align-items:center;text-align:center}
-      .avatar{width:140px;height:140px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#7dd3fc);display:flex;align-items:center;justify-content:center;font-weight:700;color:#05233a;font-size:28px;box-shadow:0 6px 18px rgba(96,165,250,0.12);margin-bottom:16px}
+      .avatar{width:140px;height:140px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#ee94f1);display:flex;align-items:center;justify-content:center;font-weight:700;color:#05233a;font-size:28px;box-shadow:0 6px 18px rgba(96,165,250,0.12);margin-bottom:16px}
       h1{margin:0;font-size:20px}
       .subtitle{color:var(--muted);font-size:13px;margin-top:6px}
       .contact{margin-top:14px;font-size:14px}
-      .contact a{color:var(--accent);text-decoration:none}
+      .contact a{color:var(--link);text-decoration:none}
       .section-title{font-size:16px;margin:6px 0 12px;border-left:3px solid var(--accent);padding-left:10px}
       .skills{display:flex;flex-wrap:wrap;gap:8px}
-      .chip{background:var(--glass);padding:6px 10px;border-radius:999px;font-size:13px;color:var(--muted)}
+      .chip-robotics{background:var(--glass);padding:6px 10px;border-radius:999px;font-size:13px;color: #7da1ee;}
+      .chip-sim{background:var(--glass);padding:6px 10px;border-radius:999px;font-size:13px;color: #f97316;}
+      .chip-cad{background:var(--glass);padding:6px 10px;border-radius:999px;font-size:13px;color: #16a34a;}
+      .chip-dev{background:var(--glass);padding:6px 10px;border-radius:999px;font-size:13px;color: #eca6f5;}
       main .card{padding:28px}
       .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
       .full{grid-column:1/-1}
@@ -56,17 +59,47 @@
         transform: scale(1.05);
         box-shadow: 0 6px 18px rgba(96,165,250,0.3);
       }
+
+      .top-bar {
+        width: 100%;
+        background-color: var(--accent); /* 使用你的主題色 */
+        color: #fff;
+        text-align: center;
+        padding: 8px 0;
+        font-weight: 600;
+        font-size: 14px;
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        background-color: var(--card);
+        padding: 12px 0;
+      }
     </style>
   </head>
   <body>
     <div class="container">
+      
+    <!-- <div class="top-bar">
+      Welcome to my personal website!
+    </div> -->
+
+    <!-- <nav class="navbar">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="contact.html">Contact</a>
+    </nav> -->
+
       <aside class="card">
         <div class="profile">
           <!-- <div class="avatar">TU</div> -->
           <div class="avatar", style="display: block;">
             <img src="images/Me.jpg" alt="Profile Picture">
           </div>
-          <h1>Tzu-Hsiang Tu(凃紫翔)</h1>
+          <h1>Tzu-Hsiang Tu (凃紫翔)</h1>
           <div class="subtitle">B.S. in Power Mechanical Engineering<br>National Tsing Hua University</div>
         </div>
 
@@ -79,27 +112,21 @@
 
         <div class="section-title">Field of Expertise</div>
         <div class="skills">
-          <div class="chip">ROS / ROS2</div>
-          <div class="chip">Navigation2</div>
-          <div class="chip">Control Theory</div>
-          <div class="chip">STM32 Firmware</div>
-          <div class="chip">COMSOL</div>
-          <div class="chip">MATLAB</div>
-          <div class="chip">LTspice</div>
-          <div class="chip">AutoCAD / Inventor</div>
-          <div class="chip">Docker / Git</div>
-          <div class="chip">C / C++</div>
+          <div class="chip-robotics">ROS / ROS2</div>
+          <div class="chip-robotics">Navigation2</div>
+          <div class="chip-robotics">Control Theory</div>
+          <div class="chip-robotics">STM32 Firmware</div>
+          <div class="chip-sim">COMSOL</div>
+          <div class="chip-sim">MATLAB</div>
+          <div class="chip-sim">LTspice</div>
+          <div class="chip-cad">AutoCAD / Inventor</div>
+          <div class="chip-dev">Docker / Git</div>
+          <div class="chip-dev">C / C++</div>
         </div>
 
         <div class="section-title">Languages</div>
         <div class="muted">Mandarin (Native) • English (TOEIC 885)</div>
 
-        <div class="section-title">Exhibitions & Conferences</div>
-        <ul class="muted">
-          <li>IEEE MEMS 2025 — Exhibitor & Attendee</li>
-          <li>Taiwan Automation Intelligence and Robot Show (2024 & 2025) — Exhibitor</li>
-          <li>SEMICON Taiwan 2025 — Exhibitor</li>
-        </ul>
       </aside>
 
       <main>
@@ -108,7 +135,7 @@
           <p>Senior student majoring in Power Mechanical Engineering at National Tsing Hua University, specializing in robotics and control systems. Passionate about robot navigation and intelligent control with strong hands-on and problem-solving skills. Aspires to pursue graduate research integrating AI and autonomous systems for advanced robotic applications.</p>
 
           <div class="grid">
-            <div class="item">
+            <div class="full">
               <div class="section-title">Education</div>
               <div class="timeline">
                 <div class="item">
@@ -118,7 +145,7 @@
               </div>
             </div>
 
-            <div class="item">
+            <div class="full">
               <div class="section-title">Honors & Awards</div>
               <ul class="muted">
                 <li>Eurobot 2024 — World 5th Place</li>
@@ -145,6 +172,15 @@
                 <div class="muted">Undergraduate Project — Sep 2024 – Present</div>
                 <p>Developing a hybrid capacitive–Pirani CMOS-MEMS pressure sensor. TSRI D35-114B Review Report: Grade A.</p>
               </div>
+            </div>
+            
+            <div class="full">
+              <div class="section-title">Exhibitions & Conferences</div>
+              <ul class="muted">
+                <li>IEEE MEMS 2025 — Exhibitor & Attendee</li>
+                <li>Taiwan Automation Intelligence and Robot Show (2024 & 2025) — Exhibitor</li>
+                <li>SEMICON Taiwan 2025 — Exhibitor</li>
+              </ul>
             </div>
 
             <div class="full">
