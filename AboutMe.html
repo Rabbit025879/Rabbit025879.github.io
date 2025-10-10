@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Tu Infinity & Beyond</title>
+    <link rel="icon" href="images/Buzz.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+      :root{
+        --bg:#0f1724; --card:#0b1220; --muted:#94a3b8; --accent:#ca61fa;
+        --glass: rgba(255,255,255,0.04);
+      }
+      *{box-sizing:border-box}
+      html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;padding:24px;background:linear-gradient(180deg,#071028 0%, #081424 100%);color:#e6eef8}
+      .container{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:320px 1fr;gap:24px}
+      .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:14px;padding:20px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 6px 18px rgba(2,6,23,0.6)}
+      .profile{display:flex;flex-direction:column;align-items:center;text-align:center}
+      .avatar{width:140px;height:140px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#7dd3fc);display:flex;align-items:center;justify-content:center;font-weight:700;color:#05233a;font-size:28px;box-shadow:0 6px 18px rgba(96,165,250,0.12);margin-bottom:16px}
+      h1{margin:0;font-size:20px}
+      .subtitle{color:var(--muted);font-size:13px;margin-top:6px}
+      .contact{margin-top:14px;font-size:14px}
+      .contact a{color:var(--accent);text-decoration:none}
+      .section-title{font-size:16px;margin:6px 0 12px;border-left:3px solid var(--accent);padding-left:10px}
+      .skills{display:flex;flex-wrap:wrap;gap:8px}
+      .chip{background:var(--glass);padding:6px 10px;border-radius:999px;font-size:13px;color:var(--muted)}
+      main .card{padding:28px}
+      .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+      .full{grid-column:1/-1}
+      .item{margin-bottom:12px}
+      .item h3{margin:0;font-size:15px}
+      .muted{color:var(--muted);font-size:13px}
+      .timeline{border-left:2px solid rgba(255,255,255,0.03);padding-left:12px}
+      a.button{display:inline-block;padding:8px 12px;border-radius:10px;background:linear-gradient(90deg,var(--accent),#7dd3fc);color:#05233a;font-weight:600;text-decoration:none;margin-top:8px}
+      footer{margin-top:20px;text-align:center;color:var(--muted);font-size:13px}
+      @media (max-width:900px){.container{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.profile{flex-direction:row;align-items:center;text-align:left}.avatar{margin-right:12px;width:92px;height:92px;font-size:18px}}
+      .avatar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .avatar img {
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+        object-fit: cover;
+        box-shadow: 0 6px 18px rgba(96,165,250,0.12);
+        cursor: pointer;
+        border: 2px solid rgba(255,255,255,0.1);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .avatar img:hover {
+        transform: scale(1.05);
+        box-shadow: 0 6px 18px rgba(96,165,250,0.3);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <aside class="card">
+        <div class="profile">
+          <!-- <div class="avatar">TU</div> -->
+          <div class="avatar", style="display: block;">
+            <img src="images/Me.jpg" alt="Profile Picture">
+          </div>
+          <h1>Tzu-Hsiang Tu(凃紫翔)</h1>
+          <div class="subtitle">B.S. in Power Mechanical Engineering<br>National Tsing Hua University</div>
+        </div>
+
+        <div class="section-title">Contact</div>
+        <div class="contact">
+          <div>Email: <a href="mailto:s111033151@m111.nthu.edu.tw">s111033151@m111.nthu.edu.tw</a></div>
+          <div>Phone: <a href="tel:+886979161152">+886 979 161 152</a></div>
+          <div>GitHub: <a href="https://github.com/Rabbit025879" target="_blank" rel="noopener">Rabbit025879</a></div>
+        </div>
+
+        <div class="section-title">Field of Expertise</div>
+        <div class="skills">
+          <div class="chip">ROS / ROS2</div>
+          <div class="chip">Navigation2</div>
+          <div class="chip">Control Theory</div>
+          <div class="chip">STM32 Firmware</div>
+          <div class="chip">COMSOL</div>
+          <div class="chip">MATLAB</div>
+          <div class="chip">LTspice</div>
+          <div class="chip">AutoCAD / Inventor</div>
+          <div class="chip">Docker / Git</div>
+          <div class="chip">C / C++</div>
+        </div>
+
+        <div class="section-title">Languages</div>
+        <div class="muted">Mandarin (Native) • English (TOEIC 885)</div>
+
+        <div class="section-title">Exhibitions & Conferences</div>
+        <ul class="muted">
+          <li>IEEE MEMS 2025 — Exhibitor & Attendee</li>
+          <li>Taiwan Automation Intelligence and Robot Show (2024 & 2025) — Exhibitor</li>
+          <li>SEMICON Taiwan 2025 — Exhibitor</li>
+        </ul>
+      </aside>
+
+      <main>
+        <div class="card">
+          <div class="section-title">Personal Statement</div>
+          <p>Senior student majoring in Power Mechanical Engineering at National Tsing Hua University, specializing in robotics and control systems. Passionate about robot navigation and intelligent control with strong hands-on and problem-solving skills. Aspires to pursue graduate research integrating AI and autonomous systems for advanced robotic applications.</p>
+
+          <div class="grid">
+            <div class="item">
+              <div class="section-title">Education</div>
+              <div class="timeline">
+                <div class="item">
+                  <h3>B.S. in Power Mechanical Engineering — National Tsing Hua University</h3>
+                  <div class="muted">Sep 2022 — Present<br>Program: Electrical Control Systems, Nanotechnology</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="section-title">Honors & Awards</div>
+              <ul class="muted">
+                <li>Eurobot 2024 — World 5th Place</li>
+                <li>Eurobot 2025 — World Top 16</li>
+                <li>27th TDK Cup — Excellence & Creativity Award</li>
+              </ul>
+            </div>
+
+            <div class="full">
+              <div class="section-title">Professional Experience</div>
+              <div class="timeline">
+                <div class="item">
+                  <h3>DIT Robotics — Vice Team Leader / Navigation Team Leader</h3>
+                  <div class="muted">Sep 2022 – Present<br>Navigation Team Leader, Eurobot 2025 Project (Oct 2024 – Jun 2025)</div>
+                  <p>Responsible for navigation system development, behavior tree design, and team coordination. Built Docker environments and ROS2 Navigation2 systems for competition robots.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="full">
+              <div class="section-title">Research Experience</div>
+              <div class="item">
+                <h3>CMOS-MEMS Pressure Sensor with Extended Sensing Range</h3>
+                <div class="muted">Undergraduate Project — Sep 2024 – Present</div>
+                <p>Developing a hybrid capacitive–Pirani CMOS-MEMS pressure sensor. TSRI D35-114B Review Report: Grade A.</p>
+              </div>
+            </div>
+
+            <div class="full">
+              <div class="section-title">Teaching Experience</div>
+              <ul class="muted">
+                <li>2023 NTHU DIT Summer Robotics Camp — Teaching Assistant</li>
+                <li>2024 NTHU DIT Summer Robotics Camp — Instructor & Curriculum Developer</li>
+                <li>2025 NTHU DIT Summer Robotics Camp — Organizer</li>
+              </ul>
+            </div>
+
+            <div class="full">
+              <div class="section-title">Technical Highlights</div>
+              <ul class="muted">
+                <li>ROS2 / Nav2 Navigation System: Implemented behavior trees, costmap plugins, and custom control interfaces.</li>
+                <li>Embedded Development: STM32H7 MCU with rosserial integration and PWM control.</li>
+                <li>Simulation & Analysis: COMSOL, MATLAB, and LTspice modeling and numerical analysis.</li>
+              </ul>
+            </div>
+
+            <div class="full">
+              <div class="section-title">Contact & Downloads</div>
+              <p class="muted">For a PDF version or detailed project documentation, please contact via email. View open-source works on GitHub:
+                <a class="button" href="https://github.com/Rabbit025879" target="_blank" rel="noopener">Visit GitHub</a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <footer class="muted">© Tzu-Hsiang Tu • 2025</footer>
+      </main>
+    </div>
+  </body>
+</html>
