@@ -145,6 +145,16 @@
       .avatar{margin:0;width:140px;height:140px;}
       .subtitle{margin-top:8px;text-align:center;white-space:normal;}
       #raccoon-banner{transform: translate(-50%,-50%) scale(2);}
+      @keyframes shrinkFade {
+        0% {
+          transform: translate(-50%, -50%) scale(2);
+          opacity: 1;
+        }
+        100% {
+          transform: translate(-50%, -50%) scale(0);
+          opacity: 0;
+        }
+      }
     }
   </style>
 </head>
