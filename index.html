@@ -338,8 +338,8 @@
     raccoon.style.transition = 'left 1s linear, top 1s linear';
     document.body.appendChild(raccoon);
 
-    let dx = (Math.random() - 0.5) * 700;
-    let dy = (Math.random() - 0.5) * 700;
+    let dx = (Math.random() - 0.5) * 1000;
+    let dy = (Math.random() - 0.5) * 1000;
 
     const move = () => {
       // Remove raccoon if raccoon mode is off
@@ -358,12 +358,12 @@
       raccoon.style.top = newTop + 'px';
 
       // Randomly change direction
-      dx = (Math.random() - 0.5) * 700;
-      dy = (Math.random() - 0.5) * 700;
+      dx = (Math.random() - 0.5) * 1000;
+      dy = (Math.random() - 0.5) * 1000;
     };
 
     // Start moving every second
-    const interval = setInterval(move, 1000);
+    const interval = setInterval(move, Math.random() * 2200 + 400);
 
     // Click to remove raccoon
     raccoon.addEventListener('click', () => {
