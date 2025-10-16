@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Tu Infinity & Beyond</title>
-  <link rel="icon" href="images/Buzz.jpg">
+  <link rel="icon" href="images/Buzz.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
@@ -56,6 +56,11 @@
       height:100%;
       object-fit:cover;
       display:block;
+      cursor: pointer;
+      transition: opacity 0.4s ease;
+    }
+    .fade {
+      opacity: 0;
     }
     .avatar:hover{transform: scale(1.05); box-shadow:0 10px 24px rgba(96,165,250,0.3);}
     h1{margin:0;font-size:20px;}
@@ -92,7 +97,7 @@
       .container{grid-template-columns:1fr;}
       .grid{grid-template-columns:1fr;}
       .profile{flex-direction:column;align-items:center;text-align:left;}
-      .avatar{margin:0;width:92px;height:92px;}
+      .avatar{margin:0;width:140px;height:140px;}
       .subtitle{margin-top:8px;text-align:center;white-space:normal;}
     }
   </style>
@@ -103,9 +108,9 @@
   <aside class="card">
     <div class="profile">
       <div class="avatar">
-        <img src="images/Me.jpg" alt="Profile Picture">
+        <img id="avatar-img" src="images/Me.jpg" alt="Profile Picture">
       </div>
-      <h1>Tzu-Hsiang Tu (凃紫翔)</h1>
+      <h1 id="name">Tzu-Hsiang Tu (凃紫翔)</h1>
       <div class="subtitle">B.S. in Power Mechanical Engineering<br>National Tsing Hua University</div>
     </div>
 
@@ -229,3 +234,32 @@
 <footer class="muted">© Tzu-Hsiang Tu • 2025</footer>
 </body>
 </html>
+
+<script>
+  const avatar = document.getElementById('avatar-img');
+  const name = document.getElementById('name');
+  const normalAvatar = 'images/Me.jpg';
+  const raccoonAvatar = 'images/Raccoon.jpg';
+  const normalName = 'Tzu-Hsiang Tu (凃紫翔)';
+  const raccoonName = '🦝 Raccoon 🦝';
+  
+  let isRaccoonMode = false;
+
+  avatar.addEventListener('click', () => {
+    avatar.classList.add('fade');
+    name.classList.add('fade');
+    setTimeout(() => {
+      if (!isRaccoonMode) {
+        avatar.src = raccoonAvatar;
+        name.textContent = raccoonName;
+      } else {
+        avatar.src = normalAvatar;
+        name.textContent = normalName;
+      }
+      isRaccoonMode = !isRaccoonMode;
+      avatar.classList.remove('fade');
+      name.classList.remove('fade');
+    }, 220);
+  });
+</script>
+
