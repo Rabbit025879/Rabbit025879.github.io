@@ -59,6 +59,7 @@
       cursor: pointer;
       transition: opacity 0.4s ease;
     }
+    .avatar:hover{transform: scale(1.05); box-shadow:0 10px 24px rgba(96,165,250,0.3);}
     .fade {
       opacity: 0;
     }
@@ -77,7 +78,36 @@
     @keyframes blink {
       50% { border-color: #f9b8ff; }
     }
-    .avatar:hover{transform: scale(1.05); box-shadow:0 10px 24px rgba(96,165,250,0.3);}
+    #raccoon-banner {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(5);
+      background: rgba(0,0,0,0.7);
+      color: #fff;
+      padding: 100% 100%;
+      font-size: 24px;
+      font-weight: bold;
+      border-radius: 12px;
+      z-index: 9999;
+      text-align: center;
+    }
+
+    @keyframes shrinkFade {
+      0% {
+        transform: translate(-50%, -50%) scale(5);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 0;
+      }
+    }
+
+    .shrink {
+      animation: shrinkFade 0.8s forwards;
+    }
     h1{margin:0;font-size:20px;}
     .subtitle{color:var(--muted);font-size:13px;margin-top:6px;}
     .contact{margin-top:14px;font-size:14px;}
@@ -118,8 +148,10 @@
   </style>
 </head>
 <body>
+<div id="raccoon-banner">
+  Raccoon Time !!
+</div>
 <div class="container">
-
   <aside class="card">
     <div class="profile">
       <div class="avatar">
@@ -253,6 +285,7 @@
 <script>
   const avatar = document.getElementById('avatar-img');
   const nameText = document.getElementById('name-text');
+  const banner = document.getElementById('raccoon-banner');
 
   const normalImg = 'images/Me.jpg';
   const raccoonImg = 'images/Raccoon.jpg';
@@ -264,7 +297,7 @@
   let typingInterval = null;
   let isTyping = false;
 
-  function typeText(target, text, speed = 100) {
+  function typeText(target, text, speed = 100, callback) {
     // Make sure to clear any existing typing effect
     if (typingInterval) {
       clearInterval(typingInterval);
@@ -289,6 +322,7 @@
         typingInterval = null;
         target.classList.remove('typing');
         isTyping = false;
+        if (callback) callback();
       }
     }, speed);
   }
@@ -301,6 +335,7 @@
       nameText.textContent = isRaccoon ? raccoonName : normalName;
       nameText.classList.remove('typing');
       isTyping = false;
+      if (isRaccoon) raccoonTime();
       return;
     }
 
@@ -310,10 +345,9 @@
     const fadingTimeout = setTimeout(() => {
       if (!isRaccoon) {
         avatar.src = raccoonImg;
-        typeText(nameText, raccoonName, 100);
-        for(let i=0; i<Math.random()*22; i++) {
-          spawnRaccoon();
-        }
+        typeText(nameText, raccoonName, 100, () => {
+          raccoonTime();
+        });
       } else {
         avatar.src = normalImg;
         typeText(nameText, normalName, 60);
@@ -325,21 +359,42 @@
     }, 400);
   });
 
+  // Raccoon Banner Animation
+  function raccoonTime() {
+    // Show and animate the banner
+    banner.style.display = 'block';
+    banner.classList.remove('shrink');
+    setTimeout(() => {
+      banner.classList.add('shrink');
+      banner.addEventListener('animationend', () => {
+        banner.style.display = 'none';
+      }, { once: true });
+    }, 2200);
+          
+    // Spawn multiple raccoons
+    for(let i=0; i<Math.random()*11+11; i++) {
+      spawnRaccoon();
+    }
+  }
 
   // Raccoon Everywhere !!
   function spawnRaccoon() {
     const raccoon = document.createElement('div');
     raccoon.textContent = '🦝';
     raccoon.style.position = 'fixed';
-    raccoon.style.fontSize = '36px';
+    raccoon.style.fontSize = Math.random() * 72 + 36 + 'px';
     raccoon.style.opacity = '0';  // Wait until it starts moving
     raccoon.style.top = Math.random() * (window.innerHeight - 50) + 'px';
     raccoon.style.left = Math.random() * (window.innerWidth - 50) + 'px';
     raccoon.style.transition = 'left 1s linear, top 1s linear';
+    raccoon.style.zIndex = '10000';
+    raccoon.style.cursor = 'pointer';
     document.body.appendChild(raccoon);
 
     let dx = (Math.random() - 0.5) * 1000;
     let dy = (Math.random() - 0.5) * 1000;
+    let angle = 0;
+    let size = parseFloat(raccoon.style.fontSize);
 
     const move = () => {
       // Remove raccoon if raccoon mode is off
@@ -353,7 +408,8 @@
       // Compute new position with boundary checks
       let newLeft = Math.max(0, Math.min(window.innerWidth - 50, raccoon.offsetLeft + dx));
       let newTop = Math.max(0, Math.min(window.innerHeight - 50, raccoon.offsetTop + dy));
-      
+      angle = (angle + 15) % 360;
+
       raccoon.style.left = newLeft + 'px';
       raccoon.style.top = newTop + 'px';
 
@@ -364,6 +420,19 @@
 
     // Start moving every second
     const interval = setInterval(move, Math.random() * 2200 + 400);
+    
+    let increase = 1;
+    const pedro = () => {
+      angle = (angle + 5) % 360;
+      size = size + (10 * increase);
+      if (size > 108) increase = -1;
+      if (size < 72) increase = 1;
+      raccoon.style.transform = `rotate(${angle}deg)`;
+      raccoon.style.fontSize = size + 'px';
+    };
+
+    // Start spinning every 100ms
+    const spinInterval = setInterval(pedro, 50);
 
     // Click to remove raccoon
     raccoon.addEventListener('click', () => {
