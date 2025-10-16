@@ -62,6 +62,21 @@
     .fade {
       opacity: 0;
     }
+    #name-text {
+      display: inline-block;
+      font-size: 24px;
+      transition: opacity 0.4s ease;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid transparent;
+    }
+    .typing {
+      border-right: 2px solid #fff;
+      animation: blink 0.5s steps(1) infinite;
+    }
+    @keyframes blink {
+      50% { border-color: #f9b8ff; }
+    }
     .avatar:hover{transform: scale(1.05); box-shadow:0 10px 24px rgba(96,165,250,0.3);}
     h1{margin:0;font-size:20px;}
     .subtitle{color:var(--muted);font-size:13px;margin-top:6px;}
@@ -110,7 +125,7 @@
       <div class="avatar">
         <img id="avatar-img" src="images/Me.jpg" alt="Profile Picture">
       </div>
-      <h1 id="name">Tzu-Hsiang Tu (凃紫翔)</h1>
+      <h1 id="name-text">Tzu-Hsiang Tu (凃紫翔)</h1>
       <div class="subtitle">B.S. in Power Mechanical Engineering<br>National Tsing Hua University</div>
     </div>
 
@@ -237,29 +252,129 @@
 
 <script>
   const avatar = document.getElementById('avatar-img');
-  const name = document.getElementById('name');
-  const normalAvatar = 'images/Me.jpg';
-  const raccoonAvatar = 'images/Raccoon.jpg';
+  const nameText = document.getElementById('name-text');
+
+  const normalImg = 'images/Me.jpg';
+  const raccoonImg = 'images/Raccoon.jpg';
   const normalName = 'Tzu-Hsiang Tu (凃紫翔)';
   const raccoonName = '🦝 Raccoon 🦝';
-  
-  let isRaccoonMode = false;
+
+  let isRaccoon = false;
+
+  let typingInterval = null;
+  let isTyping = false;
+
+  function typeText(target, text, speed = 100) {
+    // Make sure to clear any existing typing effect
+    if (typingInterval) {
+      clearInterval(typingInterval);
+      typingInterval = null;
+    }
+
+    target.textContent = '';
+    target.classList.add('typing');
+    isTyping = true;
+
+    // Ensure proper handling of complex characters
+    const segmenter = new Intl.Segmenter('en', { granularity: 'grapheme' });
+    const characters = Array.from(segmenter.segment(text), s => s.segment);
+
+    let i = 0;
+    typingInterval = setInterval(() => {
+      target.textContent += characters[i];
+      i++;
+
+      if (i === characters.length) {
+        clearInterval(typingInterval);
+        typingInterval = null;
+        target.classList.remove('typing');
+        isTyping = false;
+      }
+    }, speed);
+  }
 
   avatar.addEventListener('click', () => {
-    avatar.classList.add('fade');
-    name.classList.add('fade');
-    setTimeout(() => {
-      if (!isRaccoonMode) {
-        avatar.src = raccoonAvatar;
-        name.textContent = raccoonName;
-      } else {
-        avatar.src = normalAvatar;
-        name.textContent = normalName;
-      }
-      isRaccoonMode = !isRaccoonMode;
-      avatar.classList.remove('fade');
-      name.classList.remove('fade');
-    }, 220);
-  });
-</script>
+    // If currently typing, stop and show full name
+    if (isTyping) {
+      clearInterval(typingInterval);
+      typingInterval = null;
+      nameText.textContent = isRaccoon ? raccoonName : normalName;
+      nameText.classList.remove('typing');
+      isTyping = false;
+      return;
+    }
 
+    avatar.classList.add('fade');
+    nameText.classList.add('fade');
+
+    const fadingTimeout = setTimeout(() => {
+      if (!isRaccoon) {
+        avatar.src = raccoonImg;
+        typeText(nameText, raccoonName, 100);
+        for(let i=0; i<Math.random()*22; i++) {
+          spawnRaccoon();
+        }
+      } else {
+        avatar.src = normalImg;
+        typeText(nameText, normalName, 60);
+      }
+
+      isRaccoon = !isRaccoon;
+      avatar.classList.remove('fade');
+      nameText.classList.remove('fade');
+    }, 400);
+  });
+
+
+  // Raccoon Everywhere !!
+  function spawnRaccoon() {
+    const raccoon = document.createElement('div');
+    raccoon.textContent = '🦝';
+    raccoon.style.position = 'fixed';
+    raccoon.style.fontSize = '36px';
+    raccoon.style.opacity = '0';  // Wait until it starts moving
+    raccoon.style.top = Math.random() * (window.innerHeight - 50) + 'px';
+    raccoon.style.left = Math.random() * (window.innerWidth - 50) + 'px';
+    raccoon.style.transition = 'left 1s linear, top 1s linear';
+    document.body.appendChild(raccoon);
+
+    let dx = (Math.random() - 0.5) * 700;
+    let dy = (Math.random() - 0.5) * 700;
+
+    const move = () => {
+      // Remove raccoon if raccoon mode is off
+      if(isRaccoon === false) {
+        raccoon.remove();
+        clearInterval(interval);
+        return;
+      }
+
+      raccoon.style.opacity = '0.8';
+      // Compute new position with boundary checks
+      let newLeft = Math.max(0, Math.min(window.innerWidth - 50, raccoon.offsetLeft + dx));
+      let newTop = Math.max(0, Math.min(window.innerHeight - 50, raccoon.offsetTop + dy));
+      
+      raccoon.style.left = newLeft + 'px';
+      raccoon.style.top = newTop + 'px';
+
+      // Randomly change direction
+      dx = (Math.random() - 0.5) * 700;
+      dy = (Math.random() - 0.5) * 700;
+    };
+
+    // Start moving every second
+    const interval = setInterval(move, 1000);
+
+    // Click to remove raccoon
+    raccoon.addEventListener('click', () => {
+      raccoon.remove();
+      clearInterval(interval);
+    });
+
+    // Remove raccoon after 30 seconds
+    setTimeout(() => {
+      clearInterval(interval);
+      raccoon.remove();
+    }, 30000);
+  }
+</script>
