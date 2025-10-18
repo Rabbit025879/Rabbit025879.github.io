@@ -46,11 +46,40 @@
       box-shadow:0 10px 24px rgba(0,0,0,0.5);
     }
     .profile{display:flex;flex-direction:column;align-items:center;text-align:center}
+    .hintText{
+      position: absolute;
+      top: 0%;
+      right: 0%;
+      transform: translateX(50%) translateY(-50%);
+      background: transparent;
+      color: var(--muted);
+      font-size: 12px;
+      padding: 4px 4px;
+      border-radius: 4px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.7s ease;
+      transition-delay: 0s;
+    }
+    .hoverHint {
+      position: relative;
+      display: inline-block;
+    }
+    .hoverHint:hover .hintText{
+      opacity: 1;
+      transition-delay: 0.5s;
+    }
+    /* .avatar-container{
+      width:140px;height:140px;
+      border-radius:50%;
+      position: relative;
+      display: inline-block;
+    } */
     .avatar{
       width:140px;height:140px;
       border-radius:50%;
       overflow:hidden;
-      margin-bottom:16px;
       cursor:pointer;
       border: 2px solid rgba(255,255,255,0.1);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -63,20 +92,38 @@
       cursor: pointer;
       transition: opacity 0.4s ease;
     }
-    .avatar:hover {
+    .avatar:hover{
       transform: scale(1.05); 
       box-shadow:0 10px 24px rgba(96,165,250,0.3);
     }
-    .fade {
-      opacity: 0;
+    .name-text-container {
+      font-size: 20px;
+      margin:0;margin-top:5px;
+      border-right: 2px solid transparent;
+      position: relative;
+      display: inline-block;
+    }
+    .name-text-container .hoverHint .hintText{
+      top: 110%;
+      left: 50%;
+      transform: translateX(-50%) translateY(0%);
     }
     #name-text {
+      position: relative;
       display: inline-block;
       font-size: 24px;
       transition: opacity 0.4s ease;
       white-space: nowrap;
       overflow: hidden;
       border-right: 2px solid transparent;
+      cursor:pointer;
+    }
+    #name-text:hover {
+      transform: scale(1.025); 
+      text-shadow:2px 3px 5px var(--muted);
+    }
+    .fade {
+      opacity: 0;
     }
     .typing {
       border-right: 2px solid #fff;
@@ -124,11 +171,10 @@
         opacity: 0;
       }
     }
-
     .shrink {
       animation: shrinkFade 0.8s forwards;
     }
-    h1{margin:0;font-size:20px;}
+    h1{margin:0;margin-top:5px;font-size:20px;}
     .subtitle{color:var(--muted);font-size:13px;margin-top:6px;}
     .contact{margin-top:14px;font-size:14px;}
     .contact a{color:var(--link);text-decoration:none;}
@@ -188,17 +234,22 @@
 <div id="container" class="container">
   <aside class="card">
     <div class="profile">
-      <div class="avatar">
-        <img id="avatar-img" src="images/Me.jpg" alt="Profile Picture">
+      <!-- <div class="avatar-container hoverHint"> -->
+        <div class="avatar">
+          <img id="avatar-img" src="images/Me.jpg" alt="Profile Picture">
+        </div>
+        <!-- <span class="hintText"> 🦝 </span> -->
+      <!-- </div> -->
+      <div class="name-text-container hoverHint">
+        <h1 id="name-text"></h1>
+        <span class="hintText"> Click to toggle language </span>
       </div>
-      <h1 id="name-text">Tzu-Hsiang Tu</h1>
       <div class="subtitle">B.S. in Power Mechanical Engineering<br>National Tsing Hua University</div>
     </div>
 
     <div class="section-title">Contact</div>
     <div class="contact">
       <div>Email: <a href="mailto:s111033151@m111.nthu.edu.tw">s111033151@m111.nthu.edu.tw</a></div>
-      <div>Phone: <a href="tel:+886979161152">+886 979 161 152</a></div>
       <div>GitHub: <a href="https://github.com/Rabbit025879" target="_blank" rel="noopener">Rabbit025879</a></div>
     </div>
 
@@ -316,263 +367,5 @@
 </body>
 </html>
 
-<script>
-  const avatar = document.getElementById('avatar-img');
-  const nameText = document.getElementById('name-text');
-  const banner = document.getElementById('raccoon-banner');
-  const propertyDisplay = document.getElementById('raccoon-property');
+<script src="scripts/avatar.js"></script>
 
-  const normalImg = 'images/Me.jpg';
-  const raccoonImg = 'images/Raccoon.jpg';
-  const normalName = 'Tzu-Hsiang Tu';
-  const raccoonName = '🦝 Raccoon 🦝';
-  const chineseStyle = 'letter-spacing: 0.3em; font-size: 32px;';
-
-  const maxRaccoons = 50;
-  let isRaccoon = false;
-  let isChinese = false;
-  let isTyping = false;
-
-  let typingInterval = null;
-  let raccoonInterval = null;
-  let raccoonTimeout = null;
-  let activeRaccoons = [];
-  let raccoonPoints = 0;
-  let displayTime = true;
-  let raccoonsLeft = 0;
-
-  // Typing effect
-  function typeText(target, text, style, speed = 100, callback, initialText = '') {
-    target.textContent = initialText;
-    if (speed === 0 || !text) return;
-
-    clearInterval(typingInterval);
-    if (style) target.style = style;
-    else {
-      target.style.letterSpacing = 'normal';
-      target.style.fontSize = '24px';
-    }
-
-    target.classList.add('typing');
-    isTyping = true;
-
-    const segmenter = new Intl.Segmenter('en', { granularity: 'grapheme' });
-    const chars = Array.from(segmenter.segment(text), s => s.segment);
-
-    let i = 0;
-    typingInterval = setInterval(() => {
-      target.textContent += chars[i++];
-      if (i === chars.length) {
-        clearInterval(typingInterval);
-        typingInterval = null;
-        target.classList.remove('typing');
-        isTyping = false;
-        if (callback) callback();
-      }
-    }, speed);
-  }
-
-  // Type Chinese name
-  function typeChineseName() {
-    typeText(nameText, 'ㄊㄨˊ ', chineseStyle, 100, () => {
-      typeText(nameText, 'ㄗˇ ', chineseStyle, 100, () => {
-        typeText(nameText, 'ㄒ一ㄤˊ ', chineseStyle, 100, () => {
-          typeText(nameText, null, chineseStyle, 0, () => {}, '凃紫翔');
-        }, '凃紫');
-      }, '凃');
-    });
-  }
-
-  // Single-click name to toggle language or show raccoon name
-  nameText.addEventListener('click', () => {
-    if (isTyping) {
-      clearInterval(typingInterval);
-      typingInterval = null;
-      nameText.textContent = isRaccoon ? raccoonName : (isChinese ? '凃紫翔' : normalName);
-      nameText.classList.remove('typing');
-      isTyping = false;
-      return;
-    }
-    if (isRaccoon) return typeText(nameText, raccoonName, null, 100);
-    isChinese = !isChinese;
-    isChinese ? typeChineseName() : typeText(nameText, normalName, null, 60);
-  });
-
-  // double-click avatar to toggle Raccoon Mode
-  avatar.addEventListener('dblclick', () => {
-    toggleRaccoonMode();
-  });
-
-  // Toggle Raccoon Mode
-  function toggleRaccoonMode() {
-    if (isTyping) {
-      clearInterval(typingInterval);
-      typingInterval = null;
-      nameText.textContent = isRaccoon ? raccoonName : normalName;
-      nameText.classList.remove('typing');
-      isTyping = false;
-      if (isRaccoon) raccoonTime();
-      return;
-    }
-
-    avatar.classList.add('fade');
-    nameText.classList.add('fade');
-
-    setTimeout(() => {
-      isRaccoon = !isRaccoon;
-      if (isRaccoon) {
-        enterRaccoonMode();
-      } else {
-        exitRaccoonMode();
-      }
-      avatar.classList.remove('fade');
-      nameText.classList.remove('fade');
-    }, 400);
-  }
-
-  // Enter Raccoon Mode
-  function enterRaccoonMode() {
-    avatar.src = raccoonImg;
-    propertyDisplay.style.display = 'block';
-    propertyDisplay.textContent = `Raccoon Points: ${raccoonPoints} 🦝`;
-    typeText(nameText, raccoonName, null, 100, () => {
-      raccoonTime();
-    });
-  }
-
-  // Exit Raccoon Mode
-  function exitRaccoonMode() {
-    // Stop all actions and animations
-    clearInterval(typingInterval);
-    clearInterval(raccoonInterval);
-    clearTimeout(raccoonTimeout);
-    typingInterval = null;
-    raccoonInterval = null;
-    raccoonTimeout = null;
-    displayTime = true;
-    clearRaccoons();
-    
-    // Reset state
-    avatar.src = normalImg;
-    propertyDisplay.style.display = 'none';
-    nameText.style.letterSpacing = 'normal';
-    nameText.style.fontSize = '24px';
-    isChinese ? typeChineseName() : typeText(nameText, normalName, null, 60);
-  }
-
-  // Activate Raccoon Time
-  function raccoonTime(duration = 21000) {
-    showBanner('🦝🦝🦝 Raccoon Time !!', 2200);
-
-    let rounds = 0;
-    let spawnFreq = 1000;
-    raccoonInterval = setInterval(() => {
-      if (!isRaccoon) return;
-      rounds++;
-      const spawnCount = Math.floor(Math.random() * 5 + 2);
-      if (raccoonsLeft < maxRaccoons) {
-        for (let i = 0; i < spawnCount; i++) spawnRaccoon(duration-rounds*spawnFreq);
-        raccoonsLeft += spawnCount;
-      }
-      if (displayTime) propertyDisplay.textContent = `Times Left: ${(duration - rounds * spawnFreq) / 1000}s`;
-    }, spawnFreq);
-
-    raccoonTimeout = setTimeout(() => {
-      if (isRaccoon) {
-        clearInterval(raccoonInterval);
-        showBanner('Raccoon Escaped !!', 800);
-        propertyDisplay.textContent = `Raccoon Points: ${raccoonPoints} 🦝`;
-      }
-    }, duration);
-  }
-
-  // Show and hide banner
-  function showBanner(text, duration = 2000) {
-    if (!isRaccoon) return;
-    banner.textContent = text;
-    banner.style.display = 'block';
-    banner.classList.remove('shrink');
-
-    setTimeout(() => {
-      banner.classList.add('shrink');
-      banner.addEventListener('animationend', () => {
-        if (banner.classList.contains('shrink')) banner.style.display = 'none';
-      }, { once: true });
-    }, duration);
-  }
-
-  // Spawn a raccoon that moves and spins
-  function spawnRaccoon(duration) {
-    if (!isRaccoon) return;
-    const r = document.createElement('div');
-    r.textContent = '🦝';
-    r.style.position = 'fixed';
-    r.style.fontSize = Math.random() * 72 + 36 + 'px';
-    r.style.opacity = '0';
-    r.style.top = Math.random() * (window.innerHeight - 50) + 'px';
-    r.style.left = Math.random() * (window.innerWidth - 50) + 'px';
-    r.style.transition = 'left 1s linear, top 1s linear';
-    r.style.zIndex = '10000';
-    r.style.cursor = 'pointer';
-    document.body.appendChild(r);
-    activeRaccoons.push(r);
-
-    let dx = (Math.random() - 0.5) * 1000;
-    let dy = (Math.random() - 0.5) * 1000;
-    let size = parseFloat(r.style.fontSize);
-    let angle = 0;
-    let growth = 1;
-
-    const move = () => {
-      if (!isRaccoon) {
-        clearInterval(moveTimer);
-        r.remove();
-        return;
-      }
-      r.style.opacity = '0.8';
-      let newLeft = Math.max(0, Math.min(window.innerWidth - 50, r.offsetLeft + dx));
-      let newTop = Math.max(0, Math.min(window.innerHeight - 50, r.offsetTop + dy));
-      r.style.left = newLeft + 'px';
-      r.style.top = newTop + 'px';
-      dx = (Math.random() - 0.5) * 1000;
-      dy = (Math.random() - 0.5) * 1000;
-    };
-
-    const spin = () => {
-      if (!isRaccoon) return;
-      angle = (angle + 5) % 360;
-      size += 10 * growth;
-      if (size > 108) growth = -1;
-      if (size < 72) growth = 1;
-      r.style.transform = `rotate(${angle}deg)`;
-      r.style.fontSize = size + 'px';
-    };
-
-    const moveTimer = setInterval(move, Math.random() * 2200 + 400);
-    const spinTimer = setInterval(spin, 50);
-
-    r.addEventListener('click', () => {
-      r.remove();
-      raccoonPoints++;
-      raccoonsLeft--;
-      displayTime = false;
-      propertyDisplay.textContent = `Raccoon Points: ${raccoonPoints} 🦝`;
-      setTimeout(() => { displayTime = true; }, 500);
-      clearInterval(moveTimer);
-      clearInterval(spinTimer);
-    });
-
-    setTimeout(() => {
-      r.remove();
-      clearInterval(moveTimer);
-      clearInterval(spinTimer);
-    }, duration);
-  }
-
-  // Clear all raccoons
-  function clearRaccoons() {
-    activeRaccoons.forEach(r => r.remove());
-    activeRaccoons = [];
-    raccoonsLeft = 0;
-  }
-</script>
