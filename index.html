@@ -31,7 +31,8 @@
       color:#e6eef8;
     }
     #page-root {
-      min-height: 100%;
+      position: relative;
+      min-height:100%;
       transform-origin: center center;
       transition: transform 0.6s ease-in-out;
     }
@@ -63,15 +64,14 @@
     }
     #crack-overlay {
       position: absolute;
-      left: 0;
-      bottom: -300px;
       width: 50vw;
-      height: 60vh;
-      object-fit: contain;
-      /* object-position: left bottom; */
+      height: 8vh;
+      max-height: 30vh;
+      object-fit: cover;
+      object-position: left bottom;
       cursor: help;
       z-index: 0;
-      filter: drop-shadow(0 2px 4px #b30000);
+      filter: drop-shadow(0 0 4px #b30000);
     }
     .container{
       max-width:1100px;
@@ -268,13 +268,9 @@
   </style>
 </head>
 <body>
+<div id="raccoon-banner"></div>
+<div id="raccoon-property"></div>
 <div id="page-root">
-<div id="raccoon-banner">
-  🦝🦝🦝 Raccoon Time !!
-</div>
-<div id="raccoon-property">
-  Raccoon Points: 0 🦝
-</div>
 <div id="container" class="container">
   <aside class="card">
     <div class="profile">
@@ -409,10 +405,11 @@
 </div>
 <footer class="muted">© Tzu-Hsiang Tu • 2025</footer>
 <canvas id="lightning-canvas"></canvas>
-<img id="crack-overlay" src="images/crack.png" />
+<img id="crack-overlay" src="images/Crack.png" />
 </div>
 </body>
 </html>
 
 <script src="scripts/avatar.js"></script>
+<!-- <script src="scripts/ST.js"></script> -->
 
