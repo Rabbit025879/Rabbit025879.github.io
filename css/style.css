@@ -213,6 +213,19 @@ main .card{padding:28px;}
 .item{margin-bottom:12px;}
 .item h3{margin:0;font-size:15px;}
 .muted{color:var(--muted);font-size:13px;}
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;}
+.project-card{
+  background: var(--glass);
+  border-radius:12px;
+  padding:16px;
+  border:1px solid rgba(255,255,255,0.05);
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.project-card h3{margin:0;font-size:15px;}
+.project-card p{margin:0;font-size:13px;color:#c7d2e0;line-height:1.5;}
+.project-card .skills{gap:6px;}
 .timeline{border-left:2px solid rgba(255,255,255,0.03);padding-left:12px;}
 a.button{
   display:inline-block;
