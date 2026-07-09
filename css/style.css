@@ -66,6 +66,12 @@ body.lightning-flash::before {
   grid-template-columns:320px 1fr;
   gap:24px;
 }
+.page-single{
+  max-width:900px;
+  margin:0 auto;
+}
+.page-single .card{padding:28px;}
+.page-single .card > a.button{margin-bottom:12px;}
 .card{
   background: var(--card);
   backdrop-filter: blur(12px);
