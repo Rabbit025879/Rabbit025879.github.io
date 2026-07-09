@@ -235,8 +235,6 @@ function exitRaccoonMode() {
   isChinese
     ? typeChineseName(nameText, chineseNameWithChewing)
     : typeText(nameText, normalName, null, 60);
-
-  setState(State.IDLE);
 }
 
 /*************************
@@ -258,7 +256,7 @@ function raccoonTime(duration = 21000) {
 
     rounds++;
     if (raccoonsLeft < maxRaccoons) {
-      const count = Math.floor(Math.random() * 5 + 2);
+      const count = Math.min(Math.floor(Math.random() * 5 + 2), maxRaccoons - raccoonsLeft);
       for (let i = 0; i < count; i++) spawnRaccoon(duration);
       raccoonsLeft += count;
     }

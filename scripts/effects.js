@@ -60,6 +60,7 @@ export function spawnFloatingElement({ parent, list, duration, text, backgroundI
   const cleanup = () => {
     clearInterval(moveTimer);
     clearInterval(spinTimer);
+    clearTimeout(removalTimer);
   };
 
   el.addEventListener('click', () => {
@@ -68,7 +69,7 @@ export function spawnFloatingElement({ parent, list, duration, text, backgroundI
     onClick && onClick();
   });
 
-  setTimeout(() => {
+  const removalTimer = setTimeout(() => {
     el.remove();
     cleanup();
   }, duration);

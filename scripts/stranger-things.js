@@ -19,8 +19,7 @@ function demoTime(duration = DEMO_DURATION) {
 
   demoInterval = setInterval(() => {
     if (demosLeft < maxDemos) {
-      // TODO: max limit does not work properly
-      const count = Math.floor(Math.random() * 5 + 2);
+      const count = Math.min(Math.floor(Math.random() * 5 + 2), maxDemos - demosLeft);
       for (let i = 0; i < count; i++) spawnDemo(duration);
       demosLeft += count;
     }
