@@ -2,41 +2,41 @@
  * ID photo boot-up decode
  * On load, the hero ID photo starts hidden behind a binary/hex "rain"
  * (matrix-style) canvas, then crossfades into the real photo — as if the
- * image were being decoded from raw bytes. Progressive enhancement: the
- * base CSS state is just the plain photo, so no-JS / reduced-motion
- * visitors never see anything but the final image.
+ * image were being decoded from raw bytes. The CSS default (html.has-js)
+ * is already the hidden/glitched look, so there's no flash of the plain
+ * photo before this runs. Whatever happens here — reduced motion, a
+ * zero-size element, a canvas error on some mobile browser — reveal()
+ * is guaranteed to fire so the photo is never stuck hidden.
  *************************/
 const CHARS = '01010101010101ABCDEF#$%';
 const RAIN_DURATION = 1700; // ms of binary rain before the reveal starts
 const TICK_MS = 45;
+const SAFETY_TIMEOUT = RAIN_DURATION + 2000; // absolute worst-case fallback
 
 const root = document.querySelector('[data-photo-decode]');
 
-function init() {
-  if (!root) return;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+function reveal() {
+  if (root) root.classList.add('decoded');
+}
 
+function runRain(rect) {
   const canvas = root.querySelector('.photo-decode-canvas');
   const label = root.querySelector('.photo-decode-label');
-  if (!canvas) return;
-
-  const rect = root.getBoundingClientRect();
-  if (!rect.width || !rect.height) return;
+  if (!canvas) return false;
 
   const dpr = Math.min(window.devicePixelRatio || 1, 2);
-  canvas.width = rect.width * dpr;
-  canvas.height = rect.height * dpr;
+  canvas.width = Math.round(rect.width * dpr);
+  canvas.height = Math.round(rect.height * dpr);
   const ctx = canvas.getContext('2d');
+  if (!ctx) return false;
   ctx.scale(dpr, dpr);
 
   const fontSize = 13;
-  ctx.font = `${fontSize}px var(--font-mono), monospace`;
+  ctx.font = `${fontSize}px "JetBrains Mono", ui-monospace, monospace`;
   ctx.textBaseline = 'top';
 
-  const columns = Math.ceil(rect.width / fontSize);
+  const columns = Math.max(1, Math.ceil(rect.width / fontSize));
   const drops = Array.from({ length: columns }, () => Math.random() * -20);
-
-  root.classList.add('decoding');
 
   let tick = 0;
   const rainTimer = setInterval(() => {
@@ -63,8 +63,44 @@ function init() {
 
   setTimeout(() => {
     clearInterval(rainTimer);
-    root.classList.remove('decoding');
+    reveal();
   }, RAIN_DURATION);
+
+  return true;
+}
+
+function start() {
+  const rect = root.getBoundingClientRect();
+  if (!rect.width || !rect.height) return false;
+  try {
+    return runRain(rect);
+  } catch (err) {
+    return false;
+  }
+}
+
+function init() {
+  if (!root) return;
+
+  const safety = setTimeout(reveal, SAFETY_TIMEOUT);
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    clearTimeout(safety);
+    reveal();
+    return;
+  }
+
+  if (start()) return;
+
+  // Layout (e.g. web fonts still swapping on a slow mobile connection)
+  // may not have settled yet — retry once on the next frame before
+  // giving up and just revealing the photo.
+  requestAnimationFrame(() => {
+    if (!start()) {
+      clearTimeout(safety);
+      reveal();
+    }
+  });
 }
 
 if (document.readyState === 'loading') {
