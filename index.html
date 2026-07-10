@@ -29,9 +29,33 @@
       <a href="#awards">Milestones</a>
       <a href="#projects">Work</a>
       <a href="#contact">Contact</a>
-      <a href="life.html">Off Duty</a>
+      <a href="life.html" id="off-duty-link">Off Duty</a>
     </div>
   </nav>
+
+  <!-- ROBOT CHECK GATE -->
+  <div id="gate-overlay" class="gate-overlay" aria-hidden="true">
+    <div class="gate-card" role="dialog" aria-modal="true" aria-labelledby="gate-title">
+      <button type="button" class="gate-close" id="gate-close" aria-label="Close">✕</button>
+      <div class="section-label">Security Checkpoint</div>
+      <h2 id="gate-title" class="gate-title">Verify access to <span class="gradient-text">Off Duty</span></h2>
+      <div class="recaptcha-box">
+        <div class="recaptcha-row">
+          <button type="button" class="recaptcha-checkbox" id="recaptcha-checkbox" role="checkbox" aria-checked="false" aria-label="I'm not a robot">
+            <span class="recaptcha-spinner" aria-hidden="true"></span>
+            <span class="recaptcha-check-mark" aria-hidden="true"></span>
+          </button>
+          <span class="recaptcha-label">I'm not a robot</span>
+        </div>
+        <div class="recaptcha-brand">
+          <div class="recaptcha-logo" aria-hidden="true">⚙️</div>
+          <div class="recaptcha-fine">TU.SYS<br><span>Anti-Bot Verification</span></div>
+        </div>
+      </div>
+      <p class="gate-note" id="gate-note">Please confirm you are a carbon-based lifeform before proceeding.</p>
+      <a href="life.html" class="btn btn-primary gate-continue" id="gate-continue" aria-disabled="true" tabindex="-1">Continue →</a>
+    </div>
+  </div>
 
   <!-- HERO -->
   <section class="hero">
@@ -339,4 +363,5 @@
 <script type="module" src="scripts/skills.js"></script>
 <script type="module" src="scripts/reveal.js"></script>
 <script type="module" src="scripts/photo-decode.js"></script>
+<script type="module" src="scripts/gate.js"></script>
 </html>
