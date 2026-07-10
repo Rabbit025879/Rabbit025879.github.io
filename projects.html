@@ -3,58 +3,307 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="theme-color" content="#0f1724">
+  <meta name="theme-color" content="#181022">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <title>Projects — Tu Infinity & Beyond</title>
+  <title>Case Studies — Tzu-Hsiang Tu</title>
   <link rel="icon" href="images/Buzz.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<div class="page-single">
-  <div class="card">
-    <a class="button" href="index.html">← Back to Home</a>
-    <div class="section-title">Projects</div>
+<div class="grid-backdrop"></div>
+<div class="site">
 
-    <div class="projects-grid">
-      <div class="project-card">
-        <h3>Eurobot Competition Robot — DIT Robotics</h3>
-        <div class="muted">Navigation Team • 2024 – 2025</div>
-        <p>Autonomous competition robot built for Eurobot 2024 (World 5th Place) and Eurobot 2025 (World Top 16). Led navigation stack development, including localization, path planning, and obstacle avoidance for a dynamic competition arena.</p>
-        <div class="skills">
-          <div class="chip-robotics">ROS / ROS2</div>
-          <div class="chip-robotics">Navigation2</div>
-          <div class="chip-robotics">STM32 Firmware</div>
+  <nav class="site-nav">
+    <a href="index.html" class="nav-brand">← TU.SYS</a>
+    <div class="nav-links">
+      <a href="#eurobot">Eurobot</a>
+      <a href="#tdkcup">TDK Cup</a>
+      <a href="#mems">CMOS-MEMS</a>
+      <a href="#log">Log</a>
+    </div>
+  </nav>
+
+  <header class="case-intro">
+    <div class="section-label">Engineering Case Studies</div>
+    <h1>Selected work, in depth.</h1>
+    <p>Three projects, three different engineering problems — a navigation stack under competition pressure, a mechatronic design constrained by rules, and a sensor that had to see further than its physics wanted to allow.</p>
+  </header>
+
+  <!-- ============ EUROBOT ============ -->
+  <section id="eurobot" class="case-study">
+    <div class="case-inner">
+      <div class="case-badges">
+        <span class="case-badge purple">Robotics · Navigation</span>
+        <span class="case-meta">DIT Robotics · 2024 – 2025</span>
+      </div>
+      <h2>Eurobot Competition Robot</h2>
+
+      <div class="case-cols">
+        <div class="case-col">
+          <div class="case-col-label">Problem</div>
+          <p>Eurobot's arena changes every year, but the constraint is constant: a robot has ~100 seconds to localize itself, plan around a dynamic opponent, and complete scoring actions — with dead-reckoning alone drifting too fast to trust.</p>
+        </div>
+        <div class="case-col">
+          <div class="case-col-label">Motivation</div>
+          <p>I wanted navigation, not just mechanics, to be where our team competed — and to lead the stack that our robot's performance actually hinged on match to match.</p>
         </div>
       </div>
 
-      <div class="project-card">
-        <h3>27th TDK Cup Entry</h3>
-        <div class="muted">Excellence & Creativity Award</div>
-        <p>Designed and built a mechatronic system for the TDK Cup national design competition, combining sensor integration and control logic to solve the competition's design challenge.</p>
-        <div class="skills">
-          <div class="chip-robotics">Control Theory</div>
-          <div class="chip-cad">AutoCAD / Inventor</div>
-          <div class="chip-sim">MATLAB</div>
+      <div class="case-box">
+        <div class="case-col-label">Architecture</div>
+        <div class="flow-row">
+          <span class="flow-chip">LIDAR + Odometry</span>
+          <span class="flow-arrow">→</span>
+          <span class="flow-chip">Localization</span>
+          <span class="flow-arrow">→</span>
+          <span class="flow-chip">Nav2 Global/Local Planner</span>
+          <span class="flow-arrow">→</span>
+          <span class="flow-chip highlight">STM32 Motor Control</span>
+        </div>
+        <p class="case-box-note">Custom costmap layers tracked the opposing robot as a dynamic obstacle, forcing continuous replanning rather than a single fixed path. Firmware on STM32 closed the low-level motor control loop in real time, decoupled from the higher-level ROS2 planning stack running on the onboard computer.</p>
+      </div>
+
+      <div class="case-cols">
+        <div class="case-col">
+          <div class="case-col-label">Testing</div>
+          <p>Full-arena rehearsals under match timing, logging localization drift and replanning latency across dozens of runs to find failure modes before they cost points on stage.</p>
+        </div>
+        <div class="case-col">
+          <div class="case-col-label">Challenges</div>
+          <p>Competition-hall lighting degraded sensor readings unpredictably, and every extra second spent re-localizing was a second not spent scoring — the stack had to be fast and forgiving at once.</p>
         </div>
       </div>
 
-      <div class="project-card">
-        <h3>CMOS-MEMS Pressure Sensor with Extended Sensing Range</h3>
-        <div class="muted">Undergraduate Research Project • Sep 2024 – Dec 2025</div>
-        <p>Investigated a pressure sensor design integrating capacitive and Pirani sensing mechanisms to extend usable sensing range, with simulation and circuit-level analysis of the combined mechanisms.</p>
-        <div class="skills">
-          <div class="chip-sim">COMSOL</div>
-          <div class="chip-sim">LTspice</div>
-          <div class="chip-dev">C / C++</div>
+      <div class="case-stats-row">
+        <div><div class="case-stat-num">5th</div><div class="case-stat-label">World, 2024</div></div>
+        <div><div class="case-stat-num">Top 16</div><div class="case-stat-label">World, 2025</div></div>
+        <div><div class="case-stat-num">2</div><div class="case-stat-label">World Finals Led</div></div>
+      </div>
+
+      <div class="case-callout">
+        <div class="case-col-label">Lessons Learned</div>
+        <p>Robust beats clever. A navigation stack with a boring, predictable failure mode wins more matches than one with a brilliant edge case it can't recover from — so I optimized for graceful degradation, not just best-case speed.</p>
+      </div>
+
+      <div class="tag-row">
+        <span class="tag">ROS / ROS2</span>
+        <span class="tag">Navigation2</span>
+        <span class="tag">STM32 Firmware</span>
+        <span class="tag">C / C++</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TDK CUP ============ -->
+  <section id="tdkcup" class="case-study alt">
+    <div class="case-inner">
+      <div class="case-badges">
+        <span class="case-badge cyan">Mechatronics · Control</span>
+        <span class="case-meta">National Competition · 2025</span>
+      </div>
+      <h2>27th TDK Cup Entry</h2>
+
+      <div class="case-cols">
+        <div class="case-col">
+          <div class="case-col-label">Problem</div>
+          <p>The TDK Cup poses an open-ended mechatronic design challenge each year: build a physical system, under strict rules and materials, that senses and responds to its environment reliably enough to demonstrate live in front of judges.</p>
+        </div>
+        <div class="case-col">
+          <div class="case-col-label">Motivation</div>
+          <p>A chance to close the loop from mechanical design to control theory to a working demo — outside the scope of the robotics team, on a much tighter build cycle.</p>
+        </div>
+      </div>
+
+      <div class="case-box">
+        <div class="case-col-label">Design Thinking &amp; Implementation</div>
+        <p>Before committing to a mechanism, I modeled the control response in MATLAB to see how sensitive the design would be to real-world tolerances — cheaper to discover on a graph than in a prototype. The chosen design paired a sensor-driven feedback loop with a mechanical structure detailed in AutoCAD and Inventor, iterated through several rounds of bench prototyping to close the gap between simulated and real behavior.</p>
+      </div>
+
+      <div class="case-cols">
+        <div class="case-col">
+          <div class="case-col-label">Testing</div>
+          <p>Bench tests measured response time and repeatability against the modeled prediction, with control gains tuned iteratively until real-world behavior matched simulation.</p>
+        </div>
+        <div class="case-col">
+          <div class="case-col-label">Challenges</div>
+          <p>Fitting a reliable sensor and its wiring within a tight mechanical form factor, while keeping tolerances forgiving enough to survive a live demo in front of judges.</p>
+        </div>
+      </div>
+
+      <div class="case-callout cyan">
+        <div class="case-col-label">Result</div>
+        <p><strong>Excellence &amp; Creativity Award</strong>, 27th TDK Cup — recognized for the integration of sensing and control logic into a cohesive, well-reasoned design.</p>
+        <div class="case-col-label">Lessons Learned</div>
+        <p>A design is only as good as its explanation. Judges respond to clear reasoning about trade-offs as much as the mechanism itself — documenting the "why" mattered as much as the build.</p>
+      </div>
+
+      <div class="tag-row">
+        <span class="tag">Control Theory</span>
+        <span class="tag">AutoCAD / Inventor</span>
+        <span class="tag">MATLAB</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CMOS-MEMS ============ -->
+  <section id="mems" class="case-study">
+    <div class="case-inner">
+      <div class="case-badges">
+        <span class="case-badge purple">Sensors · Research</span>
+        <span class="case-meta">Undergraduate Research · Sep 2024 – Dec 2025</span>
+      </div>
+      <h2>CMOS-MEMS Pressure Sensor with Extended Sensing Range</h2>
+
+      <div class="case-cols">
+        <div class="case-col">
+          <div class="case-col-label">Problem</div>
+          <p>Capacitive MEMS pressure sensors read high pressures well but lose sensitivity near vacuum; Pirani (thermal-conductivity) sensors do the opposite. Either alone leaves a gap in usable range.</p>
+        </div>
+        <div class="case-col">
+          <div class="case-col-label">Motivation</div>
+          <p>Wanted to see whether combining two mechanisms with complementary blind spots, on a single CMOS-MEMS die, could extend the usable range without a second discrete sensor.</p>
+        </div>
+      </div>
+
+      <div class="case-box">
+        <div class="case-col-label">Architecture &amp; Implementation</div>
+        <p class="case-box-note">Modeled the capacitive gap-sensing behavior alongside the Pirani element's thermal-conductivity response in COMSOL, then validated the combined readout circuit at the component level in LTspice — simulating both mechanisms before any fabrication commitment.</p>
+        <div class="flow-row">
+          <span class="flow-chip">Capacitive Sensing (high P)</span>
+          <span class="flow-arrow">+</span>
+          <span class="flow-chip">Pirani Sensing (low P)</span>
+          <span class="flow-arrow">→</span>
+          <span class="flow-chip highlight">Extended-Range Output</span>
+        </div>
+      </div>
+
+      <div class="case-cols">
+        <div class="case-col">
+          <div class="case-col-label">Testing</div>
+          <p>Simulated a full pressure sweep across the target range, comparing the combined-mechanism response curve against each mechanism modeled in isolation to quantify the coverage gain.</p>
+        </div>
+        <div class="case-col">
+          <div class="case-col-label">Challenges</div>
+          <p>Cross-talk between the two sensing mechanisms and thermal noise in the Pirani regime made a clean, calibratable combined signal harder to extract than either mechanism alone.</p>
+        </div>
+      </div>
+
+      <div class="case-callout">
+        <div class="case-col-label">Results &amp; Lessons Learned</div>
+        <p>The combined-mechanism model showed usable sensing coverage beyond what either mechanism achieved alone — the core hypothesis behind the design held up in simulation, setting up continued work as I move into graduate research at the NEAF Lab.</p>
+        <p>Simulation-first design pays for itself: catching cross-talk and calibration issues in COMSOL and LTspice is far cheaper than discovering them on a fabricated die.</p>
+      </div>
+
+      <div class="tag-row">
+        <span class="tag">COMSOL</span>
+        <span class="tag">LTspice</span>
+        <span class="tag">C / C++</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EXPERIMENTS LOG ============ -->
+  <section id="log" class="section-alt">
+    <div class="section-inner section-narrow">
+      <div class="section-label">Experiments Log</div>
+      <h2 class="section-title tight">Smaller questions, worked through.</h2>
+      <p class="about-body section-intro-text">Not every experiment becomes a case study. This is the running log of smaller tests, tuning passes, and dead ends behind the work above.</p>
+
+      <div class="log-filters" id="log-filters">
+        <button type="button" class="filter-btn active" data-filter="All">All</button>
+        <button type="button" class="filter-btn" data-filter="Robotics">Robotics</button>
+        <button type="button" class="filter-btn" data-filter="Sensors">Sensors</button>
+        <button type="button" class="filter-btn" data-filter="Embedded">Embedded</button>
+        <button type="button" class="filter-btn" data-filter="Software">Software</button>
+      </div>
+
+      <div class="log-list" id="log-list">
+        <div class="log-entry" data-category="Robotics">
+          <div class="log-entry-head">
+            <span class="log-date">2025-11</span>
+            <span class="log-tag purple">Robotics</span>
+            <span class="log-title">Costmap inflation tuning for opponent avoidance</span>
+            <span class="log-chevron">⌄</span>
+          </div>
+          <div class="log-entry-body">
+            <p>Swept inflation-radius and cost-scaling parameters on the dynamic obstacle layer to find a setting that avoided the opposing robot without over-inflating paths around static walls.</p>
+            <div class="log-outcome purple">→ Settled on a tighter inflation radius with a steeper cost falloff — fewer over-cautious detours.</div>
+          </div>
+        </div>
+        <div class="log-entry open" data-category="Sensors">
+          <div class="log-entry-head">
+            <span class="log-date">2025-08</span>
+            <span class="log-tag purple">Sensors</span>
+            <span class="log-title">Combined-mechanism noise floor in LTspice</span>
+            <span class="log-chevron">⌄</span>
+          </div>
+          <div class="log-entry-body">
+            <p>Measured simulated noise floor of the combined capacitive + Pirani readout circuit to see whether cross-talk between mechanisms would swamp the signal at the range boundary.</p>
+            <div class="log-outcome purple">→ Noise stayed within an acceptable margin — worth carrying into the next simulation pass.</div>
+          </div>
+        </div>
+        <div class="log-entry" data-category="Embedded">
+          <div class="log-entry-head">
+            <span class="log-date">2025-05</span>
+            <span class="log-tag cyan">Embedded</span>
+            <span class="log-title">STM32 control-loop jitter under load</span>
+            <span class="log-chevron">⌄</span>
+          </div>
+          <div class="log-entry-body">
+            <p>Measured timing jitter on the motor control loop while the board was also handling serial communication with the onboard computer, to check the low-level loop stayed real-time.</p>
+            <div class="log-outcome cyan">→ Jitter increased under heavy serial load — moved communication to a lower-priority interrupt.</div>
+          </div>
+        </div>
+        <div class="log-entry" data-category="Sensors">
+          <div class="log-entry-head">
+            <span class="log-date">2025-02</span>
+            <span class="log-tag purple">Sensors</span>
+            <span class="log-title">Pirani element geometry sweep in COMSOL</span>
+            <span class="log-chevron">⌄</span>
+          </div>
+          <div class="log-entry-body">
+            <p>Varied the thermal element's geometry across several configurations to see which shape gave the most linear response near the vacuum end of the target range.</p>
+            <div class="log-outcome purple">→ A narrower element improved low-pressure linearity at a small cost to high-pressure range.</div>
+          </div>
+        </div>
+        <div class="log-entry" data-category="Software">
+          <div class="log-entry-head">
+            <span class="log-date">2024-12</span>
+            <span class="log-tag cyan">Software</span>
+            <span class="log-title">Nav2 behavior trees for fallback recovery</span>
+            <span class="log-chevron">⌄</span>
+          </div>
+          <div class="log-entry-body">
+            <p>Prototyped a custom behavior tree so the robot could fall back to a simpler recovery behavior when re-localization confidence dropped mid-match, instead of stalling.</p>
+            <div class="log-outcome cyan">→ Cut worst-case recovery time noticeably — adopted for the following season.</div>
+          </div>
+        </div>
+        <div class="log-entry" data-category="Robotics">
+          <div class="log-entry-head">
+            <span class="log-date">2024-09</span>
+            <span class="log-tag purple">Robotics</span>
+            <span class="log-title">AMCL vs. custom filter drift comparison</span>
+            <span class="log-chevron">⌄</span>
+          </div>
+          <div class="log-entry-body">
+            <p>Compared localization drift over a full simulated match length between stock AMCL and a lighter custom particle filter tuned for the arena's known landmarks.</p>
+            <div class="log-outcome purple">→ The custom filter drifted less over long matches; AMCL recovered faster from large jumps.</div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <footer class="muted">© Tzu-Hsiang Tu • 2025</footer>
+  </section>
+
+  <footer class="site-footer case-page-footer">
+    <a href="index.html" class="btn btn-outline">← Back to Home</a>
+    <div class="footer-copyright">© Tzu-Hsiang Tu — 涂子祥 · 2026</div>
+  </footer>
+
 </div>
 </body>
+<script type="module" src="scripts/log.js"></script>
 </html>

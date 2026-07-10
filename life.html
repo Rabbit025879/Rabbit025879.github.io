@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#1a1224">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>Off Duty — Tzu-Hsiang Tu</title>
+  <link rel="icon" href="images/Buzz.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="life-page">
+<div id="game-banner"></div>
+<div id="game-property"></div>
+<div id="page-root">
+<div class="grid-backdrop"></div>
+<div class="site">
+
+  <nav class="site-nav">
+    <a href="index.html" class="nav-brand">← TU.SYS</a>
+    <div class="nav-links">
+      <a href="projects.html">Work</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </nav>
+
+  <header class="life-hero">
+    <div class="section-label">Off the Clock</div>
+    <h1>There's more to me than robots.<br>(Barely.)</h1>
+    <p>A more casual corner of the site — what fills the hours when I'm not in the lab or the workshop.</p>
+  </header>
+
+  <div class="avatar-trigger-wrap">
+    <div class="avatar-trigger">
+      <img id="avatar-img" src="images/ME.JPEG" alt="Tzu-Hsiang Tu">
+    </div>
+    <div class="name-hover">
+      <h1 id="name-text" class="avatar-name"></h1>
+      <span class="name-hint">Click to toggle language</span>
+    </div>
+    <div class="avatar-hint">psst — try double-clicking my photo</div>
+  </div>
+
+  <section class="hobbies-section">
+    <div class="hobbies-grid">
+      <div class="hobby-card">
+        <div class="hobby-icon">📺</div>
+        <div class="hobby-title">Sci-Fi &amp; Stranger Things Marathons</div>
+        <p class="hobby-desc">Something about a world that runs on its own weird rules. There may or may not be a reason the crack in this page's corner looks familiar.</p>
+      </div>
+      <div class="hobby-card">
+        <div class="hobby-icon">🦝</div>
+        <div class="hobby-title">An Unreasonable Fondness for Raccoons</div>
+        <p class="hobby-desc">Chaotic, clever, always getting into something they shouldn't. I relate to this on a personal level.</p>
+      </div>
+      <div class="hobby-card">
+        <div class="hobby-icon">☕</div>
+        <div class="hobby-title">Late-Night Coffee &amp; Tinkering</div>
+        <p class="hobby-desc">Most of my best debugging happens after midnight, with too much caffeine and a breadboard I didn't plan on touching again tonight.</p>
+      </div>
+      <div class="hobby-card">
+        <div class="hobby-icon">🥾</div>
+        <div class="hobby-title">Getting Outside, Occasionally</div>
+        <p class="hobby-desc">Trail walks around Hsinchu when the lab needs a break — the only debugging I do with no keyboard involved.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">© Tzu-Hsiang Tu — 涂子祥 · 2026</footer>
+
+</div>
+<canvas id="lightning-canvas"></canvas>
+<img id="crack-overlay" src="images/Crack.png" alt="">
+</div>
+</body>
+<script type="module" src="scripts/avatar.js"></script>
+<script type="module" src="scripts/stranger-things.js"></script>
+</html>

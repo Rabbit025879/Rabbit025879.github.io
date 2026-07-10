@@ -3,157 +3,335 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="theme-color" content="#0f1724">
+  <meta name="theme-color" content="#181022">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <title>Tu Infinity & Beyond</title>
+  <title>Tzu-Hsiang Tu — Robotics Engineer</title>
   <link rel="icon" href="images/Buzz.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<div id="game-banner"></div>
-<div id="game-property"></div>
-<div id="page-root">
-<div id="container" class="container">
-  <aside class="card">
-    <div class="profile">
-      <div class="avatar">
-        <img id="avatar-img" src="images/ME.JPEG" alt="Profile Picture">
+<div class="grid-backdrop"></div>
+<div class="site">
+
+  <nav class="site-nav">
+    <div class="nav-brand"><span class="nav-dot"></span>TU.SYS</div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#skills">Systems</a>
+      <a href="#research">Research</a>
+      <a href="#experience">Timeline</a>
+      <a href="#awards">Milestones</a>
+      <a href="#projects">Work</a>
+      <a href="#contact">Contact</a>
+      <a href="life.html">Off Duty</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="glow-layer" data-glow></div>
+    <div class="hero-copy">
+      <div class="eyebrow">Personnel File — Robotics &amp; Intelligent Systems</div>
+      <h1 class="hero-title">Robotics Engineer,<br>
+        <span class="gradient-text">Building Intelligent Machines</span><br>
+        from Ideas to Reality.
+      </h1>
+      <p class="hero-desc">I'm Tzu-Hsiang Tu — I design navigation stacks, sensors, and control systems that turn theory into working hardware. Currently researching CMOS-MEMS sensing at NTHU, formerly leading the navigation team through two Eurobot world finals.</p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">View Case Studies →</a>
+        <a href="files/CV.pdf" target="_blank" rel="noopener" class="btn btn-outline">Download CV</a>
       </div>
-      <div class="name-text-container hoverHint">
-        <h1 id="name-text"></h1>
-        <span class="hintText"> Click to toggle language </span>
-      </div>
-      <div class="subtitle">B.S. in Power Mechanical Engineering<br>National Tsing Hua University</div>
-    </div>
-
-    <div class="section-title">Contact</div>
-    <div class="contact">
-      <div>Email: <a href="mailto:rabbit025879@gmail.com">rabbit025879@gmail.com</a></div>
-      <div>GitHub: <a href="https://github.com/Rabbit025879" target="_blank" rel="noopener">Rabbit025879</a></div>
-    </div>
-
-    <div class="section-title">Field of Expertise</div>
-    <div class="skills">
-      <div class="chip-robotics">ROS / ROS2</div>
-      <div class="chip-robotics">Navigation2</div>
-      <div class="chip-robotics">Control Theory</div>
-      <div class="chip-robotics">STM32 Firmware</div>
-      <div class="chip-sim">COMSOL</div>
-      <div class="chip-sim">MATLAB</div>
-      <div class="chip-sim">LTspice</div>
-      <div class="chip-cad">AutoCAD / Inventor</div>
-      <div class="chip-dev">Docker / Git</div>
-      <div class="chip-dev">C / C++</div>
-    </div>
-
-    <div class="section-title">Languages</div>
-    <div class="muted">Mandarin (Native) • English (TOEIC 885)</div>
-  </aside>
-
-  <main>
-    <div class="card">
-      <div class="section-title">Personal Statement</div>
-      <p>Senior student majoring in Power Mechanical Engineering at National Tsing Hua University, specializing in robotics and control systems. Passionate about robot navigation and intelligent control with strong hands-on and problem-solving skills. Aspires to pursue graduate research integrating AI and autonomous systems for advanced robotic applications.</p>
-
-      <div class="grid">
-        <div class="full">
-          <div class="section-title">Education</div>
-          <div class="timeline">
-            <div class="item">
-              <h3>B.S. in Power Mechanical Engineering — National Tsing Hua University</h3>
-              <div class="muted">Sep 2022 — June 2026<br>Program: Electrical Control Systems, Nanotechnology</div>
-              <h3>M.S. in Power Mechanical Engineering — National Tsing Hua University</h3>
-              <div class="muted">Sep 2026 — Present<br>Cluster: Artificial Intelligence and Mechatronics Informatics </div>
-            </div>
-          </div>
+      <div class="hero-stats">
+        <div>
+          <div class="stat-num">Top 16</div>
+          <div class="stat-label">Eurobot World '25</div>
         </div>
-
-        <div class="full">
-          <div class="section-title">Honors & Awards</div>
-          <ul class="muted">
-            <li>Eurobot 2024 — World 5th Place</li>
-            <li>Eurobot 2025 — World Top 16</li>
-            <li>27th TDK Cup — Excellence & Creativity Award</li>
-          </ul>
+        <div>
+          <div class="stat-num">3+ yrs</div>
+          <div class="stat-label">Navigation Systems</div>
         </div>
-
-        <div class="full">
-          <div class="section-title">Professional Experience</div>
-          <div class="timeline">
-            <div class="item">
-              <h3>DIT Robotics</h3>
-              <div class="muted">&nbsp; - Sep 2022 – Aug 2026</div>
-              <h3>DIT Robotics — Vice Team Leader</h3>
-              <div class="muted">&nbsp; - Sep 2024 – Aug 2025</div>
-              <h3>DIT Robotics — Navigation Team Leader</h3>
-              <div class="muted">&nbsp; - Oct 2024 – Jun 2025</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="full">
-          <div class="section-title">Projects</div>
-          <p class="muted">Eurobot competition robot navigation, a TDK Cup design entry, and CMOS-MEMS sensor research.</p>
-          <a class="button" href="projects.html">View Projects</a>
-        </div>
-
-        <div class="full">
-          <div class="section-title">Research Experience</div>
-          <div class="item">
-            <h3>CMOS-MEMS Pressure Sensor with Extended Sensing Range via Integrated Capacitive and Pirani Mechanisms</h3>
-            <div class="muted">Undergraduate Project • Sep 2024 – Dec 2025</div>
-          </div>
-          <div class="item">
-            <h3>Graduate Researcher — Nano/Micro Engineering Analysis and Fabrication (NEAF) Lab, NTHU</h3>
-            <div class="muted">Advisor: Prof. Hung-Yin Tsai • Sep 2026 – Present</div>
-          </div>
-        </div>
-
-        <div class="full">
-          <div class="section-title">Exhibitions & Conferences</div>
-          <ul class="muted">
-            <li>IEEE MEMS 2025 — Exhibitor & Attendee</li>
-            <li>Taiwan Automation Intelligence and Robot Show (2024 & 2025) — Exhibitor</li>
-            <li>SEMICON Taiwan 2025 — Exhibitor</li>
-          </ul>
-        </div>
-
-        <div class="full">
-          <div class="section-title">Teaching Experience</div>
-          <ul class="muted">
-            <li>2023 NTHU DIT Summer Robotics Camp — Teaching Assistant</li>
-            <li>2024 NTHU DIT Summer Robotics Camp — Instructor & Curriculum Developer</li>
-            <li>2025 NTHU DIT Summer Robotics Camp — Organizer</li>
-            <li>2026 NTHU DIT Summer Robotics Camp — Teaching Assistant</li>
-          </ul>
-        </div>
-
-        <div class="full">
-          <div class="section-title">Contact & Downloads</div>
-          <p class="muted">View open-source works on GitHub:
-            <a class="button" href="https://github.com/Rabbit025879" target="_blank" rel="noopener">
-              Visit GitHub
-            </a>
-          </p>
-          <p class="muted">Download my CV in PDF format:
-            <a class="button" href="files/CV.pdf" target="_blank" rel="noopener">
-              Download CV
-            </a>
-          </p>
+        <div>
+          <div class="stat-num">1</div>
+          <div class="stat-label">MEMS Sensor R&amp;D</div>
         </div>
       </div>
     </div>
-  </main>
-</div>
-<footer class="muted">© Tzu-Hsiang Tu • 2025</footer>
-<canvas id="lightning-canvas"></canvas>
-<img id="crack-overlay" src="images/Crack.png" alt="">
+
+    <div class="id-card-wrap">
+      <div class="id-card">
+        <div class="id-corner tl"></div>
+        <div class="id-corner tr"></div>
+        <div class="id-corner bl"></div>
+        <div class="id-corner br"></div>
+
+        <div class="id-head">
+          <span>ID // NTHU-PME-26</span>
+          <span class="id-status">● ACTIVE</span>
+        </div>
+
+        <div class="id-photo">
+          <img src="images/ME.JPEG" alt="Tzu-Hsiang Tu">
+          <span class="scanline"></span>
+        </div>
+
+        <div class="id-name">Tzu-Hsiang Tu</div>
+        <div class="id-name-zh">涂子祥 · robotics + control systems</div>
+
+        <div class="id-meta-grid">
+          <div class="id-meta-cell">
+            <div class="id-meta-label">Clearance</div>
+            <div class="id-meta-value purple">Nav / Control</div>
+          </div>
+          <div class="id-meta-cell">
+            <div class="id-meta-label">Base</div>
+            <div class="id-meta-value cyan">NTHU, Taiwan</div>
+          </div>
+          <div class="id-meta-cell full">
+            <div class="id-meta-label">Languages</div>
+            <div class="id-meta-value">Mandarin (Native) · English (TOEIC 885)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section about-grid reveal">
+    <div>
+      <div class="section-label">01 / Mindset</div>
+      <h2 class="section-title tight">Why I build.</h2>
+    </div>
+    <div>
+      <p class="about-lead">I studied Power Mechanical Engineering at National Tsing Hua University because I wanted to understand systems end to end — the mechanics, the electronics, and the intelligence that ties them together. That curiosity pulled me into robot navigation, control theory, and sensor design, and it's what I'm carrying into graduate research on AI and autonomous systems.</p>
+      <p class="about-body">I like problems that don't have a clean answer yet — a robot that has to localize itself in a noisy arena, a sensor that has to sense a range it wasn't built for. Vice Team Leader and Navigation Team Leader at DIT Robotics taught me that good engineering is equal parts rigor and patience: test until the failure mode is boring.</p>
+      <div class="trait-tags">
+        <span class="trait purple">Curious</span>
+        <span class="trait cyan">Analytical</span>
+        <span class="trait purple">Detail-Oriented</span>
+        <span class="trait cyan">Reliable</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS NETWORK -->
+  <section id="skills" class="section-alt reveal">
+    <div class="glow-layer subtle" data-glow></div>
+    <div class="section-inner">
+      <div class="section-label">02 / Systems</div>
+      <h2 class="section-title">How the disciplines connect.</h2>
+
+      <div class="skills-layout">
+        <div class="network" id="skills-network">
+          <svg id="skills-lines" viewBox="0 0 100 100" preserveAspectRatio="none"></svg>
+          <div class="hub" id="skills-hub">Systems<br>Engineer</div>
+        </div>
+        <div class="skills-detail" id="skills-detail"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESEARCH -->
+  <section id="research" class="section reveal">
+    <div class="section-label">03 / Research</div>
+    <h2 class="section-title tight">Ongoing exploration.</h2>
+    <p class="about-body section-intro-text">Research is where I get to sit with a question longer than a competition deadline allows. Right now that means sensors — how to make them see more, with less.</p>
+
+    <div class="research-grid">
+      <div class="research-card">
+        <div class="research-head">
+          <span class="badge active">Active</span>
+          <span class="research-period">Sep 2026 – Present</span>
+        </div>
+        <div class="research-title">Graduate Researcher, NEAF Lab, NTHU</div>
+        <p class="research-desc">Joining the Nano/Micro Engineering Analysis and Fabrication Lab under Prof. Hung-Yin Tsai to continue work at the intersection of MEMS sensing and intelligent systems.</p>
+      </div>
+      <div class="research-card">
+        <div class="research-head">
+          <span class="badge progress">In Progress</span>
+          <span class="research-period">Sep 2024 – Dec 2025</span>
+        </div>
+        <div class="research-title">CMOS-MEMS Pressure Sensor, Extended Range</div>
+        <p class="research-desc">Combining capacitive and Pirani sensing mechanisms in a single CMOS-MEMS device to widen usable pressure range beyond either mechanism alone.</p>
+      </div>
+      <div class="research-card">
+        <div class="research-head">
+          <span class="badge exhibited">Exhibited</span>
+          <span class="research-period">2025</span>
+        </div>
+        <div class="research-title">Field Presence — IEEE MEMS, SEMICON Taiwan</div>
+        <p class="research-desc">Exhibited sensor and robotics work at IEEE MEMS 2025 and SEMICON Taiwan 2025, and the Taiwan Automation Intelligence and Robot Show.</p>
+      </div>
+      <div class="research-card">
+        <div class="research-head">
+          <span class="badge exploring">Exploring</span>
+          <span class="research-period">Next</span>
+        </div>
+        <div class="research-title">AI for Autonomous Navigation</div>
+        <p class="research-desc">Where I want to take this next: learning-based navigation and perception for robots operating in unstructured, dynamic environments.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE TIMELINE -->
+  <section id="experience" class="section-alt reveal">
+    <div class="glow-layer subtle" data-glow></div>
+    <div class="section-inner section-narrow">
+      <div class="section-label">04 / Journey</div>
+      <h2 class="section-title">Four years, one trajectory.</h2>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <span class="timeline-dot cyan"></span>
+          <div class="timeline-date">Sep 2022</div>
+          <div class="timeline-title">Began B.S., Power Mechanical Engineering — NTHU</div>
+          <div class="timeline-detail">Electrical Control Systems &amp; Nanotechnology track.</div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-dot neutral"></span>
+          <div class="timeline-date">Sep 2022 – Aug 2026</div>
+          <div class="timeline-title">Member, DIT Robotics</div>
+          <div class="timeline-detail">Started building toward competition robotics.</div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-dot purple"></span>
+          <div class="timeline-date">2024</div>
+          <div class="timeline-title">Eurobot 2024 — World 5th Place</div>
+          <div class="timeline-detail">First world final with the navigation stack I helped build.</div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-dot cyan"></span>
+          <div class="timeline-date">Sep 2024 – Aug 2025</div>
+          <div class="timeline-title">Vice Team Leader, DIT Robotics</div>
+          <div class="timeline-detail">Took on cross-team technical and organizational leadership.</div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-dot cyan"></span>
+          <div class="timeline-date">Oct 2024 – Jun 2025</div>
+          <div class="timeline-title">Navigation Team Leader, DIT Robotics</div>
+          <div class="timeline-detail">Owned localization, path planning, and obstacle avoidance.</div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-dot purple"></span>
+          <div class="timeline-date">2025</div>
+          <div class="timeline-title">27th TDK Cup — Excellence &amp; Creativity Award</div>
+          <div class="timeline-detail">National mechatronic design competition.</div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-dot purple"></span>
+          <div class="timeline-date">2025</div>
+          <div class="timeline-title">Eurobot 2025 — World Top 16</div>
+          <div class="timeline-detail">Second consecutive world final.</div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-dot neutral"></span>
+          <div class="timeline-date">2023 – 2026</div>
+          <div class="timeline-title">NTHU DIT Summer Robotics Camp — TA → Instructor → Organizer</div>
+          <div class="timeline-detail">Progressed from teaching assistant to curriculum developer to program organizer across four consecutive summers.</div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-dot cyan"></span>
+          <div class="timeline-date">Sep 2026 – Present</div>
+          <div class="timeline-title">M.S. begins, Graduate Researcher — NEAF Lab</div>
+          <div class="timeline-detail">Cluster: Artificial Intelligence and Mechatronics Informatics.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AWARDS / MILESTONES -->
+  <section id="awards" class="section reveal">
+    <div class="section-label">05 / Milestones</div>
+    <h2 class="section-title">Missions accomplished.</h2>
+
+    <div class="milestones-grid">
+      <div class="milestone-card">
+        <div class="milestone-rank">#5</div>
+        <div class="milestone-meta">Mission · 2024</div>
+        <div class="milestone-title">Eurobot World 5th Place</div>
+        <p class="milestone-desc">Autonomous robot navigation stack competed against international teams at the Eurobot world final.</p>
+      </div>
+      <div class="milestone-card">
+        <div class="milestone-rank">#16</div>
+        <div class="milestone-meta">Mission · 2025</div>
+        <div class="milestone-title">Eurobot World Top 16</div>
+        <p class="milestone-desc">Returned to the world final with an improved localization and path-planning system.</p>
+      </div>
+      <div class="milestone-card">
+        <div class="milestone-rank">★</div>
+        <div class="milestone-meta">Award · 2025</div>
+        <div class="milestone-title">27th TDK Cup — Excellence &amp; Creativity</div>
+        <p class="milestone-desc">National mechatronic design competition, recognized for sensor integration and control design.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS PREVIEW -->
+  <section id="projects" class="section reveal">
+    <div class="projects-head">
+      <div>
+        <div class="section-label">06 / Case Studies</div>
+        <h2 class="section-title tight">Selected engineering work.</h2>
+      </div>
+      <a href="projects.html" class="projects-all-link">All case studies →</a>
+    </div>
+
+    <div class="projects-grid">
+      <a href="projects.html#eurobot" class="project-card">
+        <div class="project-meta">DIT Robotics · Navigation Team · 2024–2025</div>
+        <div class="project-title">Eurobot Competition Robot</div>
+        <p class="project-blurb">Led navigation stack development — localization, path planning, and obstacle avoidance for autonomous robots competing at Eurobot 2024 (World 5th) and 2025 (World Top 16).</p>
+        <div class="tag-row">
+          <span class="tag">ROS2</span>
+          <span class="tag">Navigation2</span>
+          <span class="tag">STM32</span>
+        </div>
+        <div class="project-cta">Read case study →</div>
+      </a>
+      <a href="projects.html#tdkcup" class="project-card">
+        <div class="project-meta">TDK Cup · National Design Competition</div>
+        <div class="project-title">27th TDK Cup Entry — Excellence &amp; Creativity Award</div>
+        <p class="project-blurb">Designed a mechatronic system combining sensor integration and control logic to solve the competition's open-ended design challenge.</p>
+        <div class="tag-row">
+          <span class="tag">Control Theory</span>
+          <span class="tag">AutoCAD</span>
+          <span class="tag">MATLAB</span>
+        </div>
+        <div class="project-cta">Read case study →</div>
+      </a>
+      <a href="projects.html#mems" class="project-card">
+        <div class="project-meta">Undergraduate Research · NTHU · 2024–2025</div>
+        <div class="project-title">CMOS-MEMS Pressure Sensor</div>
+        <p class="project-blurb">Investigated a pressure sensor combining capacitive and Pirani sensing mechanisms to extend usable sensing range, with simulation and circuit-level analysis.</p>
+        <div class="tag-row">
+          <span class="tag">COMSOL</span>
+          <span class="tag">LTspice</span>
+          <span class="tag">C / C++</span>
+        </div>
+        <div class="project-cta">Read case study →</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section reveal">
+    <div class="contact-box">
+      <div class="section-label">07 / Connect</div>
+      <h2 class="section-title tight">Let's build something intelligent.</h2>
+      <p class="contact-desc">Open to research collaborations, robotics teams, and hard problems worth solving.</p>
+      <div class="contact-actions">
+        <a href="mailto:rabbit025879@gmail.com" class="btn btn-primary">rabbit025879@gmail.com</a>
+        <a href="https://github.com/Rabbit025879" target="_blank" rel="noopener" class="btn btn-outline">GitHub ↗</a>
+      </div>
+      <div class="site-footer">© Tzu-Hsiang Tu — 涂子祥 · 2026</div>
+    </div>
+  </section>
+
 </div>
 </body>
-<script type="module" src="scripts/avatar.js"></script>
-<script type="module" src="scripts/stranger-things.js"></script>
+<script type="module" src="scripts/skills.js"></script>
+<script type="module" src="scripts/reveal.js"></script>
 </html>
