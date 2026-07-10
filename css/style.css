@@ -810,6 +810,12 @@ body.lightning-flash::before{
   z-index:9999;
   font-family: var(--font-display); font-size:32px; font-weight:800;
   text-align:center; pointer-events:none;
+  padding:14px 30px;
+  border-radius:100px;
+  background: oklch(0.15 0.02 285 / 0.6);
+  border:1px solid var(--border-strong);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 12px 32px oklch(0.05 0.01 285 / 0.5);
 }
 #game-banner.shrink{animation: bannerFade 0.5s ease forwards;}
 #game-property{
