@@ -73,8 +73,10 @@
           <span class="id-status">● ACTIVE</span>
         </div>
 
-        <div class="id-photo">
-          <img src="images/ME.JPEG" alt="Tzu-Hsiang Tu">
+        <div class="id-photo" data-photo-decode>
+          <img src="images/ME.JPEG" alt="Tzu-Hsiang Tu" class="id-photo-img">
+          <canvas class="photo-decode-canvas" aria-hidden="true"></canvas>
+          <div class="photo-decode-label" aria-hidden="true">decrypting_ME.JPEG</div>
           <span class="scanline"></span>
         </div>
 
@@ -334,4 +336,5 @@
 </body>
 <script type="module" src="scripts/skills.js"></script>
 <script type="module" src="scripts/reveal.js"></script>
+<script type="module" src="scripts/photo-decode.js"></script>
 </html>
