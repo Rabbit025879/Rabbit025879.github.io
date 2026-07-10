@@ -325,7 +325,7 @@ img{max-width:100%;}
    the animation. html.has-js is set by a synchronous inline script in
    <head>, so true no-JS visitors keep the plain, always-visible photo. */
 html.has-js .id-photo-img{
-  opacity:0.1;
+  opacity:0.0;
   filter: contrast(1.5) saturate(0) brightness(1.3) blur(1.5px);
 }
 .id-photo.decoded .id-photo-img{
