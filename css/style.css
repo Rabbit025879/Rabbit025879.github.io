@@ -824,6 +824,7 @@ body.lightning-flash::before{
 #crack-overlay{
   position:fixed; bottom:0; left:0; width:120px; z-index:40;
   cursor:pointer; opacity:0.85;
+  filter: drop-shadow(0 0 4px #b30000);
 }
 
 /* =========================================================
