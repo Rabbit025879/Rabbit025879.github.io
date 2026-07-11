@@ -272,6 +272,7 @@ img{max-width:100%;}
 }
 .id-card{
   position:relative;
+  z-index:1;
   width:min(360px,80vw);
   border-radius:14px;
   padding:22px;
@@ -279,6 +280,23 @@ img{max-width:100%;}
   border:1px solid oklch(0.55 0.1 300 / 0.5);
   box-shadow: 0 0 0 1px var(--border), 0 30px 80px oklch(0.1 0.02 285 / 0.6), 0 0 60px oklch(0.5 0.18 300 / 0.15);
 }
+.id-card::before{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  z-index:-1;
+  border-radius:inherit;
+  padding:1px;
+  background: radial-gradient(280px circle at var(--gx,50%) var(--gy,50%), var(--cyan), var(--purple) 55%, transparent 75%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  opacity:0;
+  transition: opacity 0.4s ease;
+  pointer-events:none;
+}
+.id-card:hover::before{opacity:0.9;}
 .id-corner{position:absolute; width:18px; height:18px; border-color: var(--cyan);}
 .id-corner.tl{top:10px; left:10px; border-top:2px solid; border-left:2px solid;}
 .id-corner.tr{top:10px; right:10px; border-top:2px solid; border-right:2px solid;}
