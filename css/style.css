@@ -125,6 +125,32 @@ img{max-width:100%;}
 .nav-links a{color:inherit; flex-shrink:0;}
 .nav-links a:hover{color: var(--text);}
 
+.nav-toggle{
+  display:none;
+  flex-shrink:0;
+  width:36px;
+  height:36px;
+  padding:0;
+  border:none;
+  background:transparent;
+  cursor:pointer;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:5px;
+}
+.nav-toggle span{
+  display:block;
+  width:22px;
+  height:2px;
+  background: var(--text);
+  border-radius:2px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+.nav-toggle[aria-expanded="true"] span:nth-child(1){transform: translateY(7px) rotate(45deg);}
+.nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0;}
+.nav-toggle[aria-expanded="true"] span:nth-child(3){transform: translateY(-7px) rotate(-45deg);}
+
 /* =========================================================
    Buttons
    ========================================================= */
@@ -1035,4 +1061,36 @@ body.lightning-flash::before{
   .log-entry-body{margin-left:0;}
   .contact-actions{flex-direction:column; align-items:stretch;}
   .contact-actions .btn{justify-content:center;}
+
+  .nav-toggle{display:flex;}
+  .nav-links{
+    position:absolute;
+    top:100%;
+    left:0;
+    right:0;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:2px;
+    padding: 8px clamp(20px,5vw,72px) 20px;
+    background: var(--bg-alt);
+    border-bottom: 1px solid var(--border);
+    overflow:hidden;
+    max-height:0;
+    opacity:0;
+    visibility:hidden;
+    transition: max-height 0.3s ease, opacity 0.2s ease;
+  }
+  .nav-links.is-open{
+    max-height:70vh;
+    opacity:1;
+    visibility:visible;
+    overflow-y:auto;
+  }
+  .nav-links a{
+    width:100%;
+    padding:12px 0;
+    border-bottom:1px solid var(--border);
+  }
+  .nav-links a:last-child{border-bottom:none;}
+  .life-page .nav-links{background: oklch(0.14 0.014 290);}
 }

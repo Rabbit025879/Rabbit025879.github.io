@@ -19,7 +19,10 @@
 
   <nav class="site-nav">
     <a href="index.html" class="nav-brand">← TU.SYS</a>
-    <div class="nav-links">
+    <button type="button" class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" id="nav-links">
       <a href="#eurobot">Eurobot</a>
       <a href="#tdkcup">TDK Cup</a>
       <a href="#mems">CMOS-MEMS</a>
@@ -305,5 +308,6 @@
 
 </div>
 </body>
+<script type="module" src="scripts/nav.js"></script>
 <script type="module" src="scripts/log.js"></script>
 </html>

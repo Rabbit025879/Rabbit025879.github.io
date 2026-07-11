@@ -21,7 +21,10 @@
 
   <nav class="site-nav">
     <div class="nav-brand"><span class="nav-dot"></span>TU.SYS</div>
-    <div class="nav-links">
+    <button type="button" class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" id="nav-links">
       <a href="#about">About</a>
       <a href="#skills">Systems</a>
       <a href="#research">Research</a>
@@ -360,6 +363,7 @@
 
 </div>
 </body>
+<script type="module" src="scripts/nav.js"></script>
 <script type="module" src="scripts/skills.js"></script>
 <script type="module" src="scripts/reveal.js"></script>
 <script type="module" src="scripts/photo-decode.js"></script>
