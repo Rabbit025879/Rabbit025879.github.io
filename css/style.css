@@ -880,42 +880,26 @@ body.life-page{background: oklch(0.16 0.014 290);}
 .hobby-desc{font-size:13.5px; line-height:1.6; color: var(--text-muteder); margin:0;}
 
 /* =========================================================
-   Robot-check gate ("I'm not a robot" entrance to life.html)
+   Off Duty checkpoint ("I'm not a robot" entrance, inline —
+   unlocks the link to the standalone life.html page)
    ========================================================= */
-.gate-overlay{
-  display:none;
-  position:fixed; inset:0; z-index:9998;
-  align-items:center; justify-content:center;
-  padding:24px;
-  background: oklch(0.08 0.01 285 / 0.72);
-  backdrop-filter: blur(6px);
-}
-.gate-overlay.open{display:flex;}
-.gate-card{
+.checkpoint-card{
   position:relative;
-  width:100%; max-width:400px;
-  background: linear-gradient(160deg, oklch(0.2 0.03 290 / 0.95), oklch(0.14 0.016 285 / 0.98));
-  border:1px solid var(--border-strong);
+  overflow:hidden;
+  max-width:440px;
+  margin:0 auto;
+  padding: clamp(28px,5vw,36px) clamp(24px,5vw,32px) 32px;
   border-radius:16px;
-  padding: clamp(28px,5vw,40px) clamp(24px,5vw,32px) 32px;
-  text-align:center;
-  box-shadow: 0 24px 64px oklch(0.05 0.01 285 / 0.6);
-  animation: gateIn 0.28s var(--ease-reveal);
+  background: linear-gradient(160deg, oklch(0.22 0.03 290 / 0.9), oklch(0.16 0.02 285 / 0.9));
+  border:1px solid oklch(0.55 0.1 300 / 0.5);
+  box-shadow: 0 0 0 1px var(--border), 0 30px 80px oklch(0.1 0.02 285 / 0.6), 0 0 60px oklch(0.5 0.18 300 / 0.15);
 }
-@keyframes gateIn{from{opacity:0; transform:translateY(10px) scale(0.98);}to{opacity:1; transform:none;}}
-.gate-card .section-label{justify-content:center;}
-.gate-title{
-  font-family: var(--font-display); font-size:22px; font-weight:600;
-  margin:0 0 24px; line-height:1.3;
+.checkpoint-scan{
+  position:absolute; left:0; right:0; top:0; height:40%;
+  background: linear-gradient(180deg, transparent, oklch(0.75 0.16 210 / 0.18), transparent);
+  animation: scanline 4s linear infinite;
+  pointer-events:none;
 }
-.gate-close{
-  position:absolute; top:14px; right:14px;
-  width:28px; height:28px; border-radius:50%;
-  background:transparent; border:1px solid var(--border);
-  color: var(--text-muted); font-size:13px; line-height:1;
-  cursor:pointer; transition: color 0.2s ease, border-color 0.2s ease;
-}
-.gate-close:hover{color: var(--text); border-color: var(--border-strong);}
 
 .recaptcha-box{
   display:flex; align-items:center; justify-content:space-between; gap:16px;
@@ -972,18 +956,10 @@ body.life-page{background: oklch(0.16 0.014 290);}
 }
 .recaptcha-fine span{opacity:0.75;}
 
-.gate-note{
+.checkpoint-note{
   font-family: var(--font-mono); font-size:12px; color: var(--text-faint);
-  margin: 18px 0 22px; min-height:32px; line-height:1.5;
+  margin: 18px 0 0; min-height:32px; line-height:1.5;
 }
-.gate-continue{
-  width:100%; justify-content:center;
-  opacity:0.35; pointer-events:none;
-  transition: opacity 0.25s ease, transform 0.2s ease, box-shadow 0.2s ease;
-}
-.gate-continue.is-ready{opacity:1; pointer-events:auto;}
-
-body.gate-locked{overflow:hidden;}
 
 /* =========================================================
    Shared easter-egg overlays (raccoon / Demogorgon games)
