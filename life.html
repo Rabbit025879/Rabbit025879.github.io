@@ -18,7 +18,10 @@
 <div id="game-property"></div>
 <nav class="site-nav">
   <a href="index.html" class="nav-brand">← TU.SYS</a>
-  <div class="nav-links">
+  <button type="button" class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links" id="nav-links">
     <a href="projects.html">Work</a>
     <a href="index.html#contact">Contact</a>
   </div>
@@ -75,6 +78,7 @@
 <canvas id="lightning-canvas"></canvas>
 </div>
 </body>
+<script type="module" src="scripts/nav.js"></script>
 <script type="module" src="scripts/avatar.js"></script>
 <script type="module" src="scripts/stranger-things.js"></script>
 </html>
