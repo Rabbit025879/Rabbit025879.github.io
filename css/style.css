@@ -38,6 +38,23 @@ html,body{
 }
 body{overflow-x:hidden;}
 ::selection{background: oklch(0.5 0.2 300); color:#fff;}
+
+/* site-wide scrollbar */
+html{
+  scrollbar-width: thin;
+  scrollbar-color: var(--purple-strong) var(--bg-alt);
+}
+::-webkit-scrollbar{width:12px; height:12px;}
+::-webkit-scrollbar-track{background: var(--bg-alt);}
+::-webkit-scrollbar-thumb{
+  background: linear-gradient(180deg, var(--purple), var(--cyan));
+  border-radius:8px;
+  border:3px solid var(--bg-alt);
+}
+::-webkit-scrollbar-thumb:hover{
+  background: linear-gradient(180deg, var(--purple-soft), var(--cyan-soft));
+}
+::-webkit-scrollbar-corner{background: var(--bg-alt);}
 a{color:var(--purple); text-decoration:none;}
 a:hover{color: var(--cyan-soft);}
 img{max-width:100%;}
