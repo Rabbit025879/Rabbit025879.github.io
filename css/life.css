@@ -1,0 +1,159 @@
+/* =========================================================
+   Off Duty page themes (life.html only)
+   Selected by data-theme on <html> — see scripts/theme.js.
+     clay — Claymorphism: puffy pastel cards (default)
+     neo  — Neobrutalism: thick ink borders, hard offset shadows
+   Structural rules live in style.css; this file only skins them.
+   ========================================================= */
+
+/* ---------- theme switcher (shared) ---------- */
+.theme-switch{
+  display:inline-flex; align-items:center; gap:4px;
+  margin-top:28px; padding:6px; font-size:13px;
+}
+.theme-switch-label{padding:0 8px 0 10px; font-weight:700;}
+.theme-switch button{
+  font:inherit; font-weight:700; cursor:pointer;
+  padding:8px 14px; border:none; background:transparent; color:inherit;
+}
+
+/* =========================================================
+   CLAY
+   ========================================================= */
+:root[data-theme="clay"]{
+  --bg:#f4ecff;
+  --ink:#2d2346;
+  --text:#2d2346;
+  --text-muted:#5f5679;
+  --text-faint:#7a7194;
+  --accent:#6b4fe0;
+  --pink:#ffc2e2; --mint:#bff3dc; --lemon:#fff2a8; --lilac:#dccfff; --sky:#c4e6ff;
+  --clay: inset -8px -10px 18px rgba(60,30,120,.10), inset 8px 10px 18px rgba(255,255,255,.75), 14px 20px 36px rgba(110,70,190,.18);
+  --clay-sm: inset -4px -6px 10px rgba(60,30,120,.10), inset 4px 6px 10px rgba(255,255,255,.75), 8px 12px 22px rgba(110,70,190,.16);
+  --font-body:'Fredoka','Nunito',system-ui,sans-serif;
+}
+[data-theme="clay"] body{
+  background:
+    radial-gradient(600px 500px at 100% 0%, #ffd6ee 0%, transparent 60%),
+    radial-gradient(560px 480px at 0% 100%, #cdf6e6 0%, transparent 60%),
+    var(--bg);
+}
+[data-theme="clay"] .site-nav{background:#fff; box-shadow: var(--clay-sm);}
+[data-theme="clay"] .nav-brand{font-weight:600;}
+[data-theme="clay"] .nav-links{font-weight:500;}
+[data-theme="clay"] .nav-links a:hover{box-shadow:none; background: var(--lilac); color: var(--ink);}
+[data-theme="clay"] .nav-toggle{background:#fff; box-shadow: var(--clay-sm);}
+[data-theme="clay"] .nav-links{background:#fff;}
+
+[data-theme="clay"] .section-label{
+  background:#fff; color: var(--accent); box-shadow: var(--clay-sm);
+  font-weight:600; letter-spacing:.06em;
+}
+[data-theme="clay"] .life-hero h1{font-weight:600; letter-spacing:-0.02em; color: var(--ink);}
+[data-theme="clay"] .life-hero p{color: var(--text-muted);}
+
+[data-theme="clay"] .avatar-trigger{
+  width:168px; height:168px;
+  border:10px solid var(--pink); box-shadow: var(--clay);
+  animation: clayBob 4s ease-in-out infinite;
+}
+[data-theme="clay"] .avatar-name{font-weight:600; color: var(--ink);}
+[data-theme="clay"] .avatar-hint{
+  background:#fff; padding:6px 14px; border-radius:999px; box-shadow: var(--clay-sm);
+  color: var(--text-muted); font-weight:500;
+}
+
+[data-theme="clay"] .hobby-card{
+  border-radius:32px; padding:30px; box-shadow: var(--clay);
+  transition: transform .25s ease;
+}
+[data-theme="clay"] .hobby-card:hover{transform: translateY(-6px) rotate(-1deg);}
+[data-theme="clay"] .hobby-card:nth-child(4n+1){background: var(--sky);}
+[data-theme="clay"] .hobby-card:nth-child(4n+2){background: var(--lemon);}
+[data-theme="clay"] .hobby-card:nth-child(4n+3){background: var(--mint);}
+[data-theme="clay"] .hobby-card:nth-child(4n+4){background: var(--pink);}
+[data-theme="clay"] .hobby-icon{
+  width:60px; height:60px; border-radius:20px; display:grid; place-items:center;
+  background:#fff; box-shadow: var(--clay-sm);
+}
+[data-theme="clay"] .hobby-title{font-weight:600; color: var(--ink);}
+[data-theme="clay"] .hobby-desc{color: var(--text-muted);}
+[data-theme="clay"] footer.site-footer{color: var(--text-muted);}
+
+[data-theme="clay"] #game-banner{background:#fff; color: var(--ink); box-shadow: var(--clay); border-radius:32px;}
+[data-theme="clay"] #game-property{background: var(--ink); color:#fff; box-shadow: var(--clay-sm);}
+
+[data-theme="clay"] .theme-switch{background:#fff; border-radius:999px; box-shadow: var(--clay-sm); color: var(--text-muted);}
+[data-theme="clay"] .theme-switch button{border-radius:999px;}
+[data-theme="clay"] .theme-switch button[aria-pressed="true"]{background: var(--lilac); color: var(--ink);}
+
+@keyframes clayBob{50%{transform: translateY(-8px);}}
+
+/* =========================================================
+   NEO
+   ========================================================= */
+:root[data-theme="neo"]{
+  --bg:#fff8e7;
+  --ink:#111111;
+  --text:#111111;
+  --text-muted:#2b2b2b;
+  --text-faint:#555555;
+  --accent:#111111;
+  --y:#ffd23f; --p:#ff8fd8; --b:#7ed7ff; --g:#a8f07c; --o:#ff7a45;
+  --edge: 3px solid var(--ink);
+  --hard: 6px 6px 0 var(--ink);
+  --hard-sm: 4px 4px 0 var(--ink);
+  --font-body:'Lexend','Nunito',system-ui,sans-serif;
+}
+[data-theme="neo"] body{background: var(--bg);}
+[data-theme="neo"] .site-nav{background:#fff; border: var(--edge); border-radius:14px; box-shadow: var(--hard);}
+[data-theme="neo"] .nav-brand{font-weight:800; text-transform:uppercase;}
+[data-theme="neo"] .nav-links{gap:8px; color: var(--ink);}
+[data-theme="neo"] .nav-links a{border:2px solid var(--ink); background:#fff; box-shadow:none;}
+[data-theme="neo"] .nav-links a:hover{background: var(--y); color: var(--ink); box-shadow:none;}
+[data-theme="neo"] .nav-toggle{background: var(--y); border: var(--edge); border-radius:10px; box-shadow: var(--hard-sm);}
+[data-theme="neo"] .nav-links{background:#fff;}
+
+[data-theme="neo"] .section-label{
+  background: var(--p); color: var(--ink); border: var(--edge); border-radius:8px;
+  box-shadow: var(--hard-sm); transform: rotate(-3deg);
+}
+[data-theme="neo"] .life-hero h1{font-weight:800; letter-spacing:-0.04em; color: var(--ink);}
+[data-theme="neo"] .life-hero p{font-weight:500; color: var(--text-muted);}
+
+[data-theme="neo"] .avatar-trigger{
+  width:164px; height:164px; border-radius:20px;
+  border: var(--edge); box-shadow: var(--hard); background: var(--b);
+  transform: rotate(-3deg);
+}
+[data-theme="neo"] .avatar-trigger:hover{transform: rotate(0deg) scale(1.03);}
+[data-theme="neo"] .avatar-name{font-weight:800; color: var(--ink);}
+[data-theme="neo"] .avatar-hint{
+  background: var(--y); border:2px solid var(--ink); padding:5px 12px; border-radius:999px;
+  color: var(--ink); font-weight:600;
+}
+
+[data-theme="neo"] .hobby-card{
+  border: var(--edge); border-radius:16px; padding:28px; box-shadow: var(--hard);
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+[data-theme="neo"] .hobby-card:hover{transform: translate(-3px,-3px); box-shadow: 9px 9px 0 var(--ink);}
+[data-theme="neo"] .hobby-card:nth-child(4n+1){background: var(--y);}
+[data-theme="neo"] .hobby-card:nth-child(4n+2){background: var(--b);}
+[data-theme="neo"] .hobby-card:nth-child(4n+3){background: var(--g);}
+[data-theme="neo"] .hobby-card:nth-child(4n+4){background: var(--p);}
+[data-theme="neo"] .hobby-icon{
+  width:58px; height:58px; display:grid; place-items:center;
+  background:#fff; border: var(--edge); border-radius:12px; box-shadow: var(--hard-sm);
+}
+[data-theme="neo"] .hobby-title{font-weight:800; color: var(--ink);}
+[data-theme="neo"] .hobby-desc{color: var(--text-muted);}
+[data-theme="neo"] footer.site-footer{color: var(--ink); font-weight:600;}
+
+[data-theme="neo"] #game-banner{background: var(--y); color: var(--ink); border: var(--edge); border-radius:14px; box-shadow: var(--hard);}
+[data-theme="neo"] #game-property{background:#fff; color: var(--ink); border: var(--edge); box-shadow: var(--hard-sm);}
+
+[data-theme="neo"] .theme-switch{background:#fff; border: var(--edge); border-radius:12px; box-shadow: var(--hard-sm); color: var(--ink);}
+[data-theme="neo"] .theme-switch button{border-radius:8px; border:2px solid transparent;}
+[data-theme="neo"] .theme-switch button[aria-pressed="true"]{background: var(--y); border-color: var(--ink);}
+

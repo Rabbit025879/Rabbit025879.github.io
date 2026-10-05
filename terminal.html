@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#070b07">
+  <meta name="robots" content="noindex">
+  <title>tu@nthu: ~</title>
+  <link rel="icon" href="images/Tu-Rex.JPEG">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/terminal.css">
+</head>
+<body>
+  <main class="term-window" aria-label="Interactive terminal">
+    <div class="term-bar">
+      <a href="index.html" class="term-light red" aria-label="Close terminal and go home"></a>
+      <span class="term-light yellow" aria-hidden="true"></span>
+      <span class="term-light green" aria-hidden="true"></span>
+      <span class="term-title">tu@nthu: ~ — zsh</span>
+    </div>
+
+    <div class="term-body" id="term-body">
+      <div id="term-out" aria-live="polite"></div>
+      <form class="term-line term-input-line" id="term-form" autocomplete="off" hidden>
+        <span class="term-prompt" id="term-prompt"></span>
+        <input id="term-in" class="term-in" type="text" spellcheck="false" autocapitalize="off" autocorrect="off" aria-label="Terminal command">
+      </form>
+    </div>
+
+    <nav class="term-quick" aria-label="Quick commands">
+      <button type="button" data-cmd="help">help</button>
+      <button type="button" data-cmd="whoami">whoami</button>
+      <button type="button" data-cmd="ls -l projects">ls -l projects</button>
+      <button type="button" data-cmd="cat about.txt">cat about.txt</button>
+      <button type="button" data-cmd="neofetch">neofetch</button>
+      <button type="button" data-cmd="exit">exit</button>
+    </nav>
+  </main>
+
+  <noscript><p class="term-noscript">This terminal needs JavaScript. <a href="index.html">Back to the site →</a></p></noscript>
+</body>
+<script type="module" src="scripts/terminal.js"></script>
+</html>
