@@ -7,14 +7,31 @@
    ========================================================= */
 
 /* ---------- theme switcher (shared) ---------- */
+/* Lives in the nav, in the slot the light/dark toggle uses on the other pages
+   (after the links, before the hamburger). */
 .theme-switch{
-  display:inline-flex; align-items:center; gap:4px;
-  margin-top:28px; padding:6px; font-size:13px;
+  order:2; flex-shrink:0;
+  display:inline-flex; align-items:center; gap:2px;
+  padding:4px; font-size:12.5px;
 }
-.theme-switch-label{padding:0 8px 0 10px; font-weight:700;}
+.theme-switch-label{padding:0 6px 0 8px; font-weight:700;}
 .theme-switch button{
   font:inherit; font-weight:700; cursor:pointer;
-  padding:8px 14px; border:none; background:transparent; color:inherit;
+  padding:6px 12px; border:none; background:transparent; color:inherit;
+}
+/* phones: tighten the nav so brand + switch + hamburger fit on one row
+   (Neo's uppercase brand and thick borders are the widest case) */
+@media (max-width: 420px){
+  .site-nav{gap:8px; padding-left:16px;}
+  .nav-brand{font-size:14px;}
+  .theme-switch{font-size:12px;}
+  .theme-switch-label{display:none;}
+  .theme-switch button{padding:5px 10px;}
+}
+@media (max-width: 360px){
+  .site-nav{gap:6px; padding-left:14px; padding-right:10px;}
+  .nav-brand{font-size:12px;}
+  .theme-switch button{padding:4px 8px;}
 }
 
 /* =========================================================
