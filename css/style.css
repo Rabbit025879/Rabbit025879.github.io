@@ -665,6 +665,8 @@ body.lightning-flash::before{
    ========================================================= */
 .nav-bunny{display:inline-flex; width:24px; height:24px; margin:-4px 0 0 -4px;}
 .nav-bunny svg{display:block;}
+.name-bunny{display:inline-flex; width:24px; height:24px; vertical-align:-7px; margin:-6px 0 -4px 2px;}
+.name-bunny svg{display:block;}
 
 /* Off Duty footer: a white rabbit peeks up; click to fall down the rabbit hole (terminal.html) */
 .life-footer{position:relative; overflow:hidden; padding-bottom:92px;}

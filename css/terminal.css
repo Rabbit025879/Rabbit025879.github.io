@@ -144,3 +144,12 @@ a{color: var(--g);}
 
 /* pixel-art sprites (cat ~/.raccoon) — keep pixels crisp, no glow */
 .term-pixel-art{display:block; margin:6px 0 8px; max-width:100%; height:auto; filter:none; image-rendering:pixelated;}
+
+/* neofetch: logo | info, logo vertically centred; stacked on phones */
+.term-neofetch{display:grid; grid-template-columns:auto 1fr; align-items:center; column-gap:36px; padding:10px 0 2px 12px;}
+.term-neofetch-logo{margin:0; padding-top:.35em; font:inherit; line-height:1.15; white-space:pre;}
+.term-neofetch-info > div{white-space:pre-wrap; word-break:break-word;}
+@media (max-width: 640px){
+  .term-neofetch{grid-template-columns:1fr; row-gap:12px; padding:12px 0 2px 0;}
+  .term-neofetch-logo{padding-top:0; font-size:11px; line-height:1.2;}
+}

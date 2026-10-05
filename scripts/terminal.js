@@ -309,12 +309,12 @@ const COMMANDS = {
 
   neofetch() {
     const art = [
-      '   ████████╗██╗   ██╗ ',
-      '   ╚══██╔══╝██║   ██║ ',
-      '      ██║   ██║   ██║ ',
-      '      ██║   ██║   ██║ ',
-      '      ██║   ╚██████╔╝ ',
-      '      ╚═╝    ╚═════╝  ',
+      '████████╗██╗   ██╗',
+      '╚══██╔══╝██║   ██║',
+      '   ██║   ██║   ██║',
+      '   ██║   ██║   ██║',
+      '   ██║   ╚██████╔╝',
+      '   ╚═╝    ╚═════╝ ',
     ];
     const info = [
       ['', 'tu@nthu'],
@@ -327,15 +327,13 @@ const COMMANDS = {
       ['cpu', 'STM32 @ real-time'],
       ['memory', '2 eurobot world finals'],
     ];
-    const lines = Math.max(art.length, info.length);
-    const artTop = Math.ceil((lines - art.length) / 2); // vertically centre the logo
-    for (let i = 0; i < lines; i++) {
-      const [k, v] = info[i] || ['', ''];
-      print(el('span', {},
-        el('span', { class: 'term-soft', text: (art[i - artTop] || '').padEnd(24) }),
-        k ? el('span', { class: 'term-amber', text: `${k}: ` }) : '',
-        v));
-    }
+    // Two-column grid (logo | info); CSS centres the logo vertically and
+    // stacks the columns on narrow screens so lines never wrap mid-logo.
+    const logo = el('pre', { class: 'term-neofetch-logo term-soft', text: art.join('\n') });
+    const list = el('div', { class: 'term-neofetch-info' }, info.map(([k, v]) => el('div', {},
+      k ? el('span', { class: 'term-amber', text: `${k}: ` }) : '',
+      v)));
+    out.append(el('div', { class: 'term-neofetch' }, logo, list));
   },
 
   history() {
