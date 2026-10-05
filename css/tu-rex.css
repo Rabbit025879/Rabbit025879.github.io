@@ -1,0 +1,193 @@
+/* =========================================================
+   Tu-Rex's Travel Log (tu-rex.html only)
+   Travel-journal look: dotted paper, polaroids held on with
+   washi tape, a passport-style ID and rubber stamps.
+   Colours come from Tu-Rex himself: lilac body, orange spikes.
+   ========================================================= */
+:root{
+  --paper:#f5eee1;
+  --paper-dot:#e2d6c0;
+  --card:#fffdf8;
+  --ink:#3b302a;
+  --ink-soft:#6f6157;
+  --ink-faint:#9a8b7e;
+  --lilac:#b7b0d6;
+  --lilac-deep:#7d74b0;
+  --spike:#e08a4f;
+  --spike-deep:#c4652c;
+  --tape-a: rgba(224,138,79,.55);
+  --tape-b: rgba(183,176,214,.65);
+  --shadow: 0 2px 4px rgba(59,48,42,.08), 0 10px 24px rgba(59,48,42,.14);
+
+  --font-body:'Nunito', system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans TC', sans-serif;
+  --font-hand:'Caveat', 'Comic Sans MS', cursive;
+  --font-mono:'JetBrains Mono', ui-monospace, monospace;
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0; color: var(--ink); font-family: var(--font-body); line-height:1.6;
+  background-color: var(--paper);
+  background-image: radial-gradient(var(--paper-dot) 1.2px, transparent 1.3px);
+  background-size: 22px 22px;
+}
+a{color: var(--spike-deep); text-decoration:none;}
+a:hover{text-decoration:underline; text-underline-offset:3px;}
+img{max-width:100%; display:block;}
+
+/* ---------- nav ---------- */
+.tr-nav{
+  position:sticky; top:0; z-index:10;
+  display:flex; align-items:center; justify-content:space-between; gap:16px;
+  padding: 14px clamp(16px,4vw,40px);
+  background: rgba(245,238,225,.9); backdrop-filter: blur(6px);
+  border-bottom: 2px dashed var(--paper-dot);
+}
+.tr-back{font-weight:800; font-size:14px; color: var(--ink);}
+.tr-nav-title{font-family: var(--font-hand); font-size:24px; font-weight:700; color: var(--lilac-deep); line-height:1;}
+
+.tr-page{max-width:1080px; margin:0 auto; padding: clamp(32px,6vw,72px) clamp(16px,4vw,40px) 40px;}
+
+/* ---------- polaroid + tape (shared) ---------- */
+.polaroid{
+  position:relative; margin:0;
+  background: var(--card); padding:12px 12px 0;
+  box-shadow: var(--shadow);
+  transform: rotate(var(--tilt, 0deg));
+  transition: transform .25s ease;
+}
+.polaroid img, .polaroid-empty{aspect-ratio: 4/5; width:100%; object-fit:cover;}
+.polaroid figcaption{
+  font-family: var(--font-hand); font-size:22px; font-weight:500; color: var(--ink-soft);
+  text-align:center; padding: 8px 4px 12px; line-height:1.2;
+}
+.polaroid:hover{transform: rotate(0deg) scale(1.02);}
+
+.tape{
+  position:absolute; width:96px; height:26px; z-index:1;
+  background: repeating-linear-gradient(45deg, var(--tape-a) 0 8px, rgba(255,255,255,.35) 8px 12px);
+  box-shadow: 0 1px 2px rgba(0,0,0,.06);
+}
+.tape--top{top:-12px; left:50%; transform: translateX(-50%) rotate(-3deg);}
+.tape--tl{top:-10px; left:-26px; transform: rotate(-38deg);}
+.tape--tr{top:-10px; right:-26px; transform: rotate(38deg);
+  background: repeating-linear-gradient(45deg, var(--tape-b) 0 8px, rgba(255,255,255,.35) 8px 12px);}
+
+/* ---------- hero ---------- */
+.tr-hero{
+  display:grid; grid-template-columns: minmax(0, 360px) minmax(0, 1fr);
+  gap: clamp(32px,6vw,72px); align-items:center;
+}
+.polaroid--hero{--tilt:-3deg;}
+.polaroid--hero img{object-position: 60% 40%;}
+/* rubber stamp slapped over the photo's corner */
+.hero-stamp{
+  position:absolute; right:-22px; bottom:58px; z-index:1;
+  font-family: var(--font-mono); font-size:11px; font-weight:500; line-height:1.25; text-align:center; letter-spacing:.1em;
+  color: var(--spike-deep); background: rgba(255,253,248,.88);
+  border: 2.5px solid currentColor; border-radius:8px; padding: 7px 10px;
+  box-shadow: inset 0 0 0 2px rgba(255,253,248,.88), inset 0 0 0 3.5px currentColor;
+  transform: rotate(-14deg); pointer-events:none;
+}
+
+.tr-kicker{font-family: var(--font-hand); font-size:26px; color: var(--spike-deep); margin:0; line-height:1;}
+.tr-intro h1{font-size: clamp(36px,5.5vw,56px); line-height:1.05; margin:6px 0 16px; letter-spacing:-0.02em;}
+.tr-name{
+  color: var(--lilac-deep);
+  background: linear-gradient(transparent 62%, rgba(224,138,79,.35) 62%);
+  padding: 0 4px;
+}
+.tr-lede{font-size:16.5px; color: var(--ink-soft); margin:0 0 28px; max-width:56ch;}
+
+/* passport-style ID card */
+.passport{
+  position:relative; margin:0; max-width:440px;
+  background: var(--card); border-radius:12px; padding: 0 18px 14px;
+  box-shadow: var(--shadow);
+  border-left: 8px solid var(--lilac);
+  overflow:hidden;
+}
+.passport-head{
+  display:flex; justify-content:space-between; align-items:center;
+  margin: 0 -18px 8px; padding: 9px 18px;
+  background: var(--lilac); color:#fff;
+  font-family: var(--font-mono); font-size:12px; letter-spacing:.12em;
+}
+.passport-no{opacity:.85;}
+.passport-row{display:grid; grid-template-columns: 92px 1fr; gap:10px; padding: 6px 0; border-bottom: 1px dashed var(--paper-dot);}
+.passport-row:last-of-type{border-bottom:none;}
+.passport dt{font-family: var(--font-mono); font-size:11px; text-transform:uppercase; letter-spacing:.08em; color: var(--ink-faint); padding-top:3px;}
+.passport dd{margin:0; font-weight:700; font-size:14.5px;}
+
+/* ---------- sections ---------- */
+.tr-section{margin-top: clamp(56px,8vw,96px);}
+.tr-h2{
+  font-family: var(--font-hand); font-weight:700; font-size: clamp(34px,4.5vw,44px);
+  line-height:1; margin:0; color: var(--ink);
+}
+.tr-h2::after{
+  content:""; display:block; width:120px; height:6px; margin-top:6px; border-radius:6px;
+  background: repeating-linear-gradient(90deg, var(--spike) 0 14px, transparent 14px 20px);
+}
+.tr-note{color: var(--ink-faint); margin: 10px 0 28px; font-size:15px;}
+
+/* rubber stamps */
+.stamps{list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap: 22px 28px;}
+.stamp{
+  width:132px; height:132px; border-radius:50%;
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px;
+  border: 3px double currentColor; outline: 2px dashed currentColor; outline-offset:-12px;
+  font-family: var(--font-mono); text-transform:uppercase; letter-spacing:.1em; text-align:center;
+  opacity:.8; transform: rotate(var(--tilt, 0deg));
+}
+.stamp-place{font-size:13px; font-weight:500;}
+.stamp-date{font-size:11px; opacity:.8;}
+.stamp--a{color: var(--spike-deep); --tilt:-8deg;}
+.stamp--b{color: var(--lilac-deep); --tilt:6deg; border-radius:16px;}
+.stamp--c{color: #4f8a6e; --tilt:-3deg;}
+.stamp--d{color: #b0485a; --tilt:10deg; border-radius:16px;}
+
+/* gallery */
+.gallery{display:grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 40px 32px;}
+.gallery .polaroid:nth-child(4n+1){--tilt:-2.5deg;}
+.gallery .polaroid:nth-child(4n+2){--tilt:1.8deg;}
+.gallery .polaroid:nth-child(4n+3){--tilt:-1deg;}
+.gallery .polaroid:nth-child(4n+4){--tilt:2.6deg;}
+.gallery .polaroid:nth-child(even) .tape{background: repeating-linear-gradient(45deg, var(--tape-b) 0 8px, rgba(255,255,255,.35) 8px 12px);}
+.polaroid-empty{
+  display:grid; place-items:center;
+  background:
+    repeating-linear-gradient(-45deg, rgba(183,176,214,.18) 0 10px, transparent 10px 20px),
+    #f1ece4;
+  border: 2px dashed var(--paper-dot);
+}
+.polaroid-empty span{font-family: var(--font-hand); font-size:24px; color: var(--ink-faint); text-align:center; line-height:1.1;}
+
+/* ---------- footer ---------- */
+.tr-footer{text-align:center; padding: 56px 16px 40px; color: var(--ink-faint); font-size:14px;}
+.tr-sign{font-family: var(--font-hand); font-size:30px; color: var(--lilac-deep); margin:0 0 8px;}
+.tr-footer-links{margin:0 0 6px; font-weight:700;}
+.tr-copy{margin:0; font-size:12.5px;}
+
+/* ---------- responsive ---------- */
+@media (max-width: 760px){
+  .tr-hero{grid-template-columns: 1fr; justify-items:center; text-align:left;}
+  .polaroid--hero{max-width:300px;}
+  .tr-intro{width:100%;}
+  .passport{max-width:none;}
+}
+@media (max-width: 420px){
+  .tr-nav-title{font-size:20px;}
+  .passport-row{grid-template-columns: 78px 1fr;}
+  .hero-stamp{right:-10px;}
+  .stamp{width:116px; height:116px;}
+  .gallery{grid-template-columns: repeat(2, minmax(0,1fr)); gap: 28px 18px;}
+  .polaroid{padding:8px 8px 0;}
+  .polaroid figcaption{font-size:18px;}
+  .polaroid-empty span{font-size:19px;}
+}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  .polaroid{transition:none;}
+}

@@ -613,6 +613,11 @@ footer.site-footer{padding: 40px clamp(20px,5vw,64px) 64px; margin-top:0;}
 .hobby-icon{font-size:30px; margin-bottom:14px;}
 .hobby-title{font-size:18px; font-weight:700; margin-bottom:8px;}
 .hobby-desc{font-size:14.5px; line-height:1.6; margin:0;}
+/* Tu-Rex card: a whole-row link to tu-rex.html (colour set per theme in life.css) */
+.hobby-card--link{display:block; grid-column:1/-1; color:inherit;}
+.hobby-card--link:hover{color:inherit;}
+.hobby-arrow{display:inline-block; transition: transform .2s ease;}
+.hobby-card--link:hover .hobby-arrow, .hobby-card--link:focus-visible .hobby-arrow{transform: translateX(4px);}
 
 /* =========================================================
    Shared easter-egg overlays (raccoon / Demogorgon games)

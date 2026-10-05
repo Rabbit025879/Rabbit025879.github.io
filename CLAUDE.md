@@ -24,7 +24,7 @@ node --check scripts/<file>.js
 
 ## Architecture
 
-Everything lives in four top-level dirs: `css/`, `scripts/`, `images/`, `files/` (just `CV.pdf`), plus four pages:
+Everything lives in four top-level dirs: `css/`, `scripts/`, `images/`, `files/` (just `CV.pdf`), plus five pages:
 
 | Page | Style | Stylesheets |
 |---|---|---|
@@ -32,8 +32,11 @@ Everything lives in four top-level dirs: `css/`, `scripts/`, `images/`, `files/`
 | `projects.html` (case studies + experiments log) | Neumorphism, light + dark | `css/style.css` |
 | `life.html` (Off Duty, reached via the "I'm not a robot" checkpoint on the home page) | Claymorphism or Neobrutalism, switchable | `css/style.css` + `css/life.css` |
 | `terminal.html` (hidden easter egg) | Green-phosphor terminal | `css/terminal.css` only |
+| `tu-rex.html` (Tu-Rex's Travel Log — the plush dinosaur who stands in for the owner in travel photos; linked from Off Duty and the terminal's `turex` command) | Travel journal (paper, polaroids, washi tape, stamps), no JS | `css/tu-rex.css` only |
 
 **Styling.** `css/style.css` holds the Neumorphism design tokens (`--bg`, `--raise*`, `--inset*`, `--accent`, …) and every shared component, plus the structural (theme-neutral) rules for the Off Duty page. In Neumorphism every surface uses the page background; depth comes only from the paired light/dark shadow tokens, so don't give cards their own background colour. `css/life.css` only *skins* the Off Duty page: each theme overrides tokens under `:root[data-theme="clay"|"neo"]` and restyles components under `[data-theme=…]` selectors.
+
+**Tu-Rex page.** Self-contained: its own tokens in `css/tu-rex.css`, no shared styles or scripts. Gallery photos go in `images/tu-rex/`; each empty `.polaroid-empty` placeholder is swapped for an `<img>` (instructions are in an HTML comment above the gallery), and each `.stamp` is one place visited.
 
 **Light / dark scheme (index & projects).** `scripts/scheme.js` is a classic script in `<head>` that sets `data-scheme="light|dark"` on `<html>` before first paint: it follows `prefers-color-scheme` until the visitor clicks the nav's `[data-scheme-toggle]` button, then remembers the choice in `localStorage` (`color-scheme`). Dark mode is just the token overrides under `:root[data-scheme="dark"]` in `style.css` — style new components with the tokens and they get both schemes for free. `life.html` doesn't load `scheme.js`, so the Off Duty themes stay as designed.
 
