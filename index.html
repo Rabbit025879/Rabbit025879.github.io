@@ -357,19 +357,19 @@
         <span class="id-status" id="checkpoint-status">● Awaiting Input</span>
       </div>
 
-      <div class="recaptcha-box">
-        <div class="recaptcha-row">
-          <button type="button" class="recaptcha-checkbox" id="checkpoint-checkbox" role="checkbox" aria-checked="false" aria-label="I'm not a robot">
-            <span class="recaptcha-spinner" aria-hidden="true"></span>
-            <span class="recaptcha-check-mark" aria-hidden="true"></span>
-            <span class="recaptcha-label">I'm not a robot</span>
-          </button>
-        </div>
-        <div class="recaptcha-brand">
-          <div class="recaptcha-logo" aria-hidden="true">⚙️</div>
-          <div class="recaptcha-fine">Tzu-Hsiang Tu<br><span>Anti-Bot Verification</span></div>
-        </div>
-      </div>
+      <button type="button" class="recaptcha-box" id="checkpoint-checkbox" role="checkbox" aria-checked="false" aria-label="I'm not a robot">
+        <span class="recaptcha-row">
+          <span class="recaptcha-checkbox" aria-hidden="true">
+            <span class="recaptcha-spinner"></span>
+            <span class="recaptcha-check-mark"></span>
+          </span>
+          <span class="recaptcha-label">I'm not a robot</span>
+        </span>
+        <span class="recaptcha-brand" aria-hidden="true">
+          <span class="recaptcha-logo">⚙️</span>
+          <span class="recaptcha-fine">Tzu-Hsiang Tu<br><span>Anti-Bot Verification</span></span>
+        </span>
+      </button>
 
       <p class="checkpoint-note" id="checkpoint-note">Please confirm you are a carbon-based lifeform before proceeding.</p>
     </div>
