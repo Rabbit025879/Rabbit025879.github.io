@@ -100,9 +100,14 @@
 [data-theme="clay"] #game-banner{background:#fff; color: var(--ink); box-shadow: var(--clay); border-radius:32px;}
 [data-theme="clay"] #game-property{background: var(--ink); color:#fff; box-shadow: var(--clay-sm);}
 
-[data-theme="clay"] .theme-switch{background:#fff; border-radius:999px; box-shadow: var(--clay-sm); color: var(--text-muted);}
+/* recessed lilac track so it stands out against the white nav */
+[data-theme="clay"] .theme-switch{
+  background: var(--bg); border-radius:999px; color: var(--text-muted);
+  border:1.5px solid var(--lilac);
+  box-shadow: inset 2px 3px 6px rgba(60,30,120,.12), inset -2px -2px 4px rgba(255,255,255,.8);
+}
 [data-theme="clay"] .theme-switch button{border-radius:999px;}
-[data-theme="clay"] .theme-switch button[aria-pressed="true"]{background: var(--lilac); color: var(--ink);}
+[data-theme="clay"] .theme-switch button[aria-pressed="true"]{background:#fff; color: var(--accent); box-shadow: var(--clay-sm);}
 
 @keyframes clayBob{50%{transform: translateY(-8px);}}
 
