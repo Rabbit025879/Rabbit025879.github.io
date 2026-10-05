@@ -600,7 +600,7 @@ footer.site-footer{padding: 40px clamp(20px,5vw,64px) 64px; margin-top:0;}
 @media (max-width: 520px){
   .name-seal::after{
     left:14px; top:auto; bottom: calc(100% + 6px);
-    width:5.6em; white-space:normal; text-align:center; line-height:1.35;
+    width:max-content; white-space:pre-line; text-align:center; line-height:1.35;
     transform: translateY(4px);
   }
   .name-seal:hover::after, .name-seal:focus::after{transform:none;}
