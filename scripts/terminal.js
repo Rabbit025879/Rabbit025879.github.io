@@ -76,6 +76,7 @@ const FS = dir({
     }, { date: '2024-25', note: 'capacitive + pirani, extended range', href: 'projects.html#mems' }),
   }, { date: '2026' }),
   'off-duty': link('life.html', { date: '2026', note: 'hobbies, raccoons & an easter egg' }),
+  'tu-rex': link('tu-rex.html', { date: '2026', note: 'travel log of my plush dinosaur stand-in' }),
   '.rabbit': file([
     'follow the white rabbit. 🐇',
     "兔子 (rabbit) is my nickname — that's why everything here is called Rabbit025879.",
@@ -206,7 +207,7 @@ const COMMANDS = {
       ['cat <file>', 'print a file'],
       ['open <file|mail|github>', 'open in the browser'],
       ['neofetch', 'system info'],
-      ['rabbit · raccoon', 'say hi to the locals'],
+      ['rabbit · raccoon · turex', 'say hi to the locals'],
       ['history · clear · pwd · date · echo', ''],
       ['exit', 'back to the normal website'],
     ];
@@ -356,6 +357,12 @@ const COMMANDS = {
   raccoon() { COMMANDS.cat(['~/.raccoon']); },
   rabbit() { COMMANDS.cat(['~/.rabbit']); },
 
+  turex() {
+    print('🦖 Tu-Rex — plush T-rex, travel buddy, official stand-in for me in photos.');
+    print('I would rather stay behind the camera, so Tu-Rex poses in front of the view.');
+    print(el('span', {}, '→ ', cmdLink('open the travel log', 'open ~/tu-rex')));
+  },
+
   exit() {
     print('logout — returning to the normal website…', 'term-dim');
     setTimeout(() => navigate('index.html'), 500);
@@ -365,6 +372,7 @@ COMMANDS.logout = COMMANDS.exit;
 COMMANDS.gui = COMMANDS.exit;
 COMMANDS.ll = (args) => COMMANDS.ls(['-l', ...args]);
 COMMANDS.follow = COMMANDS.rabbit;
+COMMANDS['tu-rex'] = COMMANDS.turex;
 COMMANDS.la = (args) => COMMANDS.ls(['-a', ...args]);
 COMMANDS.dir = COMMANDS.ls;
 

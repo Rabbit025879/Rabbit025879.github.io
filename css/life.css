@@ -89,6 +89,7 @@
 [data-theme="clay"] .hobby-card:nth-child(4n+2){background: var(--lemon);}
 [data-theme="clay"] .hobby-card:nth-child(4n+3){background: var(--mint);}
 [data-theme="clay"] .hobby-card:nth-child(4n+4){background: var(--pink);}
+[data-theme="clay"] .hobby-card--link.hobby-card{background: var(--lilac);}
 [data-theme="clay"] .hobby-icon{
   width:60px; height:60px; border-radius:20px; display:grid; place-items:center;
   background:#fff; box-shadow: var(--clay-sm);
@@ -166,6 +167,7 @@
 [data-theme="neo"] .hobby-card:nth-child(4n+2){background: var(--b);}
 [data-theme="neo"] .hobby-card:nth-child(4n+3){background: var(--g);}
 [data-theme="neo"] .hobby-card:nth-child(4n+4){background: var(--p);}
+[data-theme="neo"] .hobby-card--link.hobby-card{background: var(--o);}
 [data-theme="neo"] .hobby-icon{
   width:58px; height:58px; display:grid; place-items:center;
   background:#fff; border: var(--edge); border-radius:12px; box-shadow: var(--hard-sm);
