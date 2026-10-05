@@ -8,43 +8,63 @@
 export const SPRITES = {
   raccoon: {
     palette: {
-      o: '#1c1a1e', // outline
-      f: '#8e8279', // fur
-      d: '#5e544e', // forehead stripe
-      c: '#e9dccb', // cream brows & muzzle
-      w: '#f3ece2', // ear rims
-      k: '#2e2826', // inner ear
-      m: '#453c38', // eye mask
-      e: '#140b08', // eyes (near-black brown)
+      o: '#1c1919', // outline
+      f: '#9b8d81', // fur
+      F: '#7c6f65', // fur shade (legs, under the chin)
+      l: '#b9ab9c', // light chest
+      c: '#efe1cb', // cream brows, cheeks & muzzle
+      d: '#7c6f65', // forehead stripe
+      m: '#353130', // eye mask
+      e: '#0b0909', // eyes
       h: '#ffffff', // eye shine
-      n: '#0e0c0d', // nose
+      k: '#2a2624', // inner ear
+      n: '#100e0e', // nose
+      p: '#3b3734', // paws
+      t: '#45403c', // tail stripes
     },
     rows: [
-      '..ooo..................ooo..',
-      '.owwwo................owwwo.',
-      '.owkkwo..............owkkwo.',
-      '.owkkkwoooooooooooooowkkkwo.',
-      '.owkkffffffffddffffffffkkwo.',
-      '.owkfffffffffddfffffffffkwo.',
-      '.offfffffffffddfffffffffffo.',
-      'offcccfffffffddfffffffcccffo',
-      'offccccccfffddddfffccccccffo',
-      'occccccccccfddddfcccccccccco',
-      'ofccmmmmmmmmfddfmmmmmmmmccfo',
-      'ommmmehmmmmmddddmmmmmhemmmmo',
-      'ommmmeemmmmcddddcmmmmeemmmmo',
-      'ommmmmmmmcccddddcccmmmmmmmmo',
-      '.ommmmmccccccddccccccmmmmmo.',
-      '.ommmmcccccccddcccccccmmmmo.',
-      '..ommfccccccccccccccccfmmo..',
-      '..offccccccccccccccccccffo..',
-      '...offccccccccccccccccffo...',
-      '....offccccnnnnnnccccffo....',
-      '.....offcccnnnnnncccffo.....',
-      '......offcccnnnncccffo......',
-      '.......occcccnnccccco.......',
-      '........ooccccccccoo........',
-      '..........oooooooo..........',
+      '...oooo...............oooo...........',
+      '..offffo.............offffo..........',
+      '.offffffo...........offffffo.........',
+      '.offkkffo...........offkkffo.........',
+      'offkkkkffoooooooooooffkkkkffo........',
+      'offkkkkffffffdddffffffkkkkffo........',
+      '.ofkkkkffffffdddffffffkkkkfo.........',
+      '.ofkkffffffffdddffffffffkkfo.........',
+      '.offfcccccccfdddfcccccccfffo.........',
+      '..occcccccccfdddfccccccccco..........',
+      '..ofmmmmmmmmmdddmmmmmmmmmfo..........',
+      '.ommmmmmehmmmdddmmmmhemmmmmo.........',
+      '.ommmmmmeemmmdddmmmmeemmmmmo.........',
+      'ommmmmmmmmmmcdddcmmmmmmmmmmmo........',
+      '.ommfmmmmmcccccccccmmmmmfmmo.........',
+      'ocmmffffffcccccccccffffffmmco........',
+      'occcfffffccccnnnccccfffffccco........',
+      '.oocfffffcccnnnnncccfffffcoo.........',
+      '...offfffccccnnnccccfffffo...........',
+      '....offffcccccooccccffffo............',
+      '.....oofffcccccccccfffoo.............',
+      '.......oofffcccccfffoo...............',
+      '........oooFFFFFFFooo................',
+      '.......olllllllllllllo...............',
+      '......oflllllllllllllfo..............',
+      '.....offflllllllllllfffo.......ooo...',
+      '.....offfflllllllllffffo......ottto..',
+      '....offfffflllllllffffffo...oottttto.',
+      '....offfffflllllllffffffo..ottfttttto',
+      '...offfffffflllllffffffffooftttftttto',
+      '...offffffffflllffffffffftfffttttttto',
+      '...offfffffffflffffffffffttfffttftto.',
+      '...offfffFfffflffffFffffftttfftttfo..',
+      '...offfffFfffffffffFffffffttffftoo...',
+      '....offffFfffffffffFfffffftttffo.....',
+      '....offffFfffffffffFfffffffttoo......',
+      '.....offfFfffffffffFfffttfffo........',
+      '....oofffFfffffffffFffftttoo.........',
+      '..oopoopppppfffffpppppffpoo..........',
+      '.opppppppppppfffpppppppppppo.........',
+      '.oppppppppppfffffppppppppppo.........',
+      '..ooooooooooooooooooooooooo..........',
     ],
   },
   rabbit: {
