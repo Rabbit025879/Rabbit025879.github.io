@@ -587,13 +587,19 @@ footer.site-footer{padding: 40px clamp(20px,5vw,64px) 64px; margin-top:0;}
 .name-seal:focus-visible{box-shadow: 0 0 0 3px var(--accent);}
 .name-seal::after{
   content: attr(data-tip);
-  position:absolute; left:50%; top: calc(100% + 10px);
+  /* beside the seal, clear of the name below */
+  position:absolute; left: calc(100% + 12px); top:50%;
   white-space:nowrap; font-size:13px; font-weight:700; color: var(--ink);
   padding:7px 12px; background:#fff;
-  opacity:0; transform: translate(-50%, -4px); pointer-events:none;
+  opacity:0; transform: translate(-4px, -50%); pointer-events:none;
   transition: opacity .2s ease, transform .2s ease;
 }
-.name-seal:hover::after, .name-seal:focus::after{opacity:1; transform: translate(-50%, 0);}
+.name-seal:hover::after, .name-seal:focus::after{opacity:1; transform: translate(0, -50%);}
+/* narrow phones: no room to the right, so float it above the seal over the photo */
+@media (max-width: 520px){
+  .name-seal::after{left:auto; right:0; top:auto; bottom: calc(100% + 10px); transform: translateY(4px);}
+  .name-seal:hover::after, .name-seal:focus::after{transform:none;}
+}
 @media (prefers-reduced-motion: reduce){
   .name-seal, .name-seal::after{transition:none;}
 }
