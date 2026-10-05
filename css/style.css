@@ -31,6 +31,35 @@
   --ease-reveal: cubic-bezier(.19,1,.22,1);
 }
 
+/* Dark scheme (index & projects; set by scripts/scheme.js). Same
+   neumorphic recipe on a slate base: --hi is a slightly lighter edge,
+   --lo a deep shadow. */
+:root[data-scheme="dark"]{
+  --bg: #23262e;
+  --hi: #2e323b;
+  --lo: #15171c;
+
+  --ink: #eceff5;
+  --text: #d3d8e2;
+  --text-muted: #a9b0bf;
+  --text-faint: #8b93a5;
+
+  --accent: #8f9bff;
+  --ok: #4fc890;
+
+  --raise: 8px 8px 16px var(--lo), -6px -6px 14px var(--hi);
+  --raise-sm: 5px 5px 10px var(--lo), -4px -4px 9px var(--hi);
+  --raise-xs: 3px 3px 6px var(--lo), -2px -2px 5px var(--hi);
+  --inset: inset 6px 6px 12px var(--lo), inset -5px -5px 10px var(--hi);
+  --inset-sm: inset 3px 3px 6px var(--lo), inset -3px -3px 6px var(--hi);
+  color-scheme: dark;
+}
+:root[data-scheme="dark"] .hero-title,
+:root[data-scheme="dark"] .section-title,
+:root[data-scheme="dark"] .case-intro h1{text-shadow:none;}
+:root[data-scheme="dark"] .id-photo img{filter: brightness(.88) saturate(.95);}
+:root[data-scheme="dark"] ::selection{color: var(--bg);}
+
 *{box-sizing:border-box;}
 html{scroll-behavior:smooth; scrollbar-width:thin; scrollbar-color: var(--lo) var(--bg);}
 html,body{
@@ -61,7 +90,7 @@ img{max-width:100%;}
    ========================================================= */
 .site-nav{
   position:sticky; top:16px; z-index:50;
-  display:flex; align-items:center; justify-content:space-between; gap:16px;
+  display:flex; align-items:center; gap:12px;
   max-width:1160px;
   margin: 16px auto 0;
   width: calc(100% - 32px);
@@ -74,10 +103,11 @@ img{max-width:100%;}
   font-weight:800; font-size:15px; letter-spacing:-0.01em;
   color: var(--ink);
   display:flex; align-items:center; gap:10px; flex-shrink:0;
+  margin-right:auto;
 }
 a.nav-brand:hover{color: var(--accent);}
 .nav-links{
-  display:flex; gap:4px;
+  order:1; display:flex; gap:4px;
   font-size:14px; font-weight:700;
   color: var(--text-muted);
   overflow-x:auto; white-space:nowrap; scrollbar-width:none;
@@ -86,8 +116,23 @@ a.nav-brand:hover{color: var(--accent);}
 .nav-links a{color:inherit; flex-shrink:0; padding:9px 14px; border-radius:999px; transition: box-shadow .2s ease, color .2s ease;}
 .nav-links a:hover{color: var(--accent); box-shadow: var(--inset-sm);}
 
+.scheme-toggle{
+  order:2; flex-shrink:0; display:grid; place-items:center;
+  width:42px; height:42px; padding:0;
+  border:none; border-radius:50%;
+  background: var(--bg); color: var(--accent);
+  box-shadow: var(--raise-sm);
+  cursor:pointer;
+  transition: box-shadow .2s ease, color .2s ease;
+}
+.scheme-toggle:hover{box-shadow: var(--raise-xs);}
+.scheme-toggle:active{box-shadow: var(--inset-sm);}
+.scheme-toggle .icon-sun{display:none;}
+:root[data-scheme="dark"] .scheme-toggle .icon-sun{display:block;}
+:root[data-scheme="dark"] .scheme-toggle .icon-moon{display:none;}
+
 .nav-toggle{
-  display:none; flex-shrink:0;
+  order:3; display:none; flex-shrink:0;
   width:42px; height:42px; padding:0;
   border:none; border-radius:50%;
   background: var(--bg); box-shadow: var(--raise-sm);

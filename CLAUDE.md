@@ -28,12 +28,14 @@ Everything lives in four top-level dirs: `css/`, `scripts/`, `images/`, `files/`
 
 | Page | Style | Stylesheets |
 |---|---|---|
-| `index.html` (home) | Neumorphism | `css/style.css` |
-| `projects.html` (case studies + experiments log) | Neumorphism | `css/style.css` |
+| `index.html` (home) | Neumorphism, light + dark | `css/style.css` |
+| `projects.html` (case studies + experiments log) | Neumorphism, light + dark | `css/style.css` |
 | `life.html` (Off Duty, reached via the "I'm not a robot" checkpoint on the home page) | Claymorphism or Neobrutalism, switchable | `css/style.css` + `css/life.css` |
 | `terminal.html` (hidden easter egg) | Green-phosphor terminal | `css/terminal.css` only |
 
 **Styling.** `css/style.css` holds the Neumorphism design tokens (`--bg`, `--raise*`, `--inset*`, `--accent`, …) and every shared component, plus the structural (theme-neutral) rules for the Off Duty page. In Neumorphism every surface uses the page background; depth comes only from the paired light/dark shadow tokens, so don't give cards their own background colour. `css/life.css` only *skins* the Off Duty page: each theme overrides tokens under `:root[data-theme="clay"|"neo"]` and restyles components under `[data-theme=…]` selectors.
+
+**Light / dark scheme (index & projects).** `scripts/scheme.js` is a classic script in `<head>` that sets `data-scheme="light|dark"` on `<html>` before first paint: it follows `prefers-color-scheme` until the visitor clicks the nav's `[data-scheme-toggle]` button, then remembers the choice in `localStorage` (`color-scheme`). Dark mode is just the token overrides under `:root[data-scheme="dark"]` in `style.css` — style new components with the tokens and they get both schemes for free. `life.html` doesn't load `scheme.js`, so the Off Duty themes stay as designed.
 
 **Off Duty theme switching.** `scripts/theme.js` is a classic (non-module) script loaded in `<head>` of `life.html` so the theme lands before first paint. It picks the theme from `?theme=clay|neo`, then `localStorage` (`offduty-theme`), then defaults to `clay`, and wires any `[data-theme-set]` buttons to switch live (updating the URL with `history.replaceState`). To add a theme, add its name to `THEMES` in `theme.js`, a `[data-theme=…]` block in `life.css`, and a button.
 
