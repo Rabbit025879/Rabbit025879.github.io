@@ -153,3 +153,6 @@ a{color: var(--g);}
   .term-neofetch{grid-template-columns:1fr; row-gap:12px; padding:12px 0 2px 0;}
   .term-neofetch-logo{padding-top:0; font-size:11px; line-height:1.2;}
 }
+
+/* tiny sprite inline with text (whoami alias) */
+.term-inline-sprite{display:inline-block; vertical-align:-6px; margin:-4px 0 -2px 2px;}

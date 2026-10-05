@@ -218,7 +218,7 @@ const COMMANDS = {
   whoami() {
     const facts = [
       ['name', 'Tzu-Hsiang Tu (凃紫翔)'],
-      ['alias', '兔子 · rabbit 🐇'],
+      ['alias', el('span', {}, '兔子 · rabbit ', pixelArt('rabbit', { pixelSize: 1, className: 'term-inline-sprite' }))],
       ['role', 'Robotics Engineer'],
       ['status', el('span', { class: 'term-amber', text: '● online — open to collaboration' })],
       ['now', 'M.S. researcher, NEAF Lab, NTHU'],
