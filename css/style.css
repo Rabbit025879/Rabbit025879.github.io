@@ -618,11 +618,11 @@ body.lightning-flash::before{
 /* =========================================================
    Rabbit details (nickname: 兔子 / Rabbit) — sprites from scripts/pixel-art.js
    ========================================================= */
-.nav-bunny{display:inline-flex; width:24px; height:20px; margin:-4px 0 0 -4px;}
+.nav-bunny{display:inline-flex; width:24px; height:21px; margin:-4px 0 0 -4px;}
 .nav-bunny svg{display:block;}
 
 /* Off Duty footer: a white rabbit peeks up; click to fall down the rabbit hole (terminal.html) */
-.life-footer{position:relative; overflow:hidden; padding-bottom:104px;}
+.life-footer{position:relative; overflow:hidden; padding-bottom:92px;}
 .peek-rabbit{
   position:absolute; right: clamp(16px,8vw,96px); bottom:0;
   transform: translateY(56%);

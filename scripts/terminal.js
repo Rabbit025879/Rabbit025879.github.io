@@ -328,10 +328,11 @@ const COMMANDS = {
       ['memory', '2 eurobot world finals'],
     ];
     const lines = Math.max(art.length, info.length);
+    const artTop = Math.ceil((lines - art.length) / 2); // vertically centre the logo
     for (let i = 0; i < lines; i++) {
       const [k, v] = info[i] || ['', ''];
       print(el('span', {},
-        el('span', { class: 'term-soft', text: (art[i] || '').padEnd(24) }),
+        el('span', { class: 'term-soft', text: (art[i - artTop] || '').padEnd(24) }),
         k ? el('span', { class: 'term-amber', text: `${k}: ` }) : '',
         v));
     }

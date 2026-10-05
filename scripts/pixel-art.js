@@ -10,11 +10,10 @@ export const SPRITES = {
     palette: {
       o: '#3b2a3a', // outline
       f: '#b9aaa4', // fur
-      s: '#9c8c88', // fur shade (arms, forehead stripe)
-      c: '#f6ecdf', // cream face & belly
+      s: '#9c8c88', // forehead stripe
+      c: '#f6ecdf', // cream face
       m: '#6b5a66', // eye mask
-      t: '#6b5a66', // tail stripes
-      e: '#2a1c2a', // eyes, nose, paws
+      e: '#2a1c2a', // eyes & nose
       h: '#ffffff', // eye shine
       k: '#4a3446', // inner ear
       p: '#e8a7a7', // blush & tongue
@@ -39,25 +38,13 @@ export const SPRITES = {
       '.occcccccccccceecccccccccccco.',
       '.ocpcccccccceceececcccccccpco.',
       '..ooccccccccccppccccccccccoo..',
-      '.....ooooccccccccccccoooo.....',
-      '......offccccccccccccffo......',
-      '.....offfccccccccccccfffo.....',
-      '....offfffccccccccccfffffo....',
-      '..oooffffffccccccccffffffo....',
-      '.otttoofssffccccccffssfffo....',
-      'otccccoffoeecccccceeoffffo....',
-      'otffffofffccccccccccfffffo....',
-      'otttttoffccccccccccccffffo....',
-      'occcccofccccccccccccccffo.....',
-      '.ottttommooffffffffoommmo.....',
-      '..ooooooo..oooooooo..ooo......',
+      '....oooooooooooooooooooooo....',
     ],
   },
   rabbit: {
     palette: {
       o: '#4a3a48', // outline
       w: '#ffffff', // fur
-      l: '#e9e3ee', // fur shade
       p: '#f4b3c5', // inner ear
       e: '#2a1c2a', // eyes
       n: '#e8879f', // nose
@@ -84,15 +71,7 @@ export const SPRITES = {
       '.owbbwwwwwwoowwwwwwbbwo.',
       '..owwwwwwwowwowwwwwwwo..',
       '..oowwwwwwwwwwwwwwwwoo..',
-      '....oowwwwwwwwwwwwoo....',
-      '...owwwwwwwwwwwwwwwwo...',
-      '...owwwwwwwwwwwwwwwwo...',
-      '..owwwwwllwwwwllwwwwwo..',
-      '..owwwwwoowwwwoowwwwwo..',
-      '..olwwwwwwwwwwwwwwwwlo..',
-      '..ollwwwwwwwwwwwwwwllo..',
-      '..ollllwwwwwwwwwwllllo..',
-      '...oooooooooooooooooo...',
+      '....oooooooooooooooo....',
     ],
   },
 };
