@@ -270,28 +270,36 @@ a.nav-brand:hover{color: var(--accent);}
 }
 .id-name{font-size:21px; font-weight:800; letter-spacing:-0.015em; color: var(--ink); margin:20px 6px 0;}
 .id-name-zh{font-size:13px; font-weight:600; color: var(--text-faint); margin:3px 6px 0;}
-.id-name-row{display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:20px;}
+/* Name row hides a 凃 seal: hovering or tapping the name stamps it in, with a note
+   that the surname is 凃 (two dots), not the far more common 涂 (three dots). */
+.id-name-row{
+  position:relative; z-index:2;
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
+  margin-top:20px; border-radius: var(--radius-sm); outline:none;
+  -webkit-tap-highlight-color: transparent;
+}
+.id-name-row:focus-visible{box-shadow: 0 0 0 3px var(--accent);}
 .id-name-row .id-name{margin-top:0;}
-
-/* 凃 seal stamp beside the name — many people write the surname 涂 (three dots); hover/focus explains */
 .name-seal{
-  position:relative; z-index:2; flex-shrink:0; width:46px; height:46px; margin-right:4px;
-  transform: rotate(-7deg); transition: transform .25s var(--ease-reveal);
-  cursor:help; border-radius:12px; outline:none;
+  flex-shrink:0; width:46px; height:46px; margin-right:4px;
+  opacity:0; transform: rotate(-7deg) scale(1.7);
+  transition: opacity .15s ease, transform .3s cubic-bezier(.3,1.6,.5,1);
 }
 .name-seal img{display:block; width:100%; height:100%; filter: drop-shadow(2px 3px 4px var(--lo));}
-.name-seal:hover, .name-seal:focus-visible{transform: rotate(0) scale(1.06);}
-.name-seal:focus-visible{box-shadow: 0 0 0 3px var(--accent);}
-.name-seal::after{
+.id-name-row:hover .name-seal, .id-name-row:focus-within .name-seal{opacity:1; transform: rotate(-7deg) scale(1);}
+.id-name-row::after{
   content: attr(data-tip);
-  position:absolute; right:-4px; bottom: calc(100% + 10px);
+  position:absolute; right:0; bottom: calc(100% + 10px);
   white-space:nowrap; font-size:12.5px; font-weight:700; color: var(--ink);
   padding:8px 12px; border-radius: var(--radius-sm);
   background: var(--bg); box-shadow: var(--raise-sm);
-  opacity:0; transform: translateY(4px) rotate(7deg); pointer-events:none;
-  transition: opacity .2s ease, transform .2s ease;
+  opacity:0; transform: translateY(4px); pointer-events:none;
+  transition: opacity .2s ease .1s, transform .2s ease .1s;
 }
-.name-seal:hover::after, .name-seal:focus-visible::after{opacity:1; transform: translateY(0) rotate(0);}
+.id-name-row:hover::after, .id-name-row:focus-within::after{opacity:1; transform:none;}
+@media (prefers-reduced-motion: reduce){
+  .name-seal, .id-name-row::after{transition:none;}
+}
 .id-meta-grid{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:18px 0 0;}
 .id-meta-cell{padding:12px 14px; border-radius: var(--radius-sm); box-shadow: var(--inset-sm);}
 .id-meta-label{font-size:10.5px; font-weight:800; text-transform:uppercase; letter-spacing:0.06em; color: var(--text-faint);}
@@ -666,7 +674,11 @@ body.lightning-flash::before{
   .log-entry-body{margin-left:0;}
   .contact-actions{flex-direction:column; align-items:stretch;}
   .contact-actions .btn{justify-content:center;}
+}
 
+/* Collapse the nav into the hamburger menu before the home page's
+   eight links run under the scheme toggle (they need ~970px). */
+@media (max-width: 1024px){
   .nav-toggle{display:flex;}
   .nav-links{
     position:absolute; top: calc(100% + 12px); left:0; right:0;
