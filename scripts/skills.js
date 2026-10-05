@@ -39,7 +39,7 @@ if (network && svg && hub && detail) {
     line.setAttribute('y1', '50');
     line.setAttribute('x2', String(x));
     line.setAttribute('y2', String(y));
-    line.setAttribute('stroke', 'oklch(0.5 0.05 290 / 0.3)');
+    line.setAttribute('stroke', 'var(--border-strong)');
     line.setAttribute('stroke-width', '0.8');
     svg.appendChild(line);
 
@@ -69,7 +69,7 @@ if (network && svg && hub && detail) {
       node.classList.toggle('active', active);
       node.classList.toggle('hue-purple', def.hue === 'purple');
       node.classList.toggle('hue-cyan', def.hue === 'cyan');
-      line.setAttribute('stroke', active ? `var(--${def.hue})` : 'oklch(0.5 0.05 290 / 0.3)');
+      line.setAttribute('stroke', active ? `var(--${def.hue})` : 'var(--border-strong)');
       line.setAttribute('stroke-width', active ? '1.6' : '0.8');
     });
     renderDetail(index === -1 ? overview : skillDefs[index]);
