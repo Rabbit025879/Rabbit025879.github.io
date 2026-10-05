@@ -595,9 +595,14 @@ footer.site-footer{padding: 40px clamp(20px,5vw,64px) 64px; margin-top:0;}
   transition: opacity .2s ease, transform .2s ease;
 }
 .name-seal:hover::after, .name-seal:focus::after{opacity:1; transform: translate(0, -50%);}
-/* narrow phones: no room to the right, so float it above the seal over the photo */
+/* narrow phones: no room beside it, so float it up-right of the seal (clear of the
+   photo) and let it wrap onto two lines to stay inside the viewport */
 @media (max-width: 520px){
-  .name-seal::after{left:auto; right:0; top:auto; bottom: calc(100% + 10px); transform: translateY(4px);}
+  .name-seal::after{
+    left:14px; top:auto; bottom: calc(100% + 6px);
+    width:5.6em; white-space:normal; text-align:center; line-height:1.35;
+    transform: translateY(4px);
+  }
   .name-seal:hover::after, .name-seal:focus::after{transform:none;}
 }
 @media (prefers-reduced-motion: reduce){
