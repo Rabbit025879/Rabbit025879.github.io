@@ -7,14 +7,29 @@
    ========================================================= */
 
 /* ---------- theme switcher (shared) ---------- */
+/* Lives in the nav, in the slot the light/dark toggle uses on the other pages
+   (after the links, before the hamburger). */
 .theme-switch{
-  display:inline-flex; align-items:center; gap:4px;
-  margin-top:28px; padding:6px; font-size:13px;
+  order:2; flex-shrink:0;
+  display:inline-flex; align-items:center; gap:2px;
+  padding:4px; font-size:12.5px;
 }
-.theme-switch-label{padding:0 8px 0 10px; font-weight:700;}
 .theme-switch button{
   font:inherit; font-weight:700; cursor:pointer;
-  padding:8px 14px; border:none; background:transparent; color:inherit;
+  padding:6px 12px; border:none; background:transparent; color:inherit;
+}
+/* phones: tighten the nav so brand + switch + hamburger fit on one row
+   (Neo's uppercase brand and thick borders are the widest case) */
+@media (max-width: 420px){
+  .site-nav{gap:8px; padding-left:16px;}
+  .nav-brand{font-size:14px;}
+  .theme-switch{font-size:12px;}
+  .theme-switch button{padding:5px 10px;}
+}
+@media (max-width: 360px){
+  .site-nav{gap:6px; padding-left:14px; padding-right:10px;}
+  .nav-brand{font-size:12px;}
+  .theme-switch button{padding:4px 8px;}
 }
 
 /* =========================================================
@@ -62,6 +77,8 @@
   background:#fff; padding:6px 14px; border-radius:999px; box-shadow: var(--clay-sm);
   color: var(--text-muted); font-weight:500;
 }
+[data-theme="clay"] .name-seal img{filter: drop-shadow(4px 6px 8px rgba(110,70,190,.28));}
+[data-theme="clay"] .name-seal::after{border-radius:999px; box-shadow: var(--clay-sm);}
 
 [data-theme="clay"] .hobby-card{
   border-radius:32px; padding:30px; box-shadow: var(--clay);
@@ -83,9 +100,14 @@
 [data-theme="clay"] #game-banner{background:#fff; color: var(--ink); box-shadow: var(--clay); border-radius:32px;}
 [data-theme="clay"] #game-property{background: var(--ink); color:#fff; box-shadow: var(--clay-sm);}
 
-[data-theme="clay"] .theme-switch{background:#fff; border-radius:999px; box-shadow: var(--clay-sm); color: var(--text-muted);}
+/* recessed lilac track so it stands out against the white nav */
+[data-theme="clay"] .theme-switch{
+  background: var(--bg); border-radius:999px; color: var(--text-muted);
+  border:1.5px solid var(--lilac);
+  box-shadow: inset 2px 3px 6px rgba(60,30,120,.12), inset -2px -2px 4px rgba(255,255,255,.8);
+}
 [data-theme="clay"] .theme-switch button{border-radius:999px;}
-[data-theme="clay"] .theme-switch button[aria-pressed="true"]{background: var(--lilac); color: var(--ink);}
+[data-theme="clay"] .theme-switch button[aria-pressed="true"]{background:#fff; color: var(--accent); box-shadow: var(--clay-sm);}
 
 @keyframes clayBob{50%{transform: translateY(-8px);}}
 
@@ -132,6 +154,8 @@
   background: var(--y); border:2px solid var(--ink); padding:5px 12px; border-radius:999px;
   color: var(--ink); font-weight:600;
 }
+[data-theme="neo"] .name-seal img{filter: drop-shadow(3px 3px 0 var(--ink));}
+[data-theme="neo"] .name-seal::after{border:2px solid var(--ink); border-radius:8px; box-shadow: var(--hard-sm);}
 
 [data-theme="neo"] .hobby-card{
   border: var(--edge); border-radius:16px; padding:28px; box-shadow: var(--hard);
