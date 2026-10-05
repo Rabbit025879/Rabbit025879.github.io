@@ -141,3 +141,6 @@ a{color: var(--g);}
 @media (prefers-reduced-motion: reduce){
   .term-cursor{animation:none;}
 }
+
+/* pixel-art sprites (cat ~/.raccoon) — keep pixels crisp, no glow */
+.term-pixel-art{display:block; margin:6px 0 8px; max-width:100%; height:auto; filter:none; image-rendering:pixelated;}

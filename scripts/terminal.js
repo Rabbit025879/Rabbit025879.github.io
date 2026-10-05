@@ -76,14 +76,79 @@ const FS = dir({
   }, { date: '2026' }),
   'off-duty': link('life.html', { date: '2026', note: 'hobbies, raccoons & an easter egg' }),
   '.raccoon': file([
-    '      __        .-.',
-    '  .-"`  `"-.   /  /',
-    ' /  .--.    \\ /  /',
-    '|  ( ●● )    |  /     you found the raccoon.',
-    ' \\  `--´    /  /      double-click my photo on the',
-    "  '-.____.-'--'       off-duty page to start raccoon time.",
-  ], { date: '????' }),
+    'you found the raccoon. 🦝',
+    'double-click my photo on the off-duty page to start raccoon time.',
+  ], { date: '????', art: 'raccoon' }),
 });
+
+/*************************
+ * Pixel art
+ * Each sprite is the LEFT half of a symmetric image (mirrored at render
+ * time); every character is one pixel, looked up in PIXEL_PALETTE
+ * ('.' = transparent).
+ *************************/
+const PIXEL_PALETTE = {
+  K: '#0c0c10', // outline / pupils
+  G: '#8b8b97', // fur
+  g: '#6e6e7a', // fur shade
+  W: '#f2f2f6', // white muzzle & brows
+  D: '#3a3a48', // eye mask & forehead stripe
+  E: '#ffffff', // eye shine
+  P: '#e6a9b8', // inner ear
+  N: '#0d0d12', // nose
+};
+
+const PIXEL_ART = {
+  raccoon: [
+    '..KKK.......',
+    '.KgGGK......',
+    '.KGPPGK.....',
+    '.KGPPGGKKKKK',
+    '.KGGPGGGGGGD',
+    'KGGGGGGGGGgD',
+    'KGGWWWWGGGgD',
+    'KGWWWWWWWGGg',
+    'KWWWDDDDWWWG',
+    'KWDDDDDDDDWW',
+    'KDDDDKKDDDDW',
+    'KDDDKEKKDDDW',
+    'KDDDKKKKDDDW',
+    'KgDDDKKDDDWW',
+    '.KgDDDDDDWWW',
+    '.KGGgDDWWWWW',
+    '..KGGWWWWWWW',
+    '...KGWWWWNNN',
+    '....KWWWWWNN',
+    '.....KWWWWWK',
+    '......KWWKWW',
+    '.......KKKKK',
+  ],
+};
+
+function pixelArt(name, pixelSize = 7) {
+  const rows = PIXEL_ART[name].map((half) => half + [...half].reverse().join(''));
+  const svgNS = 'http://www.w3.org/2000/svg';
+  const width = rows[0].length;
+  const svg = document.createElementNS(svgNS, 'svg');
+  svg.setAttribute('class', 'term-pixel-art');
+  svg.setAttribute('viewBox', `0 0 ${width} ${rows.length}`);
+  svg.setAttribute('width', String(width * pixelSize));
+  svg.setAttribute('height', String(rows.length * pixelSize));
+  svg.setAttribute('shape-rendering', 'crispEdges');
+  svg.setAttribute('role', 'img');
+  svg.setAttribute('aria-label', `pixel-art ${name}`);
+  rows.forEach((row, y) => [...row].forEach((ch, x) => {
+    if (!PIXEL_PALETTE[ch]) return;
+    const rect = document.createElementNS(svgNS, 'rect');
+    rect.setAttribute('x', String(x));
+    rect.setAttribute('y', String(y));
+    rect.setAttribute('width', '1');
+    rect.setAttribute('height', '1');
+    rect.setAttribute('fill', PIXEL_PALETTE[ch]);
+    svg.append(rect);
+  }));
+  return svg;
+}
 
 const HOME = [];
 
@@ -200,7 +265,7 @@ const COMMANDS = {
   help() {
     const rows = [
       ['whoami', 'who is this'],
-      ['ls [-l] [-a] [dir]', 'list files'],
+      ['ls [-l] [-a] [dir]', 'list files (ll = ls -l, la = ls -a)'],
       ['cd <dir>', 'change directory'],
       ['cat <file>', 'print a file'],
       ['open <file|mail|github>', 'open in the browser'],
@@ -283,6 +348,7 @@ const COMMANDS = {
         return print(`cat: ${target}: Is a directory`, 'term-err');
       }
       if (node.type === 'link') return print(`cat: ${target}: binary file — try \`open ${target}\``, 'term-err');
+      if (node.art) print(pixelArt(node.art));
       node.lines.forEach((line) => print(line, line.startsWith('#') ? 'term-amber' : ''));
       const project = nodeAt(parts.slice(0, -1));
       if (project && project.href) print(el('span', {}, '→ ', cmdLink('read the full case study', `open ${'~/' + parts.slice(0, -1).join('/')}`)));
@@ -360,6 +426,7 @@ const COMMANDS = {
 COMMANDS.logout = COMMANDS.exit;
 COMMANDS.gui = COMMANDS.exit;
 COMMANDS.ll = (args) => COMMANDS.ls(['-l', ...args]);
+COMMANDS.la = (args) => COMMANDS.ls(['-a', ...args]);
 COMMANDS.dir = COMMANDS.ls;
 
 function navigate(href) {
