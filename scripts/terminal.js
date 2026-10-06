@@ -44,7 +44,6 @@ const FS = dir({
     'VERSION:3.0',
     'N:凃;紫翔;;;',
     'FN:凃紫翔',
-    'NICKNAME:Tzu-Hsiang Tu',
     'ORG:NEAF Lab\\, NTHU',
     'TITLE:Student',
     'EMAIL;TYPE=INTERNET,PREF:tu.tzu.hs@gmail.com',
