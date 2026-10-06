@@ -42,8 +42,9 @@ const FS = dir({
   'contact.vcf': file([
     'BEGIN:VCARD',
     'VERSION:3.0',
-    'N:;Tzu-Hsiang Tu;;凃紫翔;',
-    'FN:凃紫翔 Tzu-Hsiang Tu',
+    'N:凃;紫翔;;;',
+    'FN:凃紫翔',
+    'NICKNAME:Tzu-Hsiang Tu',
     'ORG:NEAF Lab\\, NTHU',
     'TITLE:Student',
     'EMAIL;TYPE=INTERNET,PREF:tu.tzu.hs@gmail.com',
