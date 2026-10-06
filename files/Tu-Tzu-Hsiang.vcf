@@ -2,13 +2,12 @@ BEGIN:VCARD
 VERSION:3.0
 N:Tu;Tzu-Hsiang;;;凃紫翔
 FN:Tzu-Hsiang Tu 凃紫翔
-X-PHONETIC-LAST-NAME:ㄊㄨˊ
-X-PHONETIC-FIRST-NAME:ㄗˇ ㄒ一ㄤˊ
 ORG:NEAF Lab\, NTHU
+TITLE:Student
 EMAIL;TYPE=INTERNET,PREF:tu.tzu.hs@gmail.com
 URL:https://rabbit025879.github.io/
 URL:https://github.com/Rabbit025879
-NOTE:凃紫翔 · Robotics engineer. Nice to meet you! 🐰
+NOTE:Nice to meet you! 🐰
 PHOTO;ENCODING=b;TYPE=JPEG:/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQF
  BQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2w
  BDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4e
