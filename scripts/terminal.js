@@ -175,7 +175,7 @@ const gap = () => out.append(el('div', { class: 'term-gap' }));
 const scrollDown = () => { body.scrollTop = body.scrollHeight; };
 
 function promptNode() {
-  return el('span', { class: 'term-prompt' }, el('b', { text: 'tu@nthu' }), `:${cwdLabel()}$ `);
+  return el('span', { class: 'term-prompt' }, el('b', { text: 'tu@TuTzuOS' }), `:${cwdLabel()}$ `);
 }
 
 function renderPrompt() {
@@ -318,9 +318,9 @@ const COMMANDS = {
       '   ╚═╝    ╚═════╝ ',
     ];
     const info = [
-      ['', 'tu@nthu'],
-      ['', '-------'],
-      ['os', 'NTHU PME · B.S. 2026 → M.S.'],
+      ['', 'tu@TuTzuOS'],
+      ['', '----------'],
+      ['os', `TuTzuOS ${osVersion()} · NTHU PME B.S. 2026 → M.S.`],
       ['host', 'NEAF Lab, Hsinchu, TW'],
       ['kernel', 'ROS2 + Navigation2'],
       ['uptime', '4 years of robotics'],
@@ -498,13 +498,22 @@ window.addEventListener('pointerdown', () => { if (booting) skipBoot = true; });
 /*************************
  * Boot sequence
  *************************/
+// TuTzuOS's version number is the owner's age (born 2004-06-14), so it
+// bumps itself every birthday.
+function osVersion() {
+  const now = new Date();
+  let age = now.getFullYear() - 2004;
+  if (now.getMonth() < 5 || (now.getMonth() === 5 && now.getDate() < 14)) age--;
+  return `${age}.0`;
+}
+
 const BANNER = [
-  '████████╗██╗   ██╗    ███████╗██╗   ██╗███████╗',
-  '╚══██╔══╝██║   ██║    ██╔════╝╚██╗ ██╔╝██╔════╝',
-  '   ██║   ██║   ██║    ███████╗ ╚████╔╝ ███████╗',
-  '   ██║   ██║   ██║    ╚════██║  ╚██╔╝  ╚════██║',
-  '   ██║   ╚██████╔╝    ███████║   ██║   ███████║',
-  '   ╚═╝    ╚═════╝     ╚══════╝   ╚═╝   ╚══════╝',
+  '████████╗██╗   ██╗  ████████╗███████╗██╗   ██╗   ██████╗ ███████╗',
+  '╚══██╔══╝██║   ██║  ╚══██╔══╝╚══███╔╝██║   ██║  ██╔═══██╗██╔════╝',
+  '   ██║   ██║   ██║     ██║     ███╔╝ ██║   ██║  ██║   ██║███████╗',
+  '   ██║   ██║   ██║     ██║    ███╔╝  ██║   ██║  ██║   ██║╚════██║',
+  '   ██║   ╚██████╔╝     ██║   ███████╗╚██████╔╝  ╚██████╔╝███████║',
+  '   ╚═╝    ╚═════╝      ╚═╝   ╚══════╝ ╚═════╝    ╚═════╝ ╚══════╝',
 ].join('\n');
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, skipBoot ? 0 : ms));
