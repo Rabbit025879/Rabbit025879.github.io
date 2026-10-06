@@ -1,12 +1,10 @@
 BEGIN:VCARD
 VERSION:3.0
-N:Tu;Tzu-Hsiang;;;
-FN:Tzu-Hsiang Tu
+N:Tu;Tzu-Hsiang;;;凃紫翔
+FN:Tzu-Hsiang Tu 凃紫翔
 X-PHONETIC-LAST-NAME:ㄊㄨˊ
 X-PHONETIC-FIRST-NAME:ㄗˇ ㄒ一ㄤˊ
-NICKNAME:兔子,Rabbit
-ORG:NEAF Lab\, National Tsing Hua University (NTHU)
-TITLE:Student
+ORG:NEAF Lab\, NTHU
 EMAIL;TYPE=INTERNET,PREF:tu.tzu.hs@gmail.com
 URL:https://rabbit025879.github.io/
 URL:https://github.com/Rabbit025879
