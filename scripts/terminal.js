@@ -37,7 +37,25 @@ const FS = dir({
     'mail     rabbit025879@gmail.com      (open mail)',
     'github   github.com/Rabbit025879     (open github)',
     'cv       ~/cv.pdf                    (open cv.pdf)',
+    'vcard    ~/contact.vcf               (open contact.vcf)',
   ], { date: '2026-09' }),
+  'contact.vcf': file([
+    'BEGIN:VCARD',
+    'VERSION:3.0',
+    'N:Tu;Tzu-Hsiang;;;',
+    'FN:Tzu-Hsiang Tu',
+    'X-PHONETIC-LAST-NAME:ㄊㄨˊ',
+    'X-PHONETIC-FIRST-NAME:ㄗˇ ㄒ一ㄤˊ',
+    'NICKNAME:兔子,Rabbit',
+    'ORG:NEAF Lab\\, National Tsing Hua University (NTHU)',
+    'TITLE:Student',
+    'EMAIL;TYPE=INTERNET,PREF:tu.tzu.hs@gmail.com',
+    'URL:https://rabbit025879.github.io/',
+    'URL:https://github.com/Rabbit025879',
+    'NOTE:凃紫翔 · Robotics engineer. Nice to meet you! 🐰',
+    'PHOTO;ENCODING=b;TYPE=JPEG:<256x256 jpeg, base64 omitted>',
+    'END:VCARD',
+  ], { date: '2026-10', href: 'files/Tu-Tzu-Hsiang.vcf', cta: 'save it to your contacts' }),
   'cv.pdf': link('files/CV.pdf', { date: '2026', note: 'curriculum vitae' }),
   'projects': dir({
     'eurobot-robot': dir({
@@ -289,6 +307,7 @@ const COMMANDS = {
       if (node.type === 'link') return print(`cat: ${target}: binary file — try \`open ${target}\``, 'term-err');
       if (node.art) print(pixelArt(node.art, { pixelSize: 6, className: 'term-pixel-art' }));
       node.lines.forEach((line) => print(line, line.startsWith('#') ? 'term-amber' : ''));
+      if (node.cta) print(el('span', {}, '→ ', cmdLink(node.cta, `open ${target}`)));
       const project = nodeAt(parts.slice(0, -1));
       if (project && project.href) print(el('span', {}, '→ ', cmdLink('read the full case study', `open ${'~/' + parts.slice(0, -1).join('/')}`)));
     });
