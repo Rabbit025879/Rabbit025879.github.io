@@ -175,7 +175,7 @@ const gap = () => out.append(el('div', { class: 'term-gap' }));
 const scrollDown = () => { body.scrollTop = body.scrollHeight; };
 
 function promptNode() {
-  return el('span', { class: 'term-prompt' }, el('b', { text: 'tu@nthu' }), `:${cwdLabel()}$ `);
+  return el('span', { class: 'term-prompt' }, el('b', { text: 'tu@TuTzuOS' }), `:${cwdLabel()}$ `);
 }
 
 function renderPrompt() {
@@ -318,8 +318,8 @@ const COMMANDS = {
       '   ╚═╝    ╚═════╝ ',
     ];
     const info = [
-      ['', 'tu@nthu'],
-      ['', '-------'],
+      ['', 'tu@TuTzuOS'],
+      ['', '----------'],
       ['os', `TuTzuOS ${osVersion()} · NTHU PME B.S. 2026 → M.S.`],
       ['host', 'NEAF Lab, Hsinchu, TW'],
       ['kernel', 'ROS2 + Navigation2'],
