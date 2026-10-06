@@ -34,7 +34,7 @@ const FS = dir({
     'tooling    Docker · Git · Linux',
   ], { date: '2026-09' }),
   'contact.txt': file([
-    'mail     rabbit025879@gmail.com      (open mail)',
+    'mail     tu.tzu.hs@gmail.com         (open mail)',
     'github   github.com/Rabbit025879     (open github)',
     'cv       ~/cv.pdf                    (open cv.pdf)',
     'vcard    ~/contact.vcf               (open contact.vcf)',
@@ -108,8 +108,8 @@ const FS = dir({
 const HOME = [];
 
 const EXTERNAL = {
-  mail: 'mailto:rabbit025879@gmail.com',
-  email: 'mailto:rabbit025879@gmail.com',
+  mail: 'mailto:tu.tzu.hs@gmail.com',
+  email: 'mailto:tu.tzu.hs@gmail.com',
   github: 'https://github.com/Rabbit025879',
   home: 'index.html',
   site: 'index.html',
