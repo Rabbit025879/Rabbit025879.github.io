@@ -37,9 +37,9 @@ const FS = dir({
     'mail     tu.tzu.hs@gmail.com         (open mail)',
     'github   github.com/Rabbit025879     (open github)',
     'cv       ~/cv.pdf                    (open cv.pdf)',
-    'vcard    ~/contact.vcf               (open contact.vcf)',
+    'vcard    ~/card.vcf                  (open card.vcf)',
   ], { date: '2026-09' }),
-  'contact.vcf': file([
+  'card.vcf': file([
     'BEGIN:VCARD',
     'VERSION:3.0',
     'N:凃;紫翔;;;',
