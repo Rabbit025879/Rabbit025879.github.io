@@ -42,7 +42,7 @@ const FS = dir({
   'contact.vcf': file([
     'BEGIN:VCARD',
     'VERSION:3.0',
-    'N:Tu;Tzu-Hsiang;;;凃紫翔',
+    'N:;Tzu-Hsiang Tu;;;凃紫翔',
     'FN:Tzu-Hsiang Tu 凃紫翔',
     'ORG:NEAF Lab\\, NTHU',
     'TITLE:Student',
