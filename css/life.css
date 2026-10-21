@@ -96,6 +96,9 @@
 }
 [data-theme="clay"] .hobby-title{font-weight:600; color: var(--ink);}
 [data-theme="clay"] .hobby-desc{color: var(--text-muted);}
+[data-theme="clay"] .side-projects-head h2{font-weight:600; color: var(--ink);}
+[data-theme="clay"] .side-projects-head p{color: var(--text-muted);}
+[data-theme="clay"] .project-meta{align-self:flex-start; background:#fff; padding:5px 12px; border-radius:999px; box-shadow: var(--clay-sm); color: var(--text-muted);}
 [data-theme="clay"] footer.site-footer{color: var(--text-muted);}
 
 [data-theme="clay"] #game-banner{background:#fff; color: var(--ink); box-shadow: var(--clay); border-radius:32px;}
@@ -174,6 +177,9 @@
 }
 [data-theme="neo"] .hobby-title{font-weight:800; color: var(--ink);}
 [data-theme="neo"] .hobby-desc{color: var(--text-muted);}
+[data-theme="neo"] .side-projects-head h2{font-weight:800; letter-spacing:-0.04em; color: var(--ink);}
+[data-theme="neo"] .side-projects-head p{font-weight:500; color: var(--text-muted);}
+[data-theme="neo"] .project-meta{align-self:flex-start; background:#fff; border:2px solid var(--ink); border-radius:8px; padding:4px 10px; color: var(--ink); font-weight:700;}
 [data-theme="neo"] footer.site-footer{color: var(--ink); font-weight:600;}
 
 [data-theme="neo"] #game-banner{background: var(--y); color: var(--ink); border: var(--edge); border-radius:14px; box-shadow: var(--hard);}
