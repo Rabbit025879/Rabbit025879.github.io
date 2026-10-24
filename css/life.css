@@ -16,7 +16,7 @@
   --line:#111111;               /* borders + hard shadows */
   --on-pop:#111111;             /* text on the bright fills below */
   --on-pop-muted:#2b2b2b;
-  --y:#ffd23f; --p:#ff8fd8; --b:#7ed7ff; --g:#a8f07c; --o:#ff7a45;
+  --y:#ffd23f; --p:#ff8fd8; --b:#7ed7ff; --g:#a8f07c; --v:#b8a4ff;
   --edge: 3px solid var(--line);
   --hard: 6px 6px 0 var(--line);
   --hard-sm: 4px 4px 0 var(--line);
@@ -35,7 +35,7 @@
   --text-faint:#a8a192;
   --accent:#ffd23f;
   --line:#f6efdd;
-  --y:#f2c230; --p:#f27fcb; --b:#5fc3ef; --g:#93dd66; --o:#f26b38;
+  --y:#f2c230; --p:#f27fcb; --b:#5fc3ef; --g:#93dd66; --v:#a58ff0;
 }
 
 .offduty body{background: var(--bg);}
@@ -104,7 +104,7 @@
 .offduty .hobby-card:nth-child(4n+2){--pop: var(--b);}
 .offduty .hobby-card:nth-child(4n+3){--pop: var(--g);}
 .offduty .hobby-card:nth-child(4n+4){--pop: var(--p);}
-.offduty .hobby-card--link.hobby-card{--pop: var(--o);}
+.offduty .hobby-card--link.hobby-card{--pop: var(--v);}  /* lilac, like the Tu-Rex plush */
 .offduty .hobby-card{background: var(--pop);}
 .offduty .hobby-icon{
   width:58px; height:58px; display:grid; place-items:center;
