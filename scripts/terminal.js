@@ -223,7 +223,7 @@ const COMMANDS = {
       ['cat <file>', 'print a file'],
       ['open <file|mail|github>', 'open in the browser'],
       ['neofetch', 'system info'],
-      ['rabbit · raccoon · turex', 'say hi to the locals'],
+      ['rabbit · raccoon · tu-rex', 'say hi to the locals'],
       ['history · clear · pwd · date · echo', ''],
       ['exit', 'back to the normal website'],
     ];
@@ -374,7 +374,7 @@ const COMMANDS = {
   raccoon() { COMMANDS.cat(['~/.raccoon']); },
   rabbit() { COMMANDS.cat(['~/.rabbit']); },
 
-  turex() {
+  'tu-rex'() {
     print('🦖 Tu-Rex — plush T-rex, travel buddy, official stand-in for me in photos.');
     print('I would rather stay behind the camera, so Tu-Rex poses in front of the view.');
     print(el('span', {}, '→ ', cmdLink('open the travel log', 'open ~/tu-rex')));
@@ -389,9 +389,11 @@ COMMANDS.logout = COMMANDS.exit;
 COMMANDS.gui = COMMANDS.exit;
 COMMANDS.ll = (args) => COMMANDS.ls(['-l', ...args]);
 COMMANDS.follow = COMMANDS.rabbit;
-COMMANDS['tu-rex'] = COMMANDS.turex;
+COMMANDS.turex = COMMANDS['tu-rex'];
 COMMANDS.la = (args) => COMMANDS.ls(['-a', ...args]);
 COMMANDS.dir = COMMANDS.ls;
+// Aliases that still run but stay out of tab completion.
+const HIDDEN = new Set(['turex']);
 
 function navigate(href) {
   if (/^(https?:|mailto:)/.test(href)) {
@@ -448,7 +450,7 @@ function complete(value) {
 
   let candidates;
   if (tokens.length === 1) {
-    candidates = Object.keys(COMMANDS).filter((c) => c.startsWith(last));
+    candidates = Object.keys(COMMANDS).filter((c) => c.startsWith(last) && !HIDDEN.has(c));
   } else {
     const slash = last.lastIndexOf('/');
     const dirPart = slash >= 0 ? last.slice(0, slash + 1) : '';

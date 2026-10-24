@@ -62,5 +62,5 @@ Pushing to `main` on GitHub with Pages enabled serves the site directly — no b
 
 - Double-click the avatar on Off Duty to enter/exit raccoon mode.
 - Double-click the crack in the bottom-left corner for a Stranger Things–themed page flip and Demogorgon hunt.
-- Press `` ` `` or type `sudo` / `whoami` on the home or projects page (or click the tiny `>_` in the footer) to open the terminal. Try `help`, `neofetch`, `rabbit`, `turex`, or `cat contact.vcf`.
+- Press `` ` `` or type `sudo` / `whoami` on the home or projects page (or click the tiny `>_` in the footer) to open the terminal. Try `help`, `neofetch`, `rabbit`, `tu-rex`, or `cat contact.vcf`.
 - Follow the white rabbit peeking from the Off Duty footer.
