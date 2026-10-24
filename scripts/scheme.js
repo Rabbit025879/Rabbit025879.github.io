@@ -1,11 +1,14 @@
 /*************************
- * Light / dark colour scheme for the main pages (index, projects)
+ * Light / dark colour scheme (index, projects, life)
  * Loaded as a classic, render-blocking script in <head> so the scheme
  * is applied before first paint (no flash of the wrong colours).
  *
  * Follows the OS setting (prefers-color-scheme) until the visitor picks
  * one with a [data-scheme-toggle] button; that choice is remembered in
  * localStorage. Sets data-scheme="light|dark" on <html>.
+ *
+ * A page with its own palette can give its theme-color meta
+ * data-light / data-dark values to use instead of the defaults.
  *************************/
 (function () {
   var STORAGE_KEY = 'color-scheme';
@@ -31,7 +34,7 @@
   function apply(scheme) {
     root.setAttribute('data-scheme', scheme);
     var meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.setAttribute('content', THEME_COLORS[scheme]);
+    if (meta) meta.setAttribute('content', meta.getAttribute('data-' + scheme) || THEME_COLORS[scheme]);
     var buttons = document.querySelectorAll('[data-scheme-toggle]');
     for (var i = 0; i < buttons.length; i++) {
       buttons[i].setAttribute('aria-pressed', String(scheme === 'dark'));

@@ -10,7 +10,7 @@ Personal portfolio site for Tzu-Hsiang Tu (凃自翔) — B.S. in Power Mechanic
 |---|---|---|
 | `index.html` | Home — about, skills network, contact (with vCard download) | Neumorphism, light + dark |
 | `projects.html` | Case studies + experiments log | Neumorphism, light + dark |
-| `life.html` | Off Duty, reached via the "I'm not a robot" checkpoint on the home page | Claymorphism / Neobrutalism, switchable |
+| `life.html` | Off Duty, reached via the "I'm not a robot" checkpoint on the home page | Neobrutalism, light + dark |
 | `terminal.html` | Hidden easter egg — a fake shell (`tu@TuTzuOS`) over a virtual filesystem | Green-phosphor terminal |
 | `tu-rex.html` | Tu-Rex's Travel Log — the plush dinosaur's travel photos | Travel journal, no JS |
 
@@ -20,12 +20,11 @@ Personal portfolio site for Tzu-Hsiang Tu (凃自翔) — B.S. in Power Mechanic
 index.html, projects.html, life.html, terminal.html, tu-rex.html
 css/
   style.css                Neumorphism tokens + shared components
-  life.css                 Clay / Neo skins for the Off Duty page
+  life.css                 Neobrutalism skin (light + dark) for the Off Duty page
   terminal.css             Terminal page
   tu-rex.css               Travel Log page (self-contained)
 scripts/
-  scheme.js                Light/dark scheme (follows OS, remembers toggle)
-  theme.js                 Off Duty theme switching (?theme=clay|neo, localStorage)
+  scheme.js                Light/dark scheme for every page but terminal/Tu-Rex (follows OS, remembers toggle)
   nav.js                   Mobile nav toggle
   reveal.js                Scroll reveal + pointer-following glow
   skills.js                Interactive skills network
