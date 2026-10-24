@@ -91,6 +91,9 @@ let isRaccoon = false;
 let typingInterval = null;
 let deleteInterval = null;
 
+const segmenter = new Intl.Segmenter('en', { granularity: 'grapheme' });
+const splitGraphemes = text => Array.from(segmenter.segment(text), s => s.segment);
+
 function typeText(target, text, style, speed = 100, callback, initialText = '') {
   setState(State.TYPING);
   target.textContent = initialText;
@@ -109,8 +112,7 @@ function typeText(target, text, style, speed = 100, callback, initialText = '') 
     target.style.fontSize = '24px';
   }
 
-  const segmenter = new Intl.Segmenter('en', { granularity: 'grapheme' });
-  const chars = Array.from(segmenter.segment(text), s => s.segment);
+  const chars = splitGraphemes(text);
   let i = 0;
 
   typingInterval = setInterval(() => {
@@ -128,8 +130,11 @@ function typeText(target, text, style, speed = 100, callback, initialText = '') 
 
 function deleteText(target, text, callback) {
   setState(State.DELETING);
+  // Delete by grapheme, not UTF-16 code unit — slicing an emoji like 🦝 in half
+  // leaves a lone surrogate that renders as a "?" box for one tick.
+  const chars = splitGraphemes(text);
   deleteInterval = setInterval(() => {
-    if (text.length === 0) {
+    if (chars.length === 0) {
       clearInterval(deleteInterval);
       deleteInterval = null;
       isRaccoon
@@ -138,9 +143,9 @@ function deleteText(target, text, callback) {
       callback && callback();
       return;
     }
-    text = text.slice(0, -1);
-    target.textContent = text;
-  }, Math.max(20, 350 / Math.max(text.length, 1)));
+    chars.pop();
+    target.textContent = chars.join('');
+  }, Math.max(20, 350 / Math.max(chars.length, 1)));
 }
 
 function typeChineseName(target, arr, callback) {
