@@ -24,8 +24,8 @@
   --font-body:'Lexend','Nunito',system-ui,sans-serif;
 }
 /* Dark: the page and surfaces go near-black and the ink lines turn cream,
-   so the borders and hard shadows still read; the fills stay loud (a touch
-   deeper) and keep dark text on them. */
+   so the borders and hard shadows still read; the pop colours go a touch
+   deeper (cards use them as outlines in dark — see below the cards). */
 :root.offduty[data-scheme="dark"]{
   --bg:#16141d;
   --surface:#25222f;
@@ -100,11 +100,12 @@
   transition: transform .12s ease, box-shadow .12s ease;
 }
 .offduty .hobby-card:hover{transform: translate(-3px,-3px); box-shadow: var(--hard-lg);}
-.offduty .hobby-card:nth-child(4n+1){background: var(--y);}
-.offduty .hobby-card:nth-child(4n+2){background: var(--b);}
-.offduty .hobby-card:nth-child(4n+3){background: var(--g);}
-.offduty .hobby-card:nth-child(4n+4){background: var(--p);}
-.offduty .hobby-card--link.hobby-card{background: var(--o);}
+.offduty .hobby-card:nth-child(4n+1){--pop: var(--y);}
+.offduty .hobby-card:nth-child(4n+2){--pop: var(--b);}
+.offduty .hobby-card:nth-child(4n+3){--pop: var(--g);}
+.offduty .hobby-card:nth-child(4n+4){--pop: var(--p);}
+.offduty .hobby-card--link.hobby-card{--pop: var(--o);}
+.offduty .hobby-card{background: var(--pop);}
 .offduty .hobby-icon{
   width:58px; height:58px; display:grid; place-items:center;
   background: var(--surface); border: var(--edge); border-radius:12px; box-shadow: var(--hard-sm);
@@ -114,6 +115,15 @@
 .offduty .side-projects-head h2{font-weight:800; letter-spacing:-0.04em; color: var(--ink);}
 .offduty .side-projects-head p{font-weight:500; color: var(--text-muted);}
 .offduty .project-meta{align-self:flex-start; background: var(--surface); border:2px solid var(--line); border-radius:8px; padding:4px 10px; color: var(--ink); font-weight:700;}
+
+/* Dark: cards go dark too and each keeps its colour on the border, hard
+   shadow, icon tile, title and meta chip instead of a full fill. */
+.offduty[data-scheme="dark"] .hobby-card{background: var(--surface); border-color: var(--pop); box-shadow: 6px 6px 0 var(--pop);}
+.offduty[data-scheme="dark"] .hobby-card:hover{box-shadow: 9px 9px 0 var(--pop);}
+.offduty[data-scheme="dark"] .hobby-icon{background: var(--pop); border-color: var(--pop); box-shadow:none;}
+.offduty[data-scheme="dark"] .hobby-title{color: var(--pop);}
+.offduty[data-scheme="dark"] .hobby-desc{color: var(--text-muted);}
+.offduty[data-scheme="dark"] .project-meta{border-color: var(--pop); color: var(--pop);}
 
 /* ---------- footer ---------- */
 .offduty footer.site-footer{color: var(--ink); font-weight:600;}
