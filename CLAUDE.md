@@ -32,7 +32,7 @@ Everything lives in four top-level dirs: `css/`, `scripts/`, `images/`, `files/`
 | `projects.html` (case studies + experiments log) | Neumorphism, light + dark | `css/style.css` |
 | `life.html` (Off Duty, reached via the "I'm not a robot" checkpoint on the home page) | Neobrutalism, light + dark | `css/style.css` + `css/life.css` |
 | `terminal.html` (hidden easter egg) | Green-phosphor terminal | `css/terminal.css` only |
-| `tu-rex.html` (Tu-Rex's Travel Log — the plush dinosaur who stands in for the owner in travel photos; linked from Off Duty and the terminal's `turex` command) | Travel journal (paper, polaroids, washi tape, stamps), no JS | `css/tu-rex.css` only |
+| `tu-rex.html` (Tu-Rex's Travel Log — the plush dinosaur who stands in for the owner in travel photos; linked from Off Duty and the terminal's `tu-rex` command) | Travel journal (paper, polaroids, washi tape, stamps), no JS | `css/tu-rex.css` only |
 
 **Styling.** `css/style.css` holds the Neumorphism design tokens (`--bg`, `--raise*`, `--inset*`, `--accent`, …) and every shared component, plus the structural (theme-neutral) rules for the Off Duty page. In Neumorphism every surface uses the page background; depth comes only from the paired light/dark shadow tokens, so don't give cards their own background colour. `css/life.css` only *skins* the Off Duty page in Neobrutalism: `life.html` has `<html class="offduty">`, and the file overrides tokens under `:root.offduty` (dark: `:root.offduty[data-scheme="dark"]`) and restyles components under `.offduty …` selectors. Borders and hard shadows use `--line`, text on the bright card fills uses `--on-pop`, so dark mode is just token overrides there too.
 
