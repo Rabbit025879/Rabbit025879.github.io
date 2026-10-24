@@ -618,6 +618,16 @@ footer.site-footer{padding: 40px clamp(20px,5vw,64px) 64px; margin-top:0;}
 .hobby-card--link:hover{color:inherit;}
 .hobby-arrow{display:inline-block; transition: transform .2s ease;}
 .hobby-card--link:hover .hobby-arrow, .hobby-card--link:focus-visible .hobby-arrow{transform: translateX(4px);}
+/* Side projects: same card skin as the hobbies, but each card is an outbound link */
+.side-projects{position:relative; z-index:1; max-width:880px; margin:0 auto; padding: 0 clamp(20px,5vw,64px) clamp(64px,8vw,96px);}
+.side-projects-head{text-align:center; margin-bottom:36px;}
+.side-projects-head h2{font-size: clamp(26px,3.6vw,38px); font-weight:800; letter-spacing:-0.02em; margin:0 0 12px; line-height:1.15;}
+.side-projects-head p{font-size:16px; line-height:1.6; max-width:520px; margin:0 auto;}
+.project-card{display:flex; flex-direction:column; color:inherit;}
+.project-card:hover{color:inherit;}
+.project-card .hobby-desc{flex:1;}
+.project-card:hover .hobby-arrow, .project-card:focus-visible .hobby-arrow{transform: translate(3px,-3px);}
+.project-meta{margin-top:16px; font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:.02em;}
 
 /* =========================================================
    Shared easter-egg overlays (raccoon / Demogorgon games)
